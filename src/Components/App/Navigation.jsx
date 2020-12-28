@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -7,6 +7,8 @@ import {
     Button
 } from '@material-ui/core';
 import CSALogo from '../../Assets/Images/CSALogo.svg';
+import { Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -18,6 +20,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+logout = () => {
+
+}
+
 function Navigation(props) {
     const classes = useStyles();
 
@@ -27,7 +33,8 @@ function Navigation(props) {
                 <Toolbar>
                     <img src={CSALogo} className={classes.logo} alt='' />
                     <Typography align='left' variant='h6' color='secondary' className={classes.heading}>Lunar Banquet 2020</Typography>
-                    <Button color='inherit'>Login</Button>
+                    <Button color='inherit' onClick={logout()}>Log Out</Button>
+                    <Button color='inherit'><Link to="/login">Login</Link></Button>
                 </Toolbar>
             </AppBar>
             <Toolbar />
