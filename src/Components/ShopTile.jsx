@@ -34,12 +34,12 @@ function ShopTile(props) {
 
                     { /* item price */ }
                     <Grid item>
-                        <Typography variant="h5">{props.name}</Typography>
+                        <Typography variant="h5">{props.price}</Typography>
                     </Grid>
 
                     { /* item description */ }
                     <Grid item>
-                        <Typography variant="h5">{props.name}</Typography>
+                        <Typography variant="h5">{props.desc}</Typography>
                     </Grid>
                 </Grid>
             </Button>
