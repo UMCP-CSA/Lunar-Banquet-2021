@@ -3,7 +3,7 @@ import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
-import ShopPage from './Pages/LoginPage';
+import ShopPage from './Pages/ShopPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const theme = createMuiTheme({
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/login">
             <LoginPage />
           </Route>
-          <Route path="/shop">
+          <Route exact path="/shop">
             <ShopPage />
           </Route>
         </Switch>
