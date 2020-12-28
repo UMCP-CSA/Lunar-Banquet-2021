@@ -19,7 +19,7 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
     <div className='App'>
         <Switch>
           <Route exact path="/login">
