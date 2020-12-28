@@ -2,6 +2,8 @@ import './App.css';
 import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,12 +19,20 @@ const theme = createMuiTheme({
 
 function App() {
   return (
+    <Router>
     <div className='App'>
-      <ThemeProvider theme={theme}>
-        <Navigation />
-        <HomePage />
-      </ThemeProvider>
-    </div>
+        <Switch>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+        </Switch>
+
+        <ThemeProvider theme={theme}>
+          <Navigation />
+          <HomePage />
+        </ThemeProvider>
+      </div>
+    </Router>
   );
 }
 
