@@ -20,9 +20,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-logout = () => {
+// logout = () => {
 
-}
+// }
 
 function Navigation(props) {
     const classes = useStyles();
@@ -33,7 +33,7 @@ function Navigation(props) {
                 <Toolbar>
                     <img src={CSALogo} className={classes.logo} alt='' />
                     <Typography align='left' variant='h6' color='secondary' className={classes.heading}>Lunar Banquet 2020</Typography>
-                    <Button color='inherit' onClick={logout()}>Log Out</Button>
+                    {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Button color='inherit'><Link to="/login">Login</Link></Button>
                 </Toolbar>
             </AppBar>
