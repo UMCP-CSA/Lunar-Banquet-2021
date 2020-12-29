@@ -9,33 +9,34 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#db2e2e'
+      main: '#d81212',
+      dark: '#870000'
     },
     secondary: {
-      main: '#ffd778',
-      light: '#fff'
-    }
+      main: '#ffae0d',
+      dark: '#ff7900'
+    },
   }
 });
 
 function App() {
   return (
     <Router basename="/">
-    <div className='App'>
-        <Switch>
-          <Route exact path="/login">
-            <LoginPage />
-          </Route>
-          <Route exact path="/shop">
-            <ShopPage />
-          </Route>
-        </Switch>
-
+      <div className='App'>
         <ThemeProvider theme={theme}>
           <Navigation />
           <HomePage />
         </ThemeProvider>
       </div>
+
+      <Switch>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route exact path="/shop">
+          <ShopPage />
+        </Route>
+      </Switch>
     </Router>
   );
 }

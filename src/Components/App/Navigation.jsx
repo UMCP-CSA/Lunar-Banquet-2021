@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     AppBar,
     Toolbar,
@@ -6,17 +6,20 @@ import {
     Typography,
     Button
 } from '@material-ui/core';
-import CSALogo from '../../Assets/Images/CSALogo.svg';
-import { Link } from 'react-router-dom';
-
+import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 
 const useStyles = makeStyles(theme => ({
     logo: {
-        paddingRight: theme.spacing(1),
-        width: '3rem',
+        padding: theme.spacing(1),
+        paddingRight: theme.spacing(3),
+        width: '4rem',
     },
     heading: {
         flexGrow: 1,
+        fontFamily: "'Abril Fatface', cursive"
+    },
+    links: {
+        marginLeft: theme.spacing(5),
     }
 }));
 
@@ -25,12 +28,18 @@ function Navigation(props) {
 
     return (
         <div>
-            <AppBar>
+            <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <img src={CSALogo} className={classes.logo} alt='' />
-                    <Typography align='left' variant='h6' color='secondary' className={classes.heading}>Lunar Banquet 2020</Typography>
+                    <Typography align='left' variant='h6' color='primary' className={classes.heading}>LUNAR BANQUET 2020</Typography>
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
-                    <Button color='inherit'><Link to="/login">Login</Link></Button>
+                    <Typography color="secondary">
+                        <Button href="/" className={classes.links}>HOME</Button>
+                        <Button className={classes.links}>STREAM</Button>
+                        <Button href="/shop" className={classes.links}>SHOP</Button>
+                        <Button href="/committee" className={classes.links}>COMMITTEE</Button>
+                        <Button href="/login" className={classes.links}>LOGIN</Button>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Toolbar />
