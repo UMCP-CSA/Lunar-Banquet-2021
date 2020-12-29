@@ -15,12 +15,12 @@ function ShopTile(props) {
     return (
         // container for tile
         <Container>
-            {/* make tile a button? */}
+            {/* make tile a button */}
             <Button variant="contained" color={props.color} href={props.link}>
                 <Grid container direction="column" alignItems="center">
                     { /* picture of item */ }
                     <Grid item>
-                        <Avatar src={props.image} className={classes.productPic} />
+                        <img src={props.image} alt={props.alt} width="200" height="200"/>
                     </Grid>
 
                     { /* item name */ }
