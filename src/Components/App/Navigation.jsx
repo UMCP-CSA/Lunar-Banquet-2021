@@ -20,10 +20,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-// logout = () => {
-
-// }
-
 function Navigation(props) {
     const classes = useStyles();
 
