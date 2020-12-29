@@ -35,7 +35,7 @@ function Navigation(props) {
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Typography color="secondary">
                         <Button href="/" className={classes.links}>HOME</Button>
-                        <Button className={classes.links}>STREAM</Button>
+                        <Button href="/stream" className={classes.links}>STREAM</Button>
                         <Button href="/shop" className={classes.links}>SHOP</Button>
                         <Button href="/committee" className={classes.links}>COMMITTEE</Button>
                         <Button href="/login" className={classes.links}>LOGIN</Button>
