@@ -3,7 +3,7 @@ import Cow from '../Assets/Homepage/Cow.svg';
 import Lantern from '../Assets/Homepage/Lantern.svg'
 import Flower1 from '../Assets/Homepage/Flower1.svg'
 import Cloud from '../Assets/Homepage/Cloud.svg'
-import { Container, useTheme, Button } from '@material-ui/core';
+import { Container, useTheme } from '@material-ui/core';
 
 function HomePage(props) {
     const theme = useTheme();
@@ -17,6 +17,7 @@ function HomePage(props) {
                     top: theme.spacing(0),
                     left: theme.spacing(5)
                 }}
+                alt="lantern"
                 src={Lantern} />
             <img
                 style={{
@@ -25,6 +26,7 @@ function HomePage(props) {
                     top: theme.spacing(0),
                     left: theme.spacing(160)
                 }}
+                alt="lantern"
                 src={Lantern} />
             <img 
                 style={{ 
@@ -33,6 +35,7 @@ function HomePage(props) {
                     top: theme.spacing(18),
                     left: "35vw"
                 }}
+                alt="cow"
                 src={Cow} />
             <img
                 style={{
@@ -41,6 +44,7 @@ function HomePage(props) {
                     top: theme.spacing(26),
                     left: theme.spacing(30)
                 }}
+                alt="flower"
                 src={Flower1} />
             <img
                 style={{
@@ -49,6 +53,7 @@ function HomePage(props) {
                     top: theme.spacing(75),
                     left: theme.spacing(140)
                 }}
+                alt="flower"
                 src={Flower1} />
             <img
                 style={{
@@ -57,6 +62,7 @@ function HomePage(props) {
                     top: theme.spacing(60),
                     left: theme.spacing(15)
                 }}
+                alt="cloud"
                 src={Cloud} />
             <img
                 style={{
@@ -65,6 +71,7 @@ function HomePage(props) {
                     top: theme.spacing(40),
                     left: theme.spacing(150)
                 }}
+                alt="cloud"
                 src={Cloud} />
         </Container>
     );
