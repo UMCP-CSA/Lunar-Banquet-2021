@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
-function HomePage(props) {
+function EnterPage(props) {
     return (
         // center button using style tag
         <div>
-            <Button color='red' href='/enter'>Link to Enter</Button>
+            <Button size="large" variant="contained" color="primary" href="/login">Enter</Button>
         </div>
     );
 }
-export default HomePage;
+export default EnterPage;

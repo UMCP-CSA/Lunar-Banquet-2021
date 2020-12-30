@@ -31,7 +31,9 @@ function Navigation(props) {
         <div>
             <AppBar>
                 <Toolbar>
-                    <img src={CSALogo} className={classes.logo} alt='' />
+                    <Link to='/home'>
+                        <img src={CSALogo} className={classes.logo} alt='CSA Logo' href='/home' />
+                    </Link>
                     <Typography align='left' variant='h6' color='secondary' className={classes.heading}>Lunar Banquet 2020</Typography>
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Button color='inherit'><Link to="/login">Login</Link></Button>
