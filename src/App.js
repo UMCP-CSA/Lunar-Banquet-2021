@@ -1,3 +1,4 @@
+import React from "react";
 import './App.css';
 import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
@@ -6,38 +7,10 @@ import LoginPage from './Pages/LoginPage';
 import ShopPage from './Pages/ShopPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#db2e2e'
-    },
-    secondary: {
-      main: '#ffd778',
-      light: '#fff'
-    }
-  }
-});
-
-function App() {
+export default function App() {
   return (
-    <Router basename="/">
-    <div className='App'>
-        <Switch>
-          <Route exact path="/login">
-            <LoginPage />
-          </Route>
-          <Route exact path="/shop">
-            <ShopPage />
-          </Route>
-        </Switch>
-
-        <ThemeProvider theme={theme}>
-          <Navigation />
-          <HomePage />
-        </ThemeProvider>
-      </div>
-    </Router>
+    <div className="App">
+      <HomePage />
+    </div>
   );
 }
-
-export default App;
