@@ -6,6 +6,10 @@ const useStyles = makeStyles((theme) => ({
     productPic: {
         width: theme.spacing(30),
         height: theme.spacing(30)
+    },
+    image: {
+        borderRadius: '50%',
+        objectFit: 'cover'
     }
 }));
 
@@ -16,11 +20,11 @@ function ShopTile(props) {
         // container for tile
         <Container>
             {/* make tile a button */}
-            <Button variant="contained" color={props.color} href={props.link}>
+            <Button variant="contained" color="secondary" href={props.link}>
                 <Grid container direction="column" alignItems="center">
                     { /* picture of item */ }
                     <Grid item>
-                        <img src={props.image} alt={props.alt} width="200" height="200"/>
+                        <img src={props.image} className={classes.image} alt={props.alt} width="300" height="300"/>
                     </Grid>
 
                     { /* item name */ }
