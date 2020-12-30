@@ -4,9 +4,11 @@ import {
     Toolbar,
     makeStyles,
     Typography,
-    Button
+    Button,
+    Modal
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
+import LoginPopup from '../Auth/LoginPopup';
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -26,6 +28,12 @@ const useStyles = makeStyles(theme => ({
 function Navigation(props) {
     const classes = useStyles();
 
+    const [open, setOpen] = React.useState(false);
+
+    const toggleOpen = () => {
+        !open ? setOpen(true) : setOpen(false);
+    }
+
     return (
         <div>
             <AppBar color="transparent" elevation="0">
@@ -38,11 +46,19 @@ function Navigation(props) {
                         <Button href="/stream" className={classes.links}>STREAM</Button>
                         <Button href="/shop" className={classes.links}>SHOP</Button>
                         <Button href="/committee" className={classes.links}>COMMITTEE</Button>
-                        <Button href="/login" className={classes.links}>LOGIN</Button>
+                        <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button>
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Toolbar />
+
+            <Modal
+                open={open}
+                onClose={toggleOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
+            
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Paper, useTheme } from '@material-ui/core';
 
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -19,15 +19,19 @@ const uiConfig = {
     }
 };
 
-function LoginPage(props) {
+function LoginPopup(props) {
+    const theme = useTheme();
+
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
-            <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-            <Typography variant="body2">
-                If you're not an existing user, an account will be made once you enter an email or login with your Google account!
-            </Typography>
+            <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
+                <Typography variant="body2">
+                    To create an account, both login methods will detect if you are a new user!
+                </Typography>
+                <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+            </Paper>
         </Box>
     );
 }
 
-export default LoginPage;
+export default LoginPopup;
