@@ -5,7 +5,7 @@ function HomePage(props) {
     return (
         // center button using style tag
         <div>
-            <Button color='red' href='/enter'>Link to Enter</Button>
+            <Button color='secondary' href='/enter'>Link to Enter</Button>
         </div>
     );
 }
