@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 const buttonStyles = makeStyles({
@@ -11,20 +11,16 @@ const buttonStyles = makeStyles({
     height: 48,
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px #808080',
-    display: 'flex',
-    justifyContent: 'center',
   }
 });
 
 function EnterButton(props) {
   const classes = buttonStyles();
   return(
-    <div>
       <Button 
         variant='contained' href={props.link} classes={{enterButton: classes.enterButton}}>
-        {props.text}
+          {props.text}
       </Button>
-    </div>
   )
 }
 
