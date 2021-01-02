@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
+import { useDispatch } from 'react-redux';
+import { login } from '../../Redux/authSlice';
 import { Typography, Box, Paper, useTheme } from '@material-ui/core';
 
 const uiConfig = {
@@ -15,18 +17,27 @@ const uiConfig = {
     ],
     callbacks: {
         // Avoid redirects after sign-in.
-        signInSuccessWithAuthResult: () => false
+        signInSuccessWithAuthResult: () => true
     }
 };
 
 function LoginPopup(props) {
     const theme = useTheme();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                dispatch(login());
+            }
+        })
+    }, []);
 
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
             <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
                 <Typography variant="body2">
-                    To create an account, both login methods will detect if you are a new user!
+                    If you want to create an account, both login methods will automatically detect if you are a new user!
                 </Typography>
                 <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
             </Paper>
