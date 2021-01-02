@@ -1,32 +1,44 @@
 import './App.css';
+import React, { useEffect } from 'react';
+import firebase from 'firebase';
 import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
-import LoginPage from './Pages/LoginPage';
 import ShopPage from './Pages/ShopPage';
 import EnterPage from './Pages/EnterPage';
+import StreamPage from './Pages/StreamPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { login } from '../src/Redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#db2e2e'
+      main: '#d81212',
+      dark: '#870000'
     },
     secondary: {
-      main: '#ffd778',
-      light: '#fff'
-    }
+      main: '#ffae0d',
+      dark: '#ff7900'
+    },
   }
 });
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Set logged in state
+    const currUser = firebase.auth().currentUser;
+    console.log(currUser);
+    if (currUser != null) dispatch(login());
+  }, []);
+
   return (
     <Router basename="/">
     <div className='App'>
         <Switch>
-          <Route exact path="/login">
-            <LoginPage />
-          </Route>
           <Route exact path="/shop">
             <ShopPage />
           </Route>
@@ -35,11 +47,24 @@ function App() {
           </Route>
         </Switch>
 
+      <div className='App'>
         <ThemeProvider theme={theme}>
           <Navigation />
-          <HomePage />
         </ThemeProvider>
       </div>
+
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/stream">
+          <StreamPage />
+        </Route>
+        <Route exact path="/shop">
+          <ShopPage />
+        </Route>
+      </Switch>
+    </div>
     </Router>
   );
 }

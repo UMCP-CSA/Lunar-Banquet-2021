@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import EnterButton from '../Components/Enter/EnterButton.jsx';
 
 function EnterPage(props) {
     return (
-        // center button using style tag
         <div>
-            <Button size="large" variant="contained" color="primary" href="/">Enter</Button>
+            <EnterButton text='Enter' link='/' />
         </div>
     );
 }
