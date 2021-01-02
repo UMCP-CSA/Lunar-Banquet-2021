@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     itemRow: {
         display: 'flex',
         flexDirection: 'row',
-        padding: 0
+        marginTop: '5%'
     }
 }));
 

@@ -18,8 +18,8 @@ function ShopTile(props) {
 
     return (
         // container for tile
-        <Container color="secondary">
-            <Button variant="contained" color="secondary" href={props.link}>
+        <Container>
+            {/* <Button variant="contained" color="secondary" href={props.link}> */}
                 <Grid container direction="column" alignItems="center">
                     { /* picture of item */ }
                     <Grid item>
@@ -42,11 +42,13 @@ function ShopTile(props) {
                     </Grid>
 
                     { /* add to cart button */ }
-                    <Button variant="contained" color="primary" href={props.link}>
-                        Add To Cart
-                    </Button>
+                    <Grid item>
+                        <Button variant="contained" color="primary" href={props.link}>
+                            Add To Cart
+                        </Button>
+                    </Grid>
                 </Grid>
-            </Button>
+            {/* </Button> */}
         </Container>
     );
 }
