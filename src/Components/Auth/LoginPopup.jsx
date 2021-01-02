@@ -26,12 +26,11 @@ function LoginPopup(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                dispatch(login());
-            }
-        })
-    }, []);
+       firebase.auth().onAuthStateChanged(user => {
+            if (user) dispatch(login());
+            console.log(user);
+        });
+    }, dispatch);
 
     return (
         <Box display="flex" alignItems="center" flexDirection="column">

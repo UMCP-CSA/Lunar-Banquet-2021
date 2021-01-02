@@ -7,7 +7,7 @@ import HomePage from './Pages/HomePage';
 import ShopPage from './Pages/ShopPage';
 import StreamPage from './Pages/StreamPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { login } from '../src/Redux/authSlice';
+import { login, logout } from '../src/Redux/authSlice';
 import { useDispatch } from 'react-redux';
 
 const theme = createMuiTheme({
@@ -29,9 +29,9 @@ function App() {
 
   useEffect(() => {
     // Set logged in state
-    const currUser = firebase.auth().currentUser;
-    console.log(currUser);
-    if (currUser != null) dispatch(login());
+    firebase.auth().onAuthStateChanged(user => {
+      user ? dispatch(login) : dispatch(logout)
+    });
   }, []);
 
   return (

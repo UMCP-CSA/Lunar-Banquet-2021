@@ -1,8 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './authSlice';
+import { createStore } from '@reduxjs/toolkit';
+import reducerIndex from './reducerIndex';
 
-export default configureStore({
-    reducer: {
-        auth: authSlice,
-    }
-});
+export default createStore(reducerIndex);
