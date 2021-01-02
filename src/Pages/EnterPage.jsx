@@ -5,7 +5,7 @@ function EnterPage(props) {
     return (
         // center button using style tag
         <div>
-            {/* <Button size="large" variant="contained" color="primary" href="/login">Enter</Button> */}
+            <Button size="large" variant="contained" color="primary" href="/">Enter</Button>
         </div>
     );
 }
