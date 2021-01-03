@@ -1,8 +1,5 @@
 import React from 'react';
 
-const FirebaseContext = React.createContext({
-    loginState: false,
-    toggleLoginState: () => {},
-});
+const FirebaseContext = React.createContext();
 
 export default FirebaseContext;
