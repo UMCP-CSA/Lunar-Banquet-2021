@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
-import { Typography, Box, Paper, useTheme } from '@material-ui/core';
 
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -19,19 +18,10 @@ const uiConfig = {
     }
 };
 
-function LoginPopup(props) {
-    const theme = useTheme();
-
+function LoginPage(props) {
     return (
-        <Box display="flex" alignItems="center" flexDirection="column">
-            <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
-                <Typography variant="body2">
-                    To create an account, both login methods will detect if you are a new user!
-                </Typography>
-                <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-            </Paper>
-        </Box>
+        <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     );
 }
 
-export default LoginPopup;
+export default LoginPage;
