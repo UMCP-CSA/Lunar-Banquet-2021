@@ -4,42 +4,22 @@ import { Typography, Grid, Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({ 
     image: {
-        width: theme.spacing(40),
-        height: theme.spacing(40)
+        width: theme.spacing(30),
+        height: theme.spacing(30)
     }
 }));
-
-
 
 function MemberCard(props) {
     const classes = useStyles();
 
     return (
         <Container >
-            <Grid container spacing={3}>
+            <Grid container>
                 
-                <Grid item xs={3}>
-                    <img src={props.image1} className = {classes.image} />    
-                    <Typography varient="h5">{props.name1}</Typography>
-                    <Typography varient="h5">{props.bio1}</Typography>
-                </Grid>
-
-                <Grid item xs={3}>
-                    <img src={props.image2} className = {classes.image} />
-                    <Typography varient="h5">{props.name2}</Typography>
-                    <Typography varient="h5">{props.bio2}</Typography>
-                </Grid>
-
-                <Grid item xs={3}>
-                    <img src={props.image3} className = {classes.image} />
-                    <Typography varient="h5">{props.name3}</Typography>
-                    <Typography varient="h5">{props.bio3}</Typography>
-                </Grid>
-
-                <Grid item xs={3}>
-                    <img src={props.image4} className = {classes.image} />
-                    <Typography varient="h5">{props.name4}</Typography>
-                    <Typography varient="h5">{props.bio4}</Typography>
+                <Grid item>
+                    <img src={props.image} className = {classes.image} alt = ""/>    
+                    <Typography varient="h5">{props.name}</Typography>
+                    <Typography varient="h5">{props.bio}</Typography>
                 </Grid>
                 
             </Grid>
