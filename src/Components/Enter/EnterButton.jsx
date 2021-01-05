@@ -17,7 +17,8 @@ const buttonStyles = makeStyles({
 function EnterButton(props) {
   const classes = buttonStyles();
   return(
-      <Button 
+      //  
+      <Button
         variant='contained' href={props.link} classes={{enterButton: classes.enterButton}}>
           {props.text}
       </Button>
