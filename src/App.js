@@ -1,45 +1,41 @@
-import React from "react";
 import './App.css';
 import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage';
 import ShopPage from './Pages/ShopPage';
-import StreamPage from './Pages/StreamPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#d81212',
-      dark: '#870000'
+      main: '#db2e2e'
     },
     secondary: {
-      main: '#ffae0d',
-      dark: '#ff7900'
-    },
+      main: '#ffd778',
+      light: '#fff'
+    }
   }
 });
 
 function App() {
   return (
     <Router basename="/">
-      <div className='App'>
+    <div className='App'>
+        <Switch>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact path="/shop">
+            <ShopPage />
+          </Route>
+        </Switch>
+
         <ThemeProvider theme={theme}>
           <Navigation />
+          <HomePage />
         </ThemeProvider>
       </div>
-
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/stream">
-          <StreamPage />
-        </Route>
-        <Route exact path="/shop">
-          <ShopPage />
-        </Route>
-      </Switch>
     </Router>
   );
 }

@@ -15,7 +15,29 @@ class Firebase {
     constructor() {
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        this.auth = firebase.auth();
     }
+
+    // Email and Password Auth
+    signUpWithEmailAndPassword = (email, password) => {
+        this.auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    signInWithEmailAndPassword = (email, password) => {
+        this.auth.signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                //Implement some kind of redirect
+            })
+            .catch((error) => {
+                // Handle incorrect credentials
+            });
+    }
+
+    signOut = () => {
+        this.auth.signOut();
+    }
+
 }
 
 export default Firebase;
