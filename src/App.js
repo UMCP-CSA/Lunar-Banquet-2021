@@ -1,4 +1,3 @@
-import React from "react";
 import './App.css';
 import React, { useEffect } from 'react';
 import firebase from 'firebase';
@@ -8,7 +7,7 @@ import HomePage from './Pages/HomePage';
 import ShopPage from './Pages/ShopPage';
 import StreamPage from './Pages/StreamPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { login, logout } from '../src/Redux/authSlice';
+import { login, logout } from './Redux/authReducer';
 import { useDispatch } from 'react-redux';
 
 const theme = createMuiTheme({

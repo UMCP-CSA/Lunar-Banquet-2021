@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 function Navigation(props) {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const authState = useSelector(state => state.authState.auth);
+    // const authState = useSelector(state => state.authState.auth);
 
     const [open, setOpen] = React.useState(false);
 
@@ -76,7 +76,7 @@ function Navigation(props) {
                         <Button href="/stream" className={classes.links}>STREAM</Button>
                         <Button href="/shop" className={classes.links}>SHOP</Button>
                         <Button href="/committee" className={classes.links}>COMMITTEE</Button>
-                        { authState ? <Button className={classes.links} onClick={updateLogoutState}>LOGOUT</Button> :
+                        { open ? <Button className={classes.links} onClick={updateLogoutState}>LOGOUT</Button> :
                         <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button> }
                     </Typography>
                 </Toolbar>

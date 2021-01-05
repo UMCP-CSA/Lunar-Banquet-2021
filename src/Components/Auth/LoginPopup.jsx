@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import { useDispatch } from 'react-redux';
-import { login } from '../../Redux/authSlice';
+import { login } from '../../Redux/authReducer';
 import { Typography, Box, Paper, useTheme } from '@material-ui/core';
 
 const uiConfig = {
@@ -30,7 +30,7 @@ function LoginPopup(props) {
             if (user) dispatch(login());
             console.log(user);
         });
-    }, dispatch);
+    }, [dispatch]);
 
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
