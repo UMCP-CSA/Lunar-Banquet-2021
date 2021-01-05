@@ -6,17 +6,14 @@ const useStyles = makeStyles((theme) => ({
     box: {
         borderRadius: '16px',
     },
-    productPic: {
-        width: theme.spacing(30),
-        height: theme.spacing(30)
-    },
     image: {
         borderRadius: '50%',
-        objectFit: 'cover'
+        objectFit: 'cover',
+        marginTop:'10%',
+        marginBottom:'10%'
     },
     button: {
         marginTop: '10%',
-        marginBotton: '15%',
         borderRadius: '5em'
     }
 }));
@@ -27,11 +24,11 @@ function ShopTile(props) {
     return (
         <Badge badgeContent={props.stock} color="primary" anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
             {/* // container for tile */}
-            <Box className={classes.box} bgcolor="secondary.main">
+            <Box className={classes.box} bgcolor="secondary.main" width={300} height={400}>
                     <Grid container direction="column" alignItems="center">
                         { /* picture of item */ }
                         <Grid item>
-                            <img src={props.image} className={classes.image} alt={props.alt} width="300" height="300"/>
+                            <img src={props.image} className={classes.image} alt={props.alt} width="200" height="200"/>
                         </Grid>
 
                         { /* item name */ }

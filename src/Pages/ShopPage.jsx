@@ -9,7 +9,7 @@ import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     itemRow: {
-        marginTop: '5%'
+        marginTop: '6%'
     }
 }));
 
@@ -56,7 +56,7 @@ function ShopPage(props) {
                         desc="Must have"
                         image={TempOVO}
                         alt="OVO Cards"
-                        stock="In Stock"
+                        stock="Out of Stock"
                     />
                 </Grid>
             </Grid>
