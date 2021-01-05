@@ -5,13 +5,17 @@ import {
     makeStyles,
     Typography,
     Button,
-    Modal
+    Modal,
+    IconButton
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
+import InstagramIcon from '../../Assets/SocialIcons/InstagramIcon.svg';
+import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
+import YoutubeIcon from '../../Assets/SocialIcons/YoutubeIcon.svg';
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -25,7 +29,14 @@ const useStyles = makeStyles(theme => ({
     },
     links: {
         marginLeft: theme.spacing(5),
-    }
+    },
+    socials: {
+        marginLeft: theme.spacing(0),
+    },
+    icons: {
+        width:30,
+        height:30,
+    },
 }));
 
 function Navigation(props) {
@@ -56,6 +67,11 @@ function Navigation(props) {
                     <Typography align='left' variant='h6' color='primary' className={classes.heading}>LUNAR BANQUET 2020</Typography>
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Typography color="secondary">
+                        <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} /></IconButton>
+                        <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} /></IconButton>
+                        {/* We probably don't need this button, also the icon is kinda small, but thought I'd add it incase*/}
+                        <IconButton href="https://youtu.be/SqLFhk_lOtg?t=56" className={classes.socials}><img src={YoutubeIcon} className={classes.icons} /></IconButton>
+                        
                         <Button href="/" className={classes.links}>HOME</Button>
                         <Button href="/stream" className={classes.links}>STREAM</Button>
                         <Button href="/shop" className={classes.links}>SHOP</Button>
