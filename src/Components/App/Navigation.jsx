@@ -74,7 +74,6 @@ function Navigation(props) {
                 style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <LoginPopup />
             </Modal>
-            
         </div>
     );
 }

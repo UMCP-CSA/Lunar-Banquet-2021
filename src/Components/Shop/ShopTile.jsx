@@ -3,11 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Grid, Container, Avatar, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        // white background (we can change later)
-        backgroundColor: "#ffff"
-    },
-    avatar: {
+    productPic: {
         width: theme.spacing(30),
         height: theme.spacing(30)
     }
@@ -18,13 +14,13 @@ function ShopTile(props) {
 
     return (
         // container for tile
-        <Container className={classes.container}>
+        <Container>
             {/* make tile a button? */}
             <Button variant="contained" color={props.color} href={props.link}>
                 <Grid container direction="column" alignItems="center">
                     { /* picture of item */ }
                     <Grid item>
-                        <Avatar src={props.image} className={classes.avatar} />
+                        <Avatar src={props.image} className={classes.productPic} />
                     </Grid>
 
                     { /* item name */ }
