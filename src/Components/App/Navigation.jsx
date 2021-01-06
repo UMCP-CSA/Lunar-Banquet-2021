@@ -53,10 +53,10 @@ function Navigation(props) {
                     <Typography align='left' variant='h6' color='primary' className={classes.heading}>LUNAR BANQUET 2020</Typography>
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Typography color="secondary">
-                        <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} /></IconButton>
-                        <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} /></IconButton>
+                        <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt=''/></IconButton>
+                        <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt=''/></IconButton>
                         {/* We probably don't need this button, also the icon is kinda small, but thought I'd add it incase*/}
-                        <IconButton href="https://youtu.be/SqLFhk_lOtg?t=56" className={classes.socials}><img src={YoutubeIcon} className={classes.icons} /></IconButton>
+                        <IconButton href="https://youtu.be/SqLFhk_lOtg?t=56" target="_blank" className={classes.socials}><img src={YoutubeIcon} className={classes.icons} alt=''/></IconButton>
                         
                         <Button href="/" className={classes.links}>HOME</Button>
                         <Button href="/stream" className={classes.links}>STREAM</Button>
