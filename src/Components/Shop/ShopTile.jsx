@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     innerBox: {
         borderRadius: '0px 8px 0px 8px',
         backgroundColor: theme.palette.secondary.main,
-        paddingTop: '1%'
+        paddingBottom: '1%'
     },
     image: {
         borderRadius: '50%',
@@ -32,7 +32,7 @@ function ShopTile(props) {
         <Box className={classes.outerBox} width={300} height={400}>
             <Grid container direction="row" justify="flex-end">
                 <Box className={classes.innerBox} width={100} height={20}>
-                    <Typography variant="body2">{props.stock}</Typography>
+                    <Typography variant="body1" align="center">{props.stock}</Typography>
                 </Box>
             </Grid>
             <Grid container direction="column" alignItems="center">
