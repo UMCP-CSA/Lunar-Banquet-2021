@@ -1,14 +1,14 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import firebase from 'firebase';
 import Navigation from './Components/App/Navigation';
+import firebase from 'firebase';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
 import ShopPage from './Pages/ShopPage';
 import StreamPage from './Pages/StreamPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { login, logout } from './Redux/authReducer';
 import { useDispatch } from 'react-redux';
+import { login, logout } from './Redux/actions';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,15 +24,15 @@ const theme = createMuiTheme({
 });
 
 function App() {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Set logged in state
     firebase.auth().onAuthStateChanged(user => {
-      user ? dispatch(login) : dispatch(logout)
-    });
-  }, []);
+         if (user) dispatch(login(user.displayName));
+         else dispatch(logout());
+         console.log(user);
+     });
+ }, [dispatch]);
 
   return (
     <Router basename="/">

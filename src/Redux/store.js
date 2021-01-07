@@ -1,4 +1,4 @@
 import { createStore } from '@reduxjs/toolkit';
-import reducerIndex from './reducerIndex';
+import authReducer from './authReducer';
 
-export default createStore(reducerIndex);
+export default createStore(authReducer, window.devToolsExtension && window.devToolsExtension());

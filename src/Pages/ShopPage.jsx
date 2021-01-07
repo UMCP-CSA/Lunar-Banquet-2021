@@ -1,17 +1,8 @@
 import React from 'react'
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import { makeStyles } from '@material-ui/styles'
 import { Grid, Container } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
-    heading: {
-        flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
-    }
-}));
-
 function ShopPage(props) {
-    const classes = useStyles();
 
     return (
         <Container>

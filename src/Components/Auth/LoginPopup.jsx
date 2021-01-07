@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
-import { useDispatch } from 'react-redux';
-import { login } from '../../Redux/authReducer';
 import { Typography, Box, Paper, useTheme } from '@material-ui/core';
+import {login, logout} from '../../Redux/actions';
+import { useDispatch, connect } from 'react-redux';
 
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -27,7 +27,8 @@ function LoginPopup(props) {
 
     useEffect(() => {
        firebase.auth().onAuthStateChanged(user => {
-            if (user) dispatch(login());
+            if (user) dispatch(login(user.displayName));
+            else dispatch(logout());
             console.log(user);
         });
     }, [dispatch]);
@@ -44,4 +45,4 @@ function LoginPopup(props) {
     );
 }
 
-export default LoginPopup;
+export default connect()(LoginPopup);
