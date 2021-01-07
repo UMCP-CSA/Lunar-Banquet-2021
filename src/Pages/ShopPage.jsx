@@ -1,34 +1,67 @@
 import React from 'react'
+import { makeStyles } from "@material-ui/core/styles";
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import { Grid, Container } from '@material-ui/core';
+import TempBabyMilo from '../Assets/ShopImages/TempBabyMilo.jpg';
+import TempBoba from '../Assets/ShopImages/TempBoba.png';
+import TempSupreme from '../Assets/ShopImages/TempSupreme.jpg';
+import TempOVO from '../Assets/ShopImages/TempOVO.jpg';
+import { Grid } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    itemRow: {
+        marginTop: '2%'
+    }
+}));
 
 function ShopPage(props) {
-
+    const classes = useStyles();
+    
     return (
-        <Container>
-            <Grid container>
+        <div>
+            <Grid container className={classes.itemRow} direction="row" justify="space-evenly" alignItems="center">
                 <Grid item>
                     <ShopTile
-                        color="secondary"
                         name="Boba"
                         price="$5.00"
                         desc="Yummy"
-                        image="https://www.vhv.rs/dpng/d/443-4438336_talk-boba-logo-logo-for-milk-tea-hd.png"
+                        image={TempBoba}
+                        alt="Boba cup"
+                        stock="In Stock"
                     />
                 </Grid>
-
                 <Grid item>
                     <ShopTile
-                        color="secondary"
                         name="Sticker"
-                        price="$10000"
+                        price="$10000.00"
                         desc="Baby Milo"
-                        image="https://i.pinimg.com/236x/0b/99/d6/0b99d6fdfc3b7381a1201242a89247e6--astronauts-sticker.jpg"
+                        image={TempBabyMilo}
+                        alt="Astro Baby Milo"
+                        stock="In Stock"
+                    />
+                </Grid>
+                <Grid item>
+                    <ShopTile
+                        name="Supreme Bag"
+                        price="$400.00"
+                        desc="Easy cop"
+                        image={TempSupreme}
+                        alt="Supreme bag"
+                        stock="In Stock"
+                    />
+                </Grid>
+                <Grid item>
+                    <ShopTile
+                        name="OVO Cards"
+                        price="$22.00"
+                        desc="Must have"
+                        image={TempOVO}
+                        alt="OVO Cards"
+                        stock="Out of Stock"
                     />
                 </Grid>
             </Grid>
-        </Container>
-    );
+        </div>
+    )
 }
 
 export default ShopPage;
