@@ -3,7 +3,8 @@ import {
     makeStyles,
     Grid,
     Container,
-    Typography
+    Typography,
+    withStyles
 } from '@material-ui/core';
 import MemberCard from '../Components/App/MemberCard';
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
@@ -18,7 +19,11 @@ import Alex from '../Assets/OrgPics/Alex.jpg';
 import Jessica from '../Assets/OrgPics/Jessica.jpg';
 
 const useStyles = makeStyles(theme => ({
-
+    heading: {
+        flexGrow: 1,
+        fontFamily: "'Abril Fatface', cursive",
+        color: "#d71312"
+    }
 }));
 
 function CommitteePage(props) {
@@ -27,7 +32,7 @@ function CommitteePage(props) {
 
     return (
         <Container>
-            <Typography variant="h3" align="center">Committee Members</Typography>
+            <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
             <Grid container>
                 <Grid item>
                     <MemberCard
