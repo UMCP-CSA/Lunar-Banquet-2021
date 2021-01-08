@@ -1,6 +1,5 @@
 import React from 'react';
-// import EnterButton from '../Components/Enter/EnterButton.jsx';
-import DoorKnocker from '../Assets/Enter/Door Knocker.svg';
+import EnterImage from '../Assets/Enter/New Year Ox.svg';
 import { Grid, Link } from '@material-ui/core/';
 
 function EnterPage(props) {
@@ -12,7 +11,7 @@ function EnterPage(props) {
             direction="column"
             alignItems="center"
             justify="center"
-            style={{ minHeight: '100vh' }}
+            style={{ minHeight: '105vh' }}
         >
 
             <Grid item>
@@ -21,18 +20,20 @@ function EnterPage(props) {
                     {/* use image for button */}
                     <img
                         style={{
-                            width: '800px',
+                            width: '1200px',
                             height: '800px',
+                            borderRadius: '25px',
+                            boxShadow: '6px 8px #545454',
                         }}
-                        src={DoorKnocker} 
-                        alt='door knocker' 
+                        src={EnterImage} 
+                        alt='enter' 
                         link='/'
                     /><br />
                 </Link>
 
-                {/* website requires attribution unless we have a premium account */}
-                <a style={{fontSize: '10px'}} href="http://www.freepik.com">
-                    Designed by upklyak / Freepik
+                {/* freepik requires attribution unless we have a premium account */}
+                <a style={{fontSize: '10px'}} href='https://www.freepik.com/vectors/new-year'>
+                New year vector created by pikisuperstar - www.freepik.com
                 </a>
             </Grid>
         </Grid>
