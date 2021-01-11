@@ -39,9 +39,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router basename="/">
         <div className='App'>
-
           <Navigation />
-
         </div>
 
         <Switch>
