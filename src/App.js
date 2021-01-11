@@ -18,7 +18,7 @@ const theme = createMuiTheme({
       dark: '#870000'
     },
     secondary: {
-      main: '#ffae0d',
+      main: '#ffd56b',
       dark: '#ff7900'
     },
   }
@@ -32,32 +32,33 @@ function App() {
          if (user) dispatch(login(user.displayName));
          else dispatch(logout());
          console.log(user);
-     });
- }, [dispatch]);
+    });
+  }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Router basename="/">
-        <div className='App'>
-          <Navigation />
-        </div>
+    <div className='App'>
+      <ThemeProvider theme={theme}>
+        <Router basename="/">
 
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route exact path="/stream">
-            <StreamPage />
-          </Route>
-          <Route exact path="/shop">
-            <ShopPage />
-          </Route>
-          <Route exact path="/committee">
-            <CommitteePage />
-          </Route>
-        </Switch>
-      </Router>
-    </ThemeProvider>
+          <Navigation />
+
+          <Switch>
+            <Route exact path="/">
+              <HomePage className="home-body" />
+            </Route>
+            <Route exact path="/stream">
+              <StreamPage />
+            </Route>
+            <Route exact path="/shop">
+              <ShopPage />
+            </Route>
+            <Route exact path="/committee">
+              <CommitteePage />
+            </Route>
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </div>
   );
 }
 
