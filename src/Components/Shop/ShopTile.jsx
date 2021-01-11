@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '1%'
     },
     image: {
-        borderRadius: '50%',
+        // borderRadius: '50%',
         objectFit: 'cover',
-        // marginTop:'-5%',
+        marginTop:'10%',
         marginBottom:'10%'
     },
     button: {
@@ -34,7 +34,7 @@ function ShopTile(props) {
 
     return (
         /* // container for tile */
-        <Box className={classes.outerBox} width={300} height={400}>
+        <Box className={classes.outerBox} width={300} height={425}>
             <Grid container direction="row" justify="flex-end">
                 <Box className={classes.innerBox} width={100} height={20}>
                     <Typography className={classes.text} variant="body1" align="center">{props.stock}</Typography>

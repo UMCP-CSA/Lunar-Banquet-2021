@@ -5,6 +5,7 @@ import TempBabyMilo from '../Assets/ShopImages/TempBabyMilo.jpg';
 import TempBoba from '../Assets/ShopImages/TempBoba.png';
 import TempSupreme from '../Assets/ShopImages/TempSupreme.jpg';
 import TempOVO from '../Assets/ShopImages/TempOVO.jpg';
+import TempParka from '../Assets/ShopImages/TempParka.jpg';
 import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
