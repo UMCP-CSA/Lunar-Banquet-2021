@@ -36,7 +36,6 @@ function ShopPage(props) {
                     </iframe>
                 </Grid>
             </Grid>
-            
         </Container>
     );
 }
