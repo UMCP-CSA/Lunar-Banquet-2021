@@ -9,7 +9,6 @@ import {
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
-import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -39,7 +38,9 @@ function Navigation(props) {
         <div>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
-                    <img src={CSALogo} className={classes.logo} alt='' href='/' />
+                    <a href='/'>
+                        <img src={CSALogo} className={classes.logo} alt='' />
+                    </a>
                     <Typography align='left' variant='h6' color='primary' className={classes.heading} href='/'>
                         LUNAR BANQUET 2020
                     </Typography>
