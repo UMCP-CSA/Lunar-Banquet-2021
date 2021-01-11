@@ -4,6 +4,8 @@ import Lantern from '../Assets/Homepage/Lantern.svg'
 import Flower1 from '../Assets/Homepage/Flower1.svg'
 import Cloud from '../Assets/Homepage/Cloud.svg'
 import { Container, useTheme } from '@material-ui/core';
+import EnterImage from '../Assets/Homepage/New Year Ox.svg';
+import EnterButton from '../Components/Enter/EnterButton.jsx';
 
 function HomePage(props) {
     const theme = useTheme();
@@ -24,15 +26,17 @@ function HomePage(props) {
                     position: "absolute",
                     width: theme.spacing(12),
                     top: theme.spacing(0),
-                    left: theme.spacing(160)
+                    left: theme.spacing(160),
+                    zIndex: 0
                 }}
                 alt="lantern"
                 src={Lantern} />
             <img 
                 style={{ 
                     position: "absolute",
-                    width: theme.spacing(60),
-                    top: theme.spacing(18),
+                    width: theme.spacing(70),
+                    height: theme.spacing(50),
+                    top: theme.spacing(80),
                     left: "35vw"
                 }}
                 alt="cow"
@@ -73,6 +77,13 @@ function HomePage(props) {
                 }}
                 alt="cloud"
                 src={Cloud} />
+
+            <EnterButton
+                img={EnterImage} 
+                alt='enter' 
+                link='/' 
+                width='800px' 
+                height='533px' />
         </Container>
     );
 }
