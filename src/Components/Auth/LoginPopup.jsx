@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import { Typography, Box, Paper, useTheme } from '@material-ui/core';
+import {login, logout} from '../../Redux/actions';
+import { useDispatch, connect } from 'react-redux';
 
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -15,18 +17,27 @@ const uiConfig = {
     ],
     callbacks: {
         // Avoid redirects after sign-in.
-        signInSuccessWithAuthResult: () => false
+        signInSuccessWithAuthResult: () => true
     }
 };
 
 function LoginPopup(props) {
     const theme = useTheme();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+       firebase.auth().onAuthStateChanged(user => {
+            if (user) dispatch(login(user.displayName));
+            else dispatch(logout());
+            console.log(user);
+        });
+    }, [dispatch]);
 
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
             <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
                 <Typography variant="body2">
-                    To create an account, both login methods will detect if you are a new user!
+                    If you want to create an account, both login methods will automatically detect if you are a new user!
                 </Typography>
                 <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
             </Paper>
@@ -34,4 +45,4 @@ function LoginPopup(props) {
     );
 }
 
-export default LoginPopup;
+export default connect()(LoginPopup);
