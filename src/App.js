@@ -54,6 +54,9 @@ function App() {
           <Route exact path="/shop">
             <ShopPage />
           </Route>
+          <Route exact path="/committee">
+            <CommitteePage />
+          </Route>
         </Switch>
       </Router>
     </ThemeProvider>
