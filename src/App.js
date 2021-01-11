@@ -36,36 +36,28 @@ function App() {
  }, [dispatch]);
 
   return (
-    <Router basename="/">
-    <div className='App'>
+    <ThemeProvider theme={theme}>
+      <Router basename="/">
+        <div className='App'>
+          <Navigation />
+        </div>
+
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/stream">
+            <StreamPage />
+          </Route>
           <Route exact path="/shop">
             <ShopPage />
           </Route>
+          <Route exact path="/committee">
+            <CommitteePage />
+          </Route>
         </Switch>
-
-      <div className='App'>
-        <ThemeProvider theme={theme}>
-          <Navigation />
-        </ThemeProvider>
-      </div>
-
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/stream">
-          <StreamPage />
-        </Route>
-        <Route exact path="/shop">
-          <ShopPage />
-        </Route>
-        <Route exact path="/committee">
-          <CommitteePage />
-        </Route>
-      </Switch>
-    </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 }
 
