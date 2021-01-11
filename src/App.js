@@ -5,7 +5,6 @@ import firebase from 'firebase';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
 import ShopPage from './Pages/ShopPage';
-import EnterPage from './Pages/EnterPage';
 import StreamPage from './Pages/StreamPage';
 import CommitteePage from './Pages/CommitteePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -42,9 +41,6 @@ function App() {
         <Switch>
           <Route exact path="/shop">
             <ShopPage />
-          </Route>
-          <Route exact path="/enter">
-            <EnterPage />
           </Route>
         </Switch>
 
