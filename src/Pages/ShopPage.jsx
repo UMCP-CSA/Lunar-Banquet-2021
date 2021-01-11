@@ -56,7 +56,7 @@ function ShopPage(props) {
                         desc="Must have"
                         image={TempOVO}
                         alt="OVO Cards"
-                        stock="Out of Stock"
+                        stock="In Stock"
                     />
                 </Grid>
             </Grid>
