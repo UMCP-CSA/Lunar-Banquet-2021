@@ -125,6 +125,83 @@ function CommitteePage(props) {
                         bio="Video Lead"
                     />
                 </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Kyle Chiu"
+                        //image={}
+                        bio="Programming Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Chris Tan"
+                        //image={}
+                        bio="Programming Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Joann Wu"
+                        //image={}
+                        bio="Marketing Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Brittany Zhang"
+                        //image={}
+                        bio="Marketing Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Catherine Chua"
+                        //image={}
+                        bio="Activities Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Julie Yang"
+                        //image={}
+                        bio="Activities Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard 
+                        name="Daphne Ranti"
+                        //image={}
+                        bio="Fundraising Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Alan Zhang"
+                        //image={}
+                        bio="Fundraising Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Nick Zhou"
+                        //image={}
+                        bio="Tech Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Thomas Szymkiewicz"
+                        //image={}
+                        bio="Tech Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Stanley Zhu"
+                        //image={}
+                        bio="Tech Committee"
+                    />
+                </Grid>
             </Grid>
         </Container>
     );
