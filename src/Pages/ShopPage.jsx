@@ -1,15 +1,17 @@
 import React from 'react'
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import { Grid, Container } from '@material-ui/core';
+import { Grid, Container, useTheme, ThemeProvider } from '@material-ui/core';
 
 function ShopPage(props) {
-
+    const theme = useTheme();
+    
     return (
+        <ThemeProvider theme={theme}>
         <Container>
             <Grid container>
                 <Grid item>
                     <ShopTile
-                        color="secondary"
+                        color="primary"
                         name="Boba"
                         price="$5.00"
                         desc="Yummy"
@@ -28,6 +30,7 @@ function ShopPage(props) {
                 </Grid>
             </Grid>
         </Container>
+        </ThemeProvider>
     );
 }
 
