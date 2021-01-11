@@ -1,11 +1,31 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Grid, Container, Avatar, Button } from "@material-ui/core";
+import { Box, Typography, Grid, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    productPic: {
-        width: theme.spacing(30),
-        height: theme.spacing(30)
+    outerBox: {
+        borderRadius: '16px',
+        backgroundColor: '#ffff'
+    },
+    innerBox: {
+        borderRadius: '0px 8px 0px 8px',
+        backgroundColor: '#dbf0d4',
+        paddingBottom: '1%'
+    },
+    image: {
+        borderRadius: '50%',
+        objectFit: 'cover',
+        // marginTop:'-5%',
+        marginBottom:'10%'
+    },
+    button: {
+        marginTop: '10%',
+        borderRadius: '5em',
+        backgroundColor: '#d81212',
+        color: "#ffff"
+    },
+    text: {
+        color: '#8ec77d'
     }
 }));
 
@@ -13,33 +33,42 @@ function ShopTile(props) {
     const classes = useStyles();
 
     return (
-        // container for tile
-        <Container>
-            {/* make tile a button? */}
-            <Button variant="contained" color={props.color} href={props.link}>
-                <Grid container direction="column" alignItems="center">
-                    { /* picture of item */ }
-                    <Grid item>
-                        <Avatar src={props.image} className={classes.productPic} />
-                    </Grid>
-
-                    { /* item name */ }
-                    <Grid item>
-                        <Typography variant="h4">{props.name}</Typography>
-                    </Grid>
-
-                    { /* item price */ }
-                    <Grid item>
-                        <Typography variant="p">{props.price}</Typography>
-                    </Grid>
-
-                    { /* item description */ }
-                    <Grid item>
-                        <Typography variant="p">{props.desc}</Typography>
-                    </Grid>
+        /* // container for tile */
+        <Box className={classes.outerBox} width={300} height={400}>
+            <Grid container direction="row" justify="flex-end">
+                <Box className={classes.innerBox} width={100} height={20}>
+                    <Typography className={classes.text} variant="body1" align="center">{props.stock}</Typography>
+                </Box>
+            </Grid>
+            <Grid container direction="column" alignItems="center">
+                { /* picture of item */ }
+                <Grid item>
+                    <img src={props.image} className={classes.image} alt={props.alt} width="200" height="200"/>
                 </Grid>
-            </Button>
-        </Container>
+
+                { /* item name */ }
+                <Grid item>
+                    <Typography variant="h4">{props.name}</Typography>
+                </Grid>
+
+                { /* item price */ }
+                <Grid item>
+                    <Typography variant="h5">{props.price}</Typography>
+                </Grid>
+
+                { /* item description */ }
+                <Grid item>
+                    <Typography variant="body2">{props.desc}</Typography>
+                </Grid>
+
+                { /* add to cart button */ }
+                <Grid item>
+                    <Button className={classes.button} variant="contained" href={props.link}>
+                        Add To Cart
+                    </Button>
+                </Grid>
+            </Grid>
+        </Box>
     );
 }
 
