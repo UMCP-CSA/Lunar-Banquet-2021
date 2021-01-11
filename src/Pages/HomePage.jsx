@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             width: theme.spacing(13),
-            left: theme.spacing(15),
+            left: theme.spacing(40),
         },
         [theme.breakpoints.up('xl')]: {
             width: theme.spacing(18),
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
         },
         [theme.breakpoints.up('lg')]: {
             width: theme.spacing(15),
-            left: theme.spacing(160),
+            left: theme.spacing(153),
         },
         [theme.breakpoints.up('xl')]: {
             width: theme.spacing(17),

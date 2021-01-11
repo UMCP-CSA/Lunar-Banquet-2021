@@ -14,7 +14,7 @@ import { login, logout } from './Redux/actions';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#d81212',
+      main: '#B63535',
       dark: '#870000'
     },
     secondary: {

@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     logo: {
         padding: theme.spacing(2),
         paddingRight: theme.spacing(3),
-        width: '4rem',
+        width: '3rem',
     },
     heading: {
         flexGrow: 1,
