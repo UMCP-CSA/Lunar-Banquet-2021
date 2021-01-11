@@ -77,8 +77,8 @@ function Navigation(props) {
                     </Typography>
                     
                     <Typography color="secondary">
-                        <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
-                        <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+                        <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank"className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
+                        <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
                         
                         <Button href="/" className={classes.links} color="secondary">HOME</Button>
                         <Button href="/stream" className={classes.links} color="secondary">STREAM</Button>
