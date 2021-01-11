@@ -1,5 +1,5 @@
 import React from 'react';
-import EnterImage from '../Assets/Enter/New Year Ox.svg';
+import EnterImage from '../Assets/Homepage/New Year Ox.svg';
 import { Grid, Link } from '@material-ui/core/';
 
 function EnterPage(props) {
