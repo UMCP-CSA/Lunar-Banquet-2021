@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
+import { Link } from '@material-ui/core';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
@@ -69,8 +70,14 @@ function Navigation(props) {
         <div>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
-                    <img src={CSALogo} className={classes.logo} alt='' />
-                    <Typography align='left' variant='h6' color='primary' className={classes.heading}>LUNAR BANQUET 2020</Typography>
+                    <a href='/'>
+                        <img src={CSALogo} className={classes.logo} alt='' />
+                    </a>
+                    <Typography align='left' variant='h6' color='primary' className={classes.heading} href='/'>
+                        LUNAR BANQUET 2020
+                    </Typography>
+                    
+                    {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Typography color="secondary">
                         <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
                         <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
