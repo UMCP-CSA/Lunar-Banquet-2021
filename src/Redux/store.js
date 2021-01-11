@@ -1,8 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './authSlice';
+import { createStore } from '@reduxjs/toolkit';
+import authReducer from './authReducer';
 
-export default configureStore({
-    reducer: {
-        auth: authSlice,
-    }
-});
+export default createStore(authReducer, window.devToolsExtension && window.devToolsExtension());

@@ -5,11 +5,18 @@ import {
     makeStyles,
     Typography,
     Button,
-    Modal
+    Modal,
+    IconButton
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import { Link } from '@material-ui/core';
+import { connect, useDispatch } from 'react-redux';
+import firebase from 'firebase';
+import { logout } from '../../Redux/actions';
+import InstagramIcon from '../../Assets/SocialIcons/InstagramIcon.svg';
+import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
+import store from '../../Redux/store';
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -23,16 +30,40 @@ const useStyles = makeStyles(theme => ({
     },
     links: {
         marginLeft: theme.spacing(5),
-    }
+    },
+    socials: {
+        marginLeft: theme.spacing(0),
+    },
+    icons: {
+        width:30,
+        height:30,
+    },
 }));
+
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    }
+}
 
 function Navigation(props) {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
+    const { auth } = store.getState();
     const [open, setOpen] = React.useState(false);
 
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
+    }
+
+    // Dispatches logout state to the store and logs out the user in firebase
+    const updateLogoutState = () => {
+        firebase.auth().signOut()
+            .then(status => {
+                dispatch(logout());
+            })
+            .catch(error => console.log(error));
     }
 
     return (
@@ -45,12 +76,17 @@ function Navigation(props) {
                     </Typography>
                     
                     {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
+
                     <Typography color="secondary">
+                        <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
+                        <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+                        
                         <Button href="/" className={classes.links}>HOME</Button>
                         <Button href="/stream" className={classes.links}>STREAM</Button>
                         <Button href="/shop" className={classes.links}>SHOP</Button>
                         <Button href="/committee" className={classes.links}>COMMITTEE</Button>
-                        <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button>
+                        { auth ? <Button className={classes.links} onClick={updateLogoutState}>LOGOUT</Button> :
+                        <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button> }
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -62,9 +98,8 @@ function Navigation(props) {
                 style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <LoginPopup />
             </Modal>
-            
         </div>
     );
 }
 
-export default Navigation;
+export default connect(mapStateToProps)(Navigation);
