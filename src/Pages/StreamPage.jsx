@@ -12,7 +12,7 @@ function ShopPage(props) {
     const classes = useStyles();
 
     return (
-        // TODO: Banquet is February 20, 2021
+        // TODO: coundown above video, Banquet is February 20, 2021
         <Container className={classes.video}>
             {/* container to center video */}
             <Grid container direction="column" alignItems="center">
