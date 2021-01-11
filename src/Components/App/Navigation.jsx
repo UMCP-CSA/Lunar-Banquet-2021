@@ -73,7 +73,7 @@ function Navigation(props) {
                         <img src={CSALogo} className={classes.logo} alt='' />
                     </a>
                     <Typography align='left' variant='h6' color='secondary' className={classes.heading} href='/'>
-                        LUNAR BANQUET 2020
+                        LUNAR BANQUET 2021
                     </Typography>
                     
                     <Typography color="secondary">
