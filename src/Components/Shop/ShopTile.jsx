@@ -5,22 +5,27 @@ import { Box, Typography, Grid, Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
     outerBox: {
         borderRadius: '16px',
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: '#ffff'
     },
     innerBox: {
         borderRadius: '0px 8px 0px 8px',
-        backgroundColor: theme.palette.secondary.main,
-        paddingTop: '1%'
+        backgroundColor: '#dbf0d4',
+        paddingBottom: '1%'
     },
     image: {
-        borderRadius: '50%',
+        // borderRadius: '50%',
         objectFit: 'cover',
-        // marginTop:'-5%',
+        marginTop:'10%',
         marginBottom:'10%'
     },
     button: {
         marginTop: '10%',
-        borderRadius: '5em'
+        borderRadius: '5em',
+        backgroundColor: '#d81212',
+        color: "#ffff"
+    },
+    text: {
+        color: '#8ec77d'
     }
 }));
 
@@ -29,10 +34,10 @@ function ShopTile(props) {
 
     return (
         /* // container for tile */
-        <Box className={classes.outerBox} width={300} height={400}>
+        <Box className={classes.outerBox} width={300} height={425}>
             <Grid container direction="row" justify="flex-end">
                 <Box className={classes.innerBox} width={100} height={20}>
-                    <Typography variant="body2">{props.stock}</Typography>
+                    <Typography className={classes.text} variant="body1" align="center">{props.stock}</Typography>
                 </Box>
             </Grid>
             <Grid container direction="column" alignItems="center">
@@ -58,7 +63,7 @@ function ShopTile(props) {
 
                 { /* add to cart button */ }
                 <Grid item>
-                    <Button className={classes.button} variant="contained" color="secondary" href={props.link}>
+                    <Button className={classes.button} variant="contained" href={props.link}>
                         Add To Cart
                     </Button>
                 </Grid>

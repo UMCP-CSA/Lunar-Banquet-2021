@@ -6,6 +6,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import HomePage from './Pages/HomePage';
 import ShopPage from './Pages/ShopPage';
 import StreamPage from './Pages/StreamPage';
+import CommitteePage from './Pages/CommitteePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login, logout } from './Redux/actions';
@@ -35,25 +36,28 @@ function App() {
  }, [dispatch]);
 
   return (
-    <Router basename="/">
-      <div className='App'>
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Router basename="/">
+        <div className='App'>
           <Navigation />
-        </ThemeProvider>
-      </div>
+        </div>
 
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/stream">
-          <StreamPage />
-        </Route>
-        <Route exact path="/shop">
-          <ShopPage />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/stream">
+            <StreamPage />
+          </Route>
+          <Route exact path="/shop">
+            <ShopPage />
+          </Route>
+          <Route exact path="/committee">
+            <CommitteePage />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
