@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
         fontFamily: "'Abril Fatface', cursive",
-        color: "#d71312"
+        color: "#ffd56b"
     }
 }));
 
