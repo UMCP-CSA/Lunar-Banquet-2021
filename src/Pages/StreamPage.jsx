@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
 import '../Components/App/countdown';
 import countdown from '../Components/App/countdown';
+import ProgramPopup from '../Components/App/ProgramPopup';
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -17,7 +18,15 @@ const useStyles = makeStyles((theme) => ({
 
 function ShopPage(props) {
     const classes = useStyles();
+    
     var time = countdown (null, new Date("Feb 20, 2021 19:00:00"), ~(countdown.MONTHS | countdown.WEEKS | countdown.MILLISECONDS));
+    
+    const [open, setOpen] = React.useState(false);
+
+    const toggleOpen = () => {
+        !open ? setOpen(true) : setOpen(false);
+    }
+
     return (
         // TODO: coundown above video, Banquet is February 20, 2021
         
@@ -32,6 +41,11 @@ function ShopPage(props) {
                 <Grid item>
                     <Typography variant="h3" align="center" className={classes.heading}>
                         {time.toString()}
+                    </Typography>
+                </Grid>
+                <Grid item>
+                    <Typography variant="h3" align="center" className={classes.heading}>
+                        <Button className={classes.heading} onClick={toggleOpen}>Event Program</Button>
                     </Typography>
                 </Grid>
                 {/* iframe as grid item */}
@@ -54,6 +68,13 @@ function ShopPage(props) {
                     </iframe>
                 </Grid>
             </Grid>
+
+            <Modal
+                open={open}
+                onClose={toggleOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <ProgramPopup />
+            </Modal>
         </Container>
     );
 }
