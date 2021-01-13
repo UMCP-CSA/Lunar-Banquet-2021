@@ -11,7 +11,7 @@ function LoginPopup(props) {
         <Box display="flex" alignItems="center" flexDirection="column">
             <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
                 <Typography variant="body2">
-                    The program of events will be posted here when we get closer to the event
+                    The program of events will be posted here as we get closer to the event!
                 </Typography>
             </Paper>
         </Box>

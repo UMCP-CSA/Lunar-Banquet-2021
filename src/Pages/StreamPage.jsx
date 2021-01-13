@@ -19,64 +19,121 @@ const useStyles = makeStyles((theme) => ({
 function ShopPage(props) {
     const classes = useStyles();
     
-    var time = countdown (null, new Date("Feb 20, 2021 19:00:00"), ~(countdown.MONTHS | countdown.WEEKS | countdown.MILLISECONDS));
-    
+    const lunarDate = new Date("Feb 20, 2021 19:00:00");
+
+    var time = countdown (lunarDate, null, ~(countdown.MONTHS | countdown.WEEKS | countdown.MILLISECONDS));
+
     const [open, setOpen] = React.useState(false);
 
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
     }
 
-    return (
-        // TODO: coundown above video, Banquet is February 20, 2021
-        
-        <Container className={classes.video}>
-            {/* container to center video */}
-            <Grid container direction="column" alignItems="center">
-                <Grid item>
-                    <Typography variant="h3" align="center" className={classes.heading}>
-                        Lunar Banquet Will Be On February 20th, 2021
-                    </Typography>
+    if(Date.now() < lunarDate) {
+        return (
+            <Container>
+                <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                        <Typography variant="h3" align="center" className={classes.heading}>
+                            Lunar Banquet Will Be On February 20th, 2021
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h4" align="center" className={classes.heading}>
+                            {time.toString()} until Lunar!
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h3" align="center" className={classes.heading}>
+                            <Button size="large" className={classes.heading} onClick={toggleOpen}>Program of Events</Button>
+                        </Typography>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <Typography variant="h3" align="center" className={classes.heading}>
-                        {time.toString()}
-                    </Typography>
-                </Grid>
-                <Grid item>
-                    <Typography variant="h3" align="center" className={classes.heading}>
-                        <Button className={classes.heading} onClick={toggleOpen}>Event Program</Button>
-                    </Typography>
-                </Grid>
-                {/* iframe as grid item */}
-                <Grid item>
-                    <iframe
-                        style={{
-                            width: "1600px",
-                            height: "900px",
-                            // overflowY: "scroll", scroll currently disabled 
-                        }}
-                        title="lunar stream"
-                        src="https://www.youtube.com/embed/zpD0k69QwRU"
-                        frameborder="0"
-                        allow="accelerometer; 
+
+                <Modal
+                    open={open}
+                    onClose={toggleOpen}
+                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <ProgramPopup />
+                </Modal>
+            </Container>
+        );
+    } else {
+        return (
+            <Container className={classes.video}>
+                <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                        <iframe
+                            style={{
+                                width: "1600px",
+                                height: "900px",
+                                // overflowY: "scroll", scroll currently disabled 
+                            }}
+                            title="lunar stream"
+                            src="https://www.youtube.com/embed/zpD0k69QwRU"
+                            frameborder="0"
+                            allow="accelerometer; 
                             autoplay; 
                             clipboard-write; 
                             encrypted-media; 
                             gyroscope; 
                             picture-in-picture" allowfullscreen>
-                    </iframe>
+                        </iframe>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Container>
+        );
+    }
+    // return (
+    //     // TODO: coundown above video, Banquet is February 20, 2021
+        
+    //     <Container className={classes.video}>
+    //         {/* container to center video */}
+    //         <Grid container direction="column" alignItems="center">
+    //             <Grid item>
+    //                 <Typography variant="h3" align="center" className={classes.heading}>
+    //                     Lunar Banquet Will Be On February 20th, 2021
+    //                 </Typography>
+    //             </Grid>
+    //             <Grid item>
+    //                 <Typography variant="h4" align="center" className={classes.heading}>
+    //                     {time.toString()} until Lunar!
+    //                 </Typography>
+    //             </Grid>
+    //             <Grid item>
+    //                 <Typography variant="h3" align="center" className={classes.heading}>
+    //                     <Button size="large" className={classes.heading} onClick={toggleOpen}>Program of Events</Button>
+    //                 </Typography>
+    //             </Grid>
+    //             {/* iframe as grid item */}
+    //             <Grid item>
+    //                 <iframe
+    //                     style={{
+    //                         width: "1600px",
+    //                         height: "900px",
+    //                         // overflowY: "scroll", scroll currently disabled 
+    //                     }}
+    //                     title="lunar stream"
+    //                     src="https://www.youtube.com/embed/zpD0k69QwRU"
+    //                     frameborder="0"
+    //                     allow="accelerometer; 
+    //                         autoplay; 
+    //                         clipboard-write; 
+    //                         encrypted-media; 
+    //                         gyroscope; 
+    //                         picture-in-picture" allowfullscreen>
+    //                 </iframe>
+    //             </Grid>
+    //         </Grid>
 
-            <Modal
-                open={open}
-                onClose={toggleOpen}
-                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <ProgramPopup />
-            </Modal>
-        </Container>
-    );
+    //         <Modal
+    //             open={open}
+    //             onClose={toggleOpen}
+    //             style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    //             <ProgramPopup />
+    //         </Modal>
+    //     </Container>
+    // );
 }
 
 export default ShopPage;
