@@ -8,6 +8,7 @@ import {
     Modal,
     IconButton
 } from '@material-ui/core';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import { connect, useDispatch } from 'react-redux';
@@ -34,8 +35,8 @@ const useStyles = makeStyles(theme => ({
         marginLeft: theme.spacing(0),
     },
     icons: {
-        width:30,
-        height:30,
+        width: theme.spacing(3),
+        height: theme.spacing(3),
     },
 }));
 
@@ -84,8 +85,13 @@ function Navigation(props) {
                         <Button href="/stream" className={classes.links} color="secondary">STREAM</Button>
                         <Button href="/shop" className={classes.links} color="secondary">SHOP</Button>
                         <Button href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
-                        { auth ? <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button> :
-                        <Button className={classes.links} color="secondary" onClick={toggleOpen}>LOGIN</Button> }
+                        {auth ?
+                            <>
+                                <IconButton className={classes.links}><ShoppingCartIcon color="secondary" /></IconButton>
+                                <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
+                            </>
+                            :
+                            <Button className={classes.links} color="secondary" onClick={toggleOpen}>LOGIN</Button> }
                     </Typography>
                 </Toolbar>
             </AppBar>
