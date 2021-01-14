@@ -51,6 +51,7 @@ function Navigation(props) {
     const dispatch = useDispatch();
 
     const { auth } = store.getState();
+    const { name } = store.getState();
     const [open, setOpen] = React.useState(false);
 
     const toggleOpen = () => {
@@ -88,6 +89,7 @@ function Navigation(props) {
                         {auth ?
                             <>
                                 <IconButton className={classes.links}><ShoppingCartIcon color="secondary" /></IconButton>
+                                <Button disableRipple color="secondary" style={{cursor: 'default'}} className={classes.links}>{name}</Button>
                                 <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
                             </>
                             :
