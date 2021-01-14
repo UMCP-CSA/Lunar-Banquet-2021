@@ -3,8 +3,7 @@ import {
     makeStyles,
     Grid,
     Container,
-    Typography,
-    withStyles
+    Typography
 } from '@material-ui/core';
 import MemberCard from '../Components/App/MemberCard';
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
@@ -17,12 +16,26 @@ import Sylvia from '../Assets/OrgPics/Sylvia.jpg';
 import Jen from '../Assets/OrgPics/Jen.jpg';
 import Alex from '../Assets/OrgPics/Alex.jpg';
 import Jessica from '../Assets/OrgPics/Jessica.jpg';
+import Alan from '../Assets/OrgPics/alan.jpeg';
+import Catherine from '../Assets/OrgPics/catherine.jpg';
+import Daphne from '../Assets/OrgPics/daphne.jpg';
+import Joann from '../Assets/OrgPics/joann.jpg';
+import Julie from '../Assets/OrgPics/julie.JPG';
+import Kyle from '../Assets/OrgPics/kyle.jpg';
+import Mei from '../Assets/OrgPics/mei.png';
+import Stanley from '../Assets/OrgPics/stanley.jpeg';
+import Bonnie from '../Assets/OrgPics/bonnie.jpg';
+import Nick from '../Assets/OrgPics/nick.jpg';
+import Thomas from '../Assets/OrgPics/thomas.jpg';
+import AlexC from '../Assets/OrgPics/alexc.png';
+import Unavailable from '../Assets/OrgPics/unavailable.jpg';
+
 
 const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
         fontFamily: "'Abril Fatface', cursive",
-        color: "#d71312"
+        color: "#ffd56b"
     }
 }));
 
@@ -86,14 +99,14 @@ function CommitteePage(props) {
                 <Grid item>
                     <MemberCard
                         name="Bonnie McMillian"
-                        //image={}
+                        image={Bonnie}
                         bio="Activities Lead"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Alex Chui"
-                        //image={}
+                        image={AlexC}
                         bio="Fundraising Lead"
                     />
                 </Grid>
@@ -114,7 +127,7 @@ function CommitteePage(props) {
                 <Grid item>
                     <MemberCard
                         name="Mei Lu"
-                        //image={}
+                        image={Mei}
                         bio="Tech Lead"
                     />
                 </Grid>
@@ -128,77 +141,77 @@ function CommitteePage(props) {
                 <Grid item>
                     <MemberCard
                         name="Kyle Chiu"
-                        //image={}
+                        image={Kyle}
                         bio="Programming Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Chris Tan"
-                        //image={}
+                        image={Unavailable}
                         bio="Programming Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Joann Wu"
-                        //image={}
+                        image={Joann}
                         bio="Marketing Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Brittany Zhang"
-                        //image={}
+                        image={Unavailable}
                         bio="Marketing Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Catherine Chua"
-                        //image={}
+                        image={Catherine}
                         bio="Activities Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Julie Yang"
-                        //image={}
+                        image={Julie}
                         bio="Activities Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Daphne Ranti"
-                        //image={}
+                        image={Daphne}
                         bio="Fundraising Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Alan Zhang"
-                        //image={}
+                        image={Alan}
                         bio="Fundraising Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Nick Zhou"
-                        //image={}
+                        image={Nick}
                         bio="Tech Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Thomas Szymkiewicz"
-                        //image={}
+                        image={Thomas}
                         bio="Tech Committee"
                     />
                 </Grid>
                 <Grid item>
                     <MemberCard
                         name="Stanley Zhu"
-                        //image={}
+                        image={Stanley}
                         bio="Tech Committee"
                     />
                 </Grid>

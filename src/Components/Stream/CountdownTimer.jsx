@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const timeMap = {
@@ -15,43 +15,8 @@ const countdownStyle = makeStyles({
     }
 });
 
-function FindTimeLeft() {
-    const timeLeft = new Date('02/20,2021') - new Date();
-    let formatTime = {};
-
-    // format into days, hours, minutes, seconds
-    if (timeLeft > 0) {
-        formatTime = {
-            days: Math.floor(timeLeft / timeMap[0]),
-            hours: Math.floor((timeLeft % timeMap[0]) / timeMap[1]),
-            minutes: Math.floor((timeLeft % timeMap[1]) / timeMap[2]),
-            second: Math.floor((timeLeft % timeMap[2]) / timeMap[3]),
-        }
-    }
-
-    return timeLeft;
-}
-function UpdateState() {
-    const [remTime, setTimeLeft] = useState(FindTimeLeft());
-
-    // update time every 1 second (1000ms)
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setTimeLeft(FindTimeLeft());
-        }, 1000);
-
-        // clear timer when no longer mounted
-        return () => clearTimeout(timer);    
-    });
-}
-
-const timerComponents = [];
-
 function CountdownTimer(props) {
     const classes = countdownStyle();
-
-    // div element to store timer
-    <div id="banquet countdown" className={classes.countdownStyle} />
 
     // Banquet is February 20, 2021
     var Banquet = new Date("Feb 20, 2021 00:00:00").getTime();
@@ -81,7 +46,7 @@ function CountdownTimer(props) {
     }, 1000);
 
     return (
-        <div id="banquet countdown" />
+        <div></div>
     )
 }
 
