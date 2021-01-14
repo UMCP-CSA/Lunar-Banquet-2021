@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography } from '@material-ui/core';
-import '../Components/App/countdown';
-import countdown from '../Components/App/countdown';
+import '../Utils/Stream/countdown';
+import countdown from '../Utils/Stream/countdown';
 
 const useStyles = makeStyles((theme) => ({
     video: {

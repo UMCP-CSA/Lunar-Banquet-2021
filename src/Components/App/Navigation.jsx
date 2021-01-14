@@ -11,6 +11,7 @@ import {
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
+import Cart from '../Shop/Cart';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
@@ -53,9 +54,14 @@ function Navigation(props) {
     const { auth } = store.getState();
     const { name } = store.getState();
     const [open, setOpen] = React.useState(false);
+    const [cart, setCart] = React.useState(false);
 
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
+    }
+
+    const toggleCart = (event) => {
+        !cart ? setCart(event.currentTarget) : setCart(null);
     }
 
     // Dispatches logout state to the store and logs out the user in firebase
@@ -88,12 +94,13 @@ function Navigation(props) {
                         <Button href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
                         {auth ?
                             <>
-                                <IconButton className={classes.links}><ShoppingCartIcon color="secondary" /></IconButton>
-                                <Button disableRipple color="secondary" style={{cursor: 'default'}} className={classes.links}>{name}</Button>
+                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCartIcon color="secondary" /></IconButton>
+                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")}/>
+                                <Button disableRipple color="secondary" style={{ cursor: 'default' }} className={classes.links}>{name}</Button>
                                 <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
                             </>
                             :
-                            <Button className={classes.links} color="secondary" onClick={toggleOpen}>LOGIN</Button> }
+                            <Button className={classes.links} color="secondary" onClick={toggleOpen}>LOGIN</Button>}
                     </Typography>
                 </Toolbar>
             </AppBar>
