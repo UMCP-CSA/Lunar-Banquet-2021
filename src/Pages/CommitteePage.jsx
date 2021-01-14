@@ -3,8 +3,7 @@ import {
     makeStyles,
     Grid,
     Container,
-    Typography,
-    withStyles
+    Typography
 } from '@material-ui/core';
 import MemberCard from '../Components/App/MemberCard';
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
