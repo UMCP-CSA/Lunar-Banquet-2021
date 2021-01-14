@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid } from '@material-ui/core';
+import CountdownTimer from '../Components/Stream/CountdownTimer.jsx';
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -12,10 +13,12 @@ function ShopPage(props) {
     const classes = useStyles();
 
     return (
-        // TODO: coundown above video, Banquet is February 20, 2021
         <Container className={classes.video}>
             {/* container to center video */}
             <Grid container direction="column" alignItems="center">
+                <Grid item>
+                    <CountdownTimer />
+                </Grid>
                 {/* iframe as grid item */}
                 <Grid item>
                     <iframe

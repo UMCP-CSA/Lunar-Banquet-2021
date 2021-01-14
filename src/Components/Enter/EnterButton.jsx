@@ -11,7 +11,7 @@ const buttonStyles = makeStyles({
     // bring component to front
     position: "relative",
     zIndex: 2,
-}
+  }
 });
 
 function EnterButton(props) {
