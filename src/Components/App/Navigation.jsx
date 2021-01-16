@@ -14,7 +14,10 @@ import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import { connect, useDispatch } from 'react-redux';
@@ -25,7 +28,7 @@ import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
 import { useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -58,6 +61,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
+        width: drawerWidth,
     },
 }));
 
@@ -98,17 +105,26 @@ function Navigation(props) {
     const drawer = (
         <div>
             <div className={classes.toolbar} />
-            <Divider>
-                <List>
-                    {['Home', 'Stream', 'Shop', 'Committee', 'Login'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
+            <Divider />
+            <List>
+                {['Instagram', 'Facebook'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['Home', 'Stream', 'Shop', 'Committee', 'Login'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>
 
-                            </ListItemIcon>
-                        </ListItem>
-                    ))}
-                </List>
-            </Divider>
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
         </div>
     )
 
