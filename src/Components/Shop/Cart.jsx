@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+import PayPalButton from '../Shop/PayPalButton';
 import { Popover, List, makeStyles, Typography, Grid } from '@material-ui/core';
 import CartItem from '../Shop/CartItem';
 
@@ -12,8 +12,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Cart(props) {
     const classes = useStyles();
-    const PayPalButton = paypal.Buttons.driver("react", { React, ReactDOM });
-
 
     return (
         <Popover
@@ -29,12 +27,13 @@ function Cart(props) {
                 horizontal: 'center',
             }}>
             <Grid className={classes.container} component={Grid} alignItems="center" justify="center" >
-                <Grid item> <Typography variant='h5' color="primary">Cart</Typography></Grid>
-                <Grid item><List>
+                <Typography variant='h5' color="primary">Cart</Typography>
+                <List>
                     <CartItem />
                 </List>
-                </Grid>
-                <Grid item><Typography>Order Total: {props.total} $10.50</Typography></Grid>
+               
+                <Typography>Order Total: {props.total} $10.50</Typography>
+                {/* <PayPalButton /> */}
             </Grid>
         </Popover>
     );
