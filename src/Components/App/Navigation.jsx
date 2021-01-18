@@ -6,8 +6,12 @@ import {
     Typography,
     Button,
     Modal,
-    IconButton
+    IconButton,
+    Hidden,
+    Drawer,
+    Paper,
 } from '@material-ui/core';
+<<<<<<< HEAD
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
@@ -18,8 +22,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+=======
+import { ShoppingCart, Home, VideoLabel, Shop, People, Menu } from '@material-ui/icons';
+>>>>>>> 471050d4f70c6a1c8bd99f28794d8038981d490f
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
+import Cart from '../Shop/Cart';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
@@ -30,23 +38,38 @@ import { useTheme } from '@material-ui/core/styles';
 
 const drawerWidth = 270;
 
+const drawerWidth = 240;
+
 const useStyles = makeStyles(theme => ({
     logo: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
         paddingRight: theme.spacing(3),
-        width: '4rem',
+        width: '3rem',
     },
     heading: {
         flexGrow: 1,
         fontFamily: "'Abril Fatface', cursive"
     },
     links: {
-        marginLeft: theme.spacing(5),
+        [theme.breakpoints.up("md")]: {
+            marginLeft: "0",
+        },
+        [theme.breakpoints.up("lg")]: {
+            marginLeft: theme.spacing(2),
+        },
+        [theme.breakpoints.up("xl")]: {
+            marginLeft: theme.spacing(6),
+        }
+
+    },
+    drawerPaper: {
+        width: drawerWidth
     },
     socials: {
         marginLeft: theme.spacing(0),
     },
     icons: {
+<<<<<<< HEAD
         width: 30,
         height: 30,
     },
@@ -65,6 +88,10 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
+=======
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+>>>>>>> 471050d4f70c6a1c8bd99f28794d8038981d490f
     },
 }));
 
@@ -81,10 +108,22 @@ function Navigation(props) {
     const dispatch = useDispatch();
 
     const { auth } = store.getState();
-    const [open, setOpen] = React.useState(false);
+    const { name } = store.getState();
+    const [loginOpen, setLoginOpen] = React.useState(false);
+    const [cart, setCart] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
-    const toggleOpen = () => {
-        !open ? setOpen(true) : setOpen(false);
+
+    const toggleLoginOpen = () => {
+        !loginOpen ? setLoginOpen(true) : setLoginOpen(false);
+    }
+
+    const toggleCart = (event) => {
+        !cart ? setCart(event.currentTarget) : setCart(null);
+    }
+
+    const toggleMobileOpen = () => {
+        setMobileOpen(!mobileOpen);
     }
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -131,9 +170,10 @@ function Navigation(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <div>
+        <>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
+<<<<<<< HEAD
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -155,11 +195,59 @@ function Navigation(props) {
                         <Button href="/committee" className={classes.links}>COMMITTEE</Button>
                         {auth ? <Button className={classes.links} onClick={updateLogoutState}>LOGOUT</Button> :
                             <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button>}
+=======
+                    <Hidden xsDown>
+                        <a href='/'>
+                            <img src={CSALogo} className={classes.logo} alt='' />
+                        </a>
+                        <Typography align='left' variant='h6' color='secondary' className={classes.heading} href='/'>
+                            LUNAR BANQUET 2021
+>>>>>>> 471050d4f70c6a1c8bd99f28794d8038981d490f
                     </Typography>
+
+                        <Typography color="secondary">
+                            {/* Social Medias */}
+                            <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
+                            <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+
+                            {/* Links */}
+                            <Button size="large" href="/" className={classes.links} color="secondary">HOME</Button>
+                            <Button size="large" href="/stream" className={classes.links} color="secondary">STREAM</Button>
+                            <Button size="large" href="/shop" className={classes.links} color="secondary">SHOP</Button>
+                            <Button size="large" href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
+                            {auth ?
+                                <>
+                                    <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                                    <Button disableRipple color="secondary" style={{ cursor: 'default' }} className={classes.links}>{name}</Button>
+                                    <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
+                                </>
+                                :
+                                <Button className={classes.links} color="secondary" onClick={toggleLoginOpen}>LOGIN</Button>}
+                        </Typography>
+                    </Hidden>
+
+                    {/* Mobile Nav */}
+                    <Hidden smUp>
+                        <IconButton onClick={toggleMobileOpen}><Menu color="secondary" /></IconButton>
+                        <Drawer
+                            open={mobileOpen}
+                            onClose={toggleMobileOpen}
+                            variant="temporary"
+                            classes={{
+                                paper: classes.drawerPaper
+                            }}
+                            ModalProps={{
+                                keepMounted: true // Better open performance on mobile.
+                            }}>
+                            <Paper>Hihi Nick, help me fill things in here!</Paper>
+                        </Drawer>
+                    </Hidden>
                 </Toolbar>
             </AppBar>
             <Toolbar />
 
+<<<<<<< HEAD
             <nav className={classes.drawer} aria-label="side links">
                 <Hidden smUp implementation="css">
                     <Drawer
@@ -196,6 +284,15 @@ function Navigation(props) {
                 <LoginPopup />
             </Modal>
         </div>
+=======
+                <Modal
+                    open={loginOpen}
+                    onClose={toggleLoginOpen}
+                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <LoginPopup />
+                </Modal>
+        </>
+>>>>>>> 471050d4f70c6a1c8bd99f28794d8038981d490f
     );
 }
 
