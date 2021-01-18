@@ -1,53 +1,113 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
-const timeMap = {
-    ms_per_day: (1000 * 60 * 60 * 24),
-    ms_per_hour: (1000 * 60 * 60),
-    ms_per_min: (1000 * 60),
-    ms_per_sec: 1000,
-};
+import { Grid, Container} from "@material-ui/core";
 
 const countdownStyle = makeStyles({
     timer: {
         fontSize: "14px",
-        fontFamily: "'Abril Fatface', cursive"
+        fontFamily: "'Abril Fatface', cursive",
+    },
+
+    message: {
+        fontSize: "14px",
+        fontFamily: "'Abril Fatface', cursive",
     }
 });
 
-function CountdownTimer(props) {
+function CountdownTimer() {
     const classes = countdownStyle();
+    // milliseconds per time unit
+    const second = 1000,
+          minute = second * 60,
+          hour = minute * 60,
+          day = hour * 24;
 
     // Banquet is February 20, 2021
-    var Banquet = new Date("Feb 20, 2021 00:00:00").getTime();
+    var Banquet = new Date("Feb 20, 2022 00:00:00").getTime();
+
+    // get current time
+    var now = new Date().getTime;
 
     // update timer every second (1000 ms)
     var update = setInterval(function() {
-        // get current time
-        var currTime = new Date().getTime;
         // remaining time (in milliseconds)
-        var count = Banquet - currTime;
+        var count = Banquet - now;
 
         // get days, hours, minutes, seconds
-        var days = Math.floor(count / timeMap[0]);
-        var hours = Math.floor((count % timeMap[0]) / timeMap[1]);
-        var minutes = Math.floor((count % timeMap[1]) / timeMap[2]);
-        var seconds = Math.floor((count % timeMap[2]) / timeMap[3]);
+        var days = Math.floor(count / day);
+        var hours = Math.floor((count % day) / hour);
+        var minutes = Math.floor((count % hour) / minute);
+        var seconds = Math.floor((count % minute) / second);
 
-        // Display the result in the element with matching id
-        document.getElementById("banquet coundown").innerHTML = days + ":" + hours + ":"
-        + minutes + ":" + seconds;
+        // Display result in matching element
+        document.getElementById("Banquet Timer").innerHTML = +days + ":" 
+        + +hours + ":" + +minutes + ":" + +seconds;
         
-        // display message at end of countdown
-        if (count <= 0) {
+        // countdown over, show stream
+        if (count < 0) {
             clearInterval(update);
-            document.getElementById("banquet coundown").innerHTML = "Happy New Year!!"
+            document.getElementById("Banquet Timer").innerText = "Welcome to Lunar!";
+            return (
+                <Container className={classes.video}>
+                    <Grid container direction="column" alignItems="center">
+                        <Grid item>
+                            <iframe
+                                style={{
+                                    width: "1600px",
+                                    height: "900px",
+                                    // overflowY: "scroll", scroll currently disabled 
+                                }}
+                                title="lunar stream"
+                                src="https://www.youtube.com/embed/zpD0k69QwRU"
+                                frameborder="0"
+                                allow="accelerometer; 
+                                autoplay; 
+                                clipboard-write; 
+                                encrypted-media; 
+                                gyroscope; 
+                                picture-in-picture" allowfullscreen>
+                            </iframe>
+                        </Grid>
+                    </Grid>
+                </Container>
+            ) 
         }
     }, 1000);
+    
+    /*
+    // display timer if time is left
+    if (update > Banquet) {
+        return (
+            <div id="Banquet Timer" />
+        )
 
-    return (
-        <div></div>
-    )
+    // otherwise show stream
+    } else {
+        return (
+            <Container className={classes.video}>
+                <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                        <iframe
+                            style={{
+                                width: "1600px",
+                                height: "900px",
+                                // overflowY: "scroll", scroll currently disabled 
+                            }}
+                            title="lunar stream"
+                            src="https://www.youtube.com/embed/zpD0k69QwRU"
+                            frameborder="0"
+                            allow="accelerometer; 
+                            autoplay; 
+                            clipboard-write; 
+                            encrypted-media; 
+                            gyroscope; 
+                            picture-in-picture" allowfullscreen>
+                        </iframe>
+                    </Grid>
+                </Grid>
+            </Container>
+        ) 
+    }
+    */
 }
-
 export default CountdownTimer;

@@ -7,16 +7,69 @@ import ProgramPopup from '../Components/App/ProgramPopup';
 
 const useStyles = makeStyles((theme) => ({
     video: {
-        margin: theme.spacing(5),
+        // 0px-599px
+        [theme.breakpoints.up('xs')]: {
+            width: "100%",
+            height: "300px",
+            marginTop: theme.spacing(10),
+            marginRight: theme.spacing(5),
+            marginLeft: theme.spacing(5),
+        },
+        // 600px-959px
+        [theme.breakpoints.up('sm')]: {
+            width: "140%",
+            height: "400px",
+            marginTop: theme.spacing(5),
+            marginRight: theme.spacing(12),
+            marginLeft: theme.spacing(1),
+        },
+        // 960px-1279px
+        [theme.breakpoints.up('md')]: {
+            width: "150%",
+            height: "450px",
+            marginTop: theme.spacing(5),
+            marginRight: theme.spacing(20),
+        },
+        // 1280px-1919px
+        [theme.breakpoints.up('lg')]: {
+            width: "180%",
+            height: "600px",
+            marginTop: theme.spacing(5),
+            marginRight: theme.spacing(20),
+            marginLeft: theme.spacing(2),
+        },
+        // 1920px+
+        [theme.breakpoints.up('xl')]: {
+            width: "250%",
+            height: "900px",
+            marginTop: theme.spacing(5),
+            marginRight: theme.spacing(20),
+            marginLeft: theme.spacing(2),
+        },
     },
     heading: {
         flexGrow: 1,
         fontFamily: "'Abril Fatface', cursive",
-        color: "#ffd56b"
-    }
+        color: "#ffd56b",
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(1),
+    },
+    countdown: {
+        flexGrow: 1,
+        fontFamily: "'Abril Fatface', cursive",
+        color: "#ffd56b",
+        marginTop: theme.spacing(2),
+    },
+    program: {
+        flexGrow: 1,
+        fontSize: "28px",
+        fontFamily: "'Abril Fatface', cursive",
+        color: "#ffd56b",
+        marginTop: theme.spacing(3),
+    },
 }));
 
-function ShopPage(props) {
+function StreamPage(props) {
     const classes = useStyles();
 
     const lunarDate = new Date("Feb 20, 2021 19:00:00");
@@ -26,8 +79,8 @@ function ShopPage(props) {
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
     }
-
-    if(Date.now() < lunarDate) {
+    // revert after testing stream size
+    if (Date.now() < lunarDate) {
         return (
             <Container>
                 <Grid container direction="column" alignItems="center">
@@ -37,13 +90,13 @@ function ShopPage(props) {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography variant="h4" align="center" className={classes.heading}>
+                        <Typography variant="h4" align="center" className={classes.countdown}>
                             {time.toString()} until Lunar!
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography variant="h3" align="center" className={classes.heading}>
-                            <Button size="large" className={classes.heading} onClick={toggleOpen}>Program of Events</Button>
+                        <Typography variant="h3" align="center" className={classes.program}>
+                            <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
                         </Typography>
                     </Grid>
                 </Grid>
@@ -52,21 +105,17 @@ function ShopPage(props) {
                     open={open}
                     onClose={toggleOpen}
                     style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <ProgramPopup />
+                    <ProgramPopup className={classes.heading} />
                 </Modal>
             </Container>
         );
     } else {
         return (
-            <Container className={classes.video}>
+            <Container>
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
                         <iframe
-                            style={{
-                                width: "1600px",
-                                height: "900px",
-                                // overflowY: "scroll", scroll currently disabled 
-                            }}
+                            className={classes.video}
                             title="lunar stream"
                             src="https://www.youtube.com/embed/zpD0k69QwRU"
                             frameborder="0"
@@ -75,7 +124,8 @@ function ShopPage(props) {
                             clipboard-write; 
                             encrypted-media; 
                             gyroscope; 
-                            picture-in-picture" allowfullscreen>
+                            picture-in-picture"
+                            allowFullScreen>
                         </iframe>
                     </Grid>
                 </Grid>
@@ -85,4 +135,4 @@ function ShopPage(props) {
     
 }
 
-export default ShopPage;
+export default StreamPage;
