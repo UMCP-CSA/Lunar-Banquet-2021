@@ -7,10 +7,11 @@ import {
     Button,
     Modal,
     IconButton,
-    Hidden
+    Hidden,
+    Drawer,
+    Paper,
 } from '@material-ui/core';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { ShoppingCart, Home, VideoLabel, Shop, People } from '@material-ui/icons';
+import { ShoppingCart, Home, VideoLabel, Shop, People, Menu } from '@material-ui/icons';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import Cart from '../Shop/Cart';
@@ -20,6 +21,8 @@ import { logout } from '../../Redux/actions';
 import InstagramIcon from '../../Assets/SocialIcons/InstagramIcon.svg';
 import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -42,6 +45,9 @@ const useStyles = makeStyles(theme => ({
             marginLeft: theme.spacing(6),
         }
 
+    },
+    drawerPaper: {
+        width: drawerWidth
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -77,6 +83,10 @@ function Navigation(props) {
         !cart ? setCart(event.currentTarget) : setCart(null);
     }
 
+    const toggleMobileOpen = () => {
+        setMobileOpen(!mobileOpen);
+    }
+
     // Dispatches logout state to the store and logs out the user in firebase
     const updateLogoutState = () => {
         firebase.auth().signOut()
@@ -88,9 +98,9 @@ function Navigation(props) {
 
     return (
         <>
-            <Hidden smDown>
-                <AppBar color="transparent" elevation="0">
-                    <Toolbar>
+            <AppBar color="transparent" elevation="0">
+                <Toolbar>
+                    <Hidden xsDown>
                         <a href='/'>
                             <img src={CSALogo} className={classes.logo} alt='' />
                         </a>
@@ -102,7 +112,7 @@ function Navigation(props) {
                             {/* Social Medias */}
                             <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
                             <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
-                            
+
                             {/* Links */}
                             <Button size="large" href="/" className={classes.links} color="secondary">HOME</Button>
                             <Button size="large" href="/stream" className={classes.links} color="secondary">STREAM</Button>
@@ -118,9 +128,27 @@ function Navigation(props) {
                                 :
                                 <Button className={classes.links} color="secondary" onClick={toggleLoginOpen}>LOGIN</Button>}
                         </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Toolbar />
+                    </Hidden>
+
+                    {/* Mobile Nav */}
+                    <Hidden smUp>
+                        <IconButton onClick={toggleMobileOpen}><Menu color="secondary" /></IconButton>
+                        <Drawer
+                            open={mobileOpen}
+                            onClose={toggleMobileOpen}
+                            variant="temporary"
+                            classes={{
+                                paper: classes.drawerPaper
+                            }}
+                            ModalProps={{
+                                keepMounted: true // Better open performance on mobile.
+                            }}>
+                            <Paper>Hihi Nick, help me fill things in here!</Paper>
+                        </Drawer>
+                    </Hidden>
+                </Toolbar>
+            </AppBar>
+            <Toolbar />
 
                 <Modal
                     open={loginOpen}
@@ -128,11 +156,6 @@ function Navigation(props) {
                     style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <LoginPopup />
                 </Modal>
-            </Hidden>
-
-            <Hidden smUp>
-                
-            </Hidden>
         </>
     );
 }
