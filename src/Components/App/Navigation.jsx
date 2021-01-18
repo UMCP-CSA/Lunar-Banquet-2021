@@ -153,24 +153,51 @@ function Navigation(props) {
                                     <div className={classes.toolbar} />
                                     <Divider />
                                     <List>
-                                        {['Instagram', 'Facebook'].map((text, index) => (
-                                            <ListItem button key={text}>
-                                                <ListItemIcon>
+                                        <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
+                                            <ListItemIcon>
 
-                                                </ListItemIcon>
-                                                <ListItemText primary={text} />
-                                            </ListItem>
-                                        ))}
+                                            </ListItemIcon>
+                                            <ListItemText primary="Instagram" />
+                                        </ListItem>
+                                        <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Facebook" />
+                                        </ListItem>
                                     </List>
                                     <Divider />
                                     <List>
-                                        {['Home', 'Stream', 'Shop', 'Committee', 'Login'].map((text, index) => (
-                                            <ListItem button key={text}>
-                                                <ListItemIcon>
-                                                </ListItemIcon>
-                                            <ListItemText primary={text} />
-                                            </ListItem>
-                                        ))}
+                                        <ListItem button key="Home" component="a" href="/">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Home" />
+                                        </ListItem>
+                                        <ListItem button key="Stream" component="a" href="/stream">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Stream" />
+                                        </ListItem>
+                                        <ListItem button key="Shop" component="a" href="/shop">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Shop" />
+                                        </ListItem>
+                                        <ListItem button key="Committee" component="a" href="/committee">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Committee" />
+                                        </ListItem>
+                                        <ListItem button key="Login" component="a" href="/">
+                                            <ListItemIcon>
+
+                                            </ListItemIcon>
+                                            <ListItemText primary="Login" />
+                                        </ListItem>
                                     </List>
                                 </div>
                             </Paper>
@@ -180,12 +207,12 @@ function Navigation(props) {
             </AppBar>
             <Toolbar />
 
-                <Modal
-                    open={loginOpen}
-                    onClose={toggleLoginOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LoginPopup />
-                </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={toggleLoginOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
         </>
     );
 }
