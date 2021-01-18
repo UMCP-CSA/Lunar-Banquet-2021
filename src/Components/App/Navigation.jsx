@@ -17,14 +17,21 @@ import {
 } from '@material-ui/core';
 import { ShoppingCart, Menu } from '@material-ui/icons';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import HomeIcon from '@material-ui/icons/Home';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import PeopleIcon from '@material-ui/icons/People';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import Cart from '../Shop/Cart';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
-import InstagramIcon from '../../Assets/SocialIcons/InstagramIcon.svg';
-import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
+import InstagramSocial from '../../Assets/SocialIcons/InstagramIcon.svg';
+import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
 
 const drawerWidth = 240;
@@ -115,8 +122,8 @@ function Navigation(props) {
 
                         <Typography color="secondary">
                             {/* Social Medias */}
-                            <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
-                            <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+                            <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramSocial} className={classes.icons} alt='ig-icon' /></IconButton>
+                            <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookSocial} className={classes.icons} alt='fb-icon' /></IconButton>
 
                             {/* Links */}
                             <Button size="large" href="/" className={classes.links} color="secondary">HOME</Button>
@@ -155,13 +162,13 @@ function Navigation(props) {
                                     <List>
                                         <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
                                             <ListItemIcon>
-
+                                                <InstagramIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Instagram" />
                                         </ListItem>
                                         <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
                                             <ListItemIcon>
-
+                                                <FacebookIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Facebook" />
                                         </ListItem>
@@ -170,31 +177,31 @@ function Navigation(props) {
                                     <List>
                                         <ListItem button key="Home" component="a" href="/">
                                             <ListItemIcon>
-
+                                                <HomeIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Home" />
                                         </ListItem>
                                         <ListItem button key="Stream" component="a" href="/stream">
                                             <ListItemIcon>
-
+                                                <PlayCircleFilledIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Stream" />
                                         </ListItem>
                                         <ListItem button key="Shop" component="a" href="/shop">
                                             <ListItemIcon>
-
+                                                <StorefrontIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Shop" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
                                             <ListItemIcon>
-
+                                                <PeopleIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Committee" />
                                         </ListItem>
                                         <ListItem button key="Login" component="a" href="/">
                                             <ListItemIcon>
-
+                                                <ExitToAppIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Login" />
                                         </ListItem>
