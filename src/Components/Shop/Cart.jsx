@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import { Popover, List, makeStyles, Typography, Grid } from '@material-ui/core';
 import CartItem from '../Shop/CartItem';
 
@@ -11,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Cart(props) {
     const classes = useStyles();
+    const PayPalButton = paypal.Buttons.driver("react", { React, ReactDOM });
+
 
     return (
         <Popover
