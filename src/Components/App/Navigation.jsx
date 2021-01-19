@@ -22,6 +22,8 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
@@ -199,12 +201,28 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="Committee" />
                                         </ListItem>
-                                        <ListItem button key="Login" component="a" href="/">
-                                            <ListItemIcon>
-                                                <ExitToAppIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary="Login" />
-                                        </ListItem>
+                                        {auth ?
+                                            [<ListItem id="cart-button" onClick={toggleCart} key="Name">
+                                                <ListItemIcon>
+                                                    <ShoppingCartIcon />
+                                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                                                </ListItemIcon>
+                                                <ListItemText disableRipple style={{ cursor: 'default' }} primary={name} />
+                                            </ListItem>,
+                                            <ListItem button key="LOGOUT" onClick={updateLogoutState}>
+                                                <ListItemIcon>
+                                                    <MeetingRoomIcon />
+                                                </ListItemIcon>
+                                                <ListItemText primary="LOGOUT" />
+                                            </ListItem>]
+                                            :
+                                            <ListItem button onClick={toggleLoginOpen} key="Login">
+                                                <ListItemIcon>
+                                                    <ExitToAppIcon />
+                                                </ListItemIcon>
+                                                <ListItemText primary="Login" />
+                                            </ListItem>
+                                        }
                                     </List>
                                 </div>
                             </Paper>
