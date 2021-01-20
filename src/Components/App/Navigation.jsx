@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import { ShoppingCart, Menu } from '@material-ui/icons';
 import HomeIcon from '@material-ui/icons/Home';
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -26,6 +26,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import Cart from '../Shop/Cart';
@@ -138,6 +139,7 @@ function Navigation(props) {
                             {/* Links */}
                             <Button size="large" href="/" className={classes.links} color="secondary">HOME</Button>
                             <Button size="large" href="/stream" className={classes.links} color="secondary">STREAM</Button>
+                            <Button size="large" className={classes.links} color="secondary">DARES</Button>
                             <Button size="large" href="/shop" className={classes.links} color="secondary">SHOP</Button>
                             <Button size="large" href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
                             {auth ?
@@ -193,9 +195,15 @@ function Navigation(props) {
                                         </ListItem>
                                         <ListItem button key="Stream" component="a" href="/stream">
                                             <ListItemIcon className={classes.drawerIcons}>
-                                                <PlayCircleFilledIcon />
+                                                <LiveTvIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="STREAM" />
+                                        </ListItem>
+                                        <ListItem button key="Dares">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <WhatshotIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="DARES" />
                                         </ListItem>
                                         <ListItem button key="Shop" component="a" href="/shop">
                                             <ListItemIcon className={classes.drawerIcons}>
@@ -209,6 +217,9 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="COMMITTEE" />
                                         </ListItem>
+                                    </List>
+                                    <Divider />
+                                    <List>
                                         {auth ?
                                             [<ListItem id="cart-button" onClick={toggleCart} key="Name">
                                                 <ListItemIcon className={classes.drawerIcons}>
