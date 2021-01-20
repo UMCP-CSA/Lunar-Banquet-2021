@@ -33,7 +33,7 @@ function Cart(props) {
                 </List>
                
                 <Typography>Order Total: {props.total} $10.50</Typography>
-                {/* <PayPalButton /> */}
+                <PayPalButton amount="35" />
             </Grid>
         </Popover>
     );
