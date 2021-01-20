@@ -35,7 +35,6 @@ import { logout } from '../../Redux/actions';
 import InstagramSocial from '../../Assets/SocialIcons/InstagramIcon.svg';
 import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
-import Background from '../../Assets/Homepage/Bg.svg';
 
 const drawerWidth = 240;
 
@@ -74,7 +73,7 @@ const useStyles = makeStyles(theme => ({
     },
     topDrawer: {
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.secondary.main
+        color: theme.palette.secondary.main,
     },
     drawerIcons: {
         color: theme.palette.secondary.main
@@ -175,13 +174,13 @@ function Navigation(props) {
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <InstagramIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Instagram" />
+                                            <ListItemText primary="INSTAGRAM" />
                                         </ListItem>
                                         <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <FacebookIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Facebook" />
+                                            <ListItemText primary="FACEBOOK" />
                                         </ListItem>
                                     </List>
                                     <Divider />
@@ -190,25 +189,25 @@ function Navigation(props) {
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <HomeIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Home" />
+                                            <ListItemText primary="HOME" />
                                         </ListItem>
                                         <ListItem button key="Stream" component="a" href="/stream">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <PlayCircleFilledIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Stream" />
+                                            <ListItemText primary="STREAM" />
                                         </ListItem>
                                         <ListItem button key="Shop" component="a" href="/shop">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <StorefrontIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Shop" />
+                                            <ListItemText primary="SHOP" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <PeopleIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="Committee" />
+                                            <ListItemText primary="COMMITTEE" />
                                         </ListItem>
                                         {auth ?
                                             [<ListItem id="cart-button" onClick={toggleCart} key="Name">
@@ -216,7 +215,7 @@ function Navigation(props) {
                                                     <ShoppingCartIcon />
                                                     <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                                                 </ListItemIcon>
-                                                <ListItemText disableRipple style={{ cursor: 'default' }} primary={name} />
+                                                <ListItemText disableRipple style={{ cursor: 'default', textTransform: 'uppercase' }} primary={name} />
                                             </ListItem>,
                                             <ListItem button key="LOGOUT" onClick={updateLogoutState}>
                                                 <ListItemIcon className={classes.drawerIcons}>
@@ -229,7 +228,7 @@ function Navigation(props) {
                                                 <ListItemIcon className={classes.drawerIcons}>
                                                     <ExitToAppIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Login" />
+                                                <ListItemText primary="LOGIN" />
                                             </ListItem>
                                         }
                                     </List>
