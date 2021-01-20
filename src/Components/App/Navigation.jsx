@@ -14,9 +14,9 @@ import {
     List,
     ListItem,
     ListItemText,
+    ListItemIcon,
 } from '@material-ui/core';
 import { ShoppingCart, Menu } from '@material-ui/icons';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import HomeIcon from '@material-ui/icons/Home';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import StorefrontIcon from '@material-ui/icons/Storefront';
@@ -35,6 +35,7 @@ import { logout } from '../../Redux/actions';
 import InstagramSocial from '../../Assets/SocialIcons/InstagramIcon.svg';
 import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
+import Background from '../../Assets/Homepage/Bg.svg';
 
 const drawerWidth = 240;
 
@@ -61,7 +62,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     drawerPaper: {
-        width: drawerWidth
+        width: drawerWidth,
+        backgroundColor: theme.palette.primary.main
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -69,6 +71,13 @@ const useStyles = makeStyles(theme => ({
     icons: {
         width: theme.spacing(3),
         height: theme.spacing(3),
+    },
+    topDrawer: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.main
+    },
+    drawerIcons: {
+        color: theme.palette.secondary.main
     },
 }));
 
@@ -158,18 +167,18 @@ function Navigation(props) {
                                 keepMounted: true // Better open performance on mobile.
                             }}>
                             <Paper>
-                                <div>
+                                <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
                                     <Divider />
                                     <List>
                                         <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <InstagramIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Instagram" />
                                         </ListItem>
                                         <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <FacebookIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Facebook" />
@@ -178,46 +187,46 @@ function Navigation(props) {
                                     <Divider />
                                     <List>
                                         <ListItem button key="Home" component="a" href="/">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <HomeIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Home" />
                                         </ListItem>
                                         <ListItem button key="Stream" component="a" href="/stream">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <PlayCircleFilledIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Stream" />
                                         </ListItem>
                                         <ListItem button key="Shop" component="a" href="/shop">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <StorefrontIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Shop" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
-                                            <ListItemIcon>
+                                            <ListItemIcon className={classes.drawerIcons}>
                                                 <PeopleIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="Committee" />
                                         </ListItem>
                                         {auth ?
                                             [<ListItem id="cart-button" onClick={toggleCart} key="Name">
-                                                <ListItemIcon>
+                                                <ListItemIcon className={classes.drawerIcons}>
                                                     <ShoppingCartIcon />
                                                     <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                                                 </ListItemIcon>
                                                 <ListItemText disableRipple style={{ cursor: 'default' }} primary={name} />
                                             </ListItem>,
                                             <ListItem button key="LOGOUT" onClick={updateLogoutState}>
-                                                <ListItemIcon>
+                                                <ListItemIcon className={classes.drawerIcons}>
                                                     <MeetingRoomIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="LOGOUT" />
                                             </ListItem>]
                                             :
                                             <ListItem button onClick={toggleLoginOpen} key="Login">
-                                                <ListItemIcon>
+                                                <ListItemIcon className={classes.drawerIcons}>
                                                     <ExitToAppIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="Login" />
