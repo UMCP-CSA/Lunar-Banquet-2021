@@ -79,6 +79,13 @@ const useStyles = makeStyles(theme => ({
     drawerIcons: {
         color: theme.palette.secondary.main
     },
+    divider: {
+        background: theme.palette.secondary.main
+    },
+    logoDrawer: {
+        paddingRight: theme.spacing(3),
+        width: '2rem',
+    },
 }));
 
 const mapStateToProps = state => {
@@ -170,22 +177,18 @@ function Navigation(props) {
                             <Paper>
                                 <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
-                                    <Divider />
+                                    {/* <Divider className={classes.divider}/> */}
                                     <List>
-                                        <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
-                                            <ListItemIcon className={classes.drawerIcons}>
-                                                <InstagramIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary="INSTAGRAM" />
-                                        </ListItem>
-                                        <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
-                                            <ListItemIcon className={classes.drawerIcons}>
-                                                <FacebookIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary="FACEBOOK" />
+                                        <ListItem>
+                                            <a href='/'>
+                                                <img src={CSALogo} className={classes.logoDrawer} alt=''/>
+                                            </a>
+                                            <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
+                                                LUNAR BANQUET
+                                            </Typography>
                                         </ListItem>
                                     </List>
-                                    <Divider />
+                                    <Divider className={classes.divider} />
                                     <List>
                                         <ListItem button key="Home" component="a" href="/">
                                             <ListItemIcon className={classes.drawerIcons}>
@@ -218,7 +221,7 @@ function Navigation(props) {
                                             <ListItemText primary="COMMITTEE" />
                                         </ListItem>
                                     </List>
-                                    <Divider />
+                                    <Divider className={classes.divider} />
                                     <List>
                                         {auth ?
                                             [<ListItem id="cart-button" onClick={toggleCart} key="Name">
@@ -243,6 +246,22 @@ function Navigation(props) {
                                             </ListItem>
                                         }
                                     </List>
+                                    <Divider className={classes.divider} />
+                                    <List>
+                                        <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <InstagramIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="INSTAGRAM" />
+                                        </ListItem>
+                                        <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <FacebookIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="FACEBOOK" />
+                                        </ListItem>
+                                    </List>
+                                    <Divider className={classes.divider} />
                                 </div>
                             </Paper>
                         </Drawer>
