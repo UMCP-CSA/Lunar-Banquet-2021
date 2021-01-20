@@ -5,7 +5,7 @@ import {
     Container,
     Typography
 } from '@material-ui/core';
-import MemberCard from '../Components/App/MemberCard';
+import MemberCard from '../Components/Committee/MemberCard';
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
 import Allison from '../Assets/OrgPics/Allison.jpg';
 import Thea from '../Assets/OrgPics/Thea.jpg';

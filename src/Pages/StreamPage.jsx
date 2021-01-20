@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import countdown from '../Utils/Stream/countdown';
 import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
-import '../Components/App/countdown';
-import countdown from '../Components/App/countdown';
 import ProgramPopup from '../Components/App/ProgramPopup';
 
 const useStyles = makeStyles((theme) => ({
