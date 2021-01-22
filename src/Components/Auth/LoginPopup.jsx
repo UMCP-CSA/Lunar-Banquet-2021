@@ -27,9 +27,9 @@ function LoginPopup(props) {
 
     useEffect(() => {
        firebase.auth().onAuthStateChanged(user => {
-            if (user) dispatch(login(user.displayName));
-            else dispatch(logout());
-            console.log(user);
+            if (user) {
+                dispatch(login(user.displayName));
+            } else dispatch(logout());
         });
     }, [dispatch]);
 

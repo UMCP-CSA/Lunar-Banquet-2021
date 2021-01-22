@@ -29,7 +29,6 @@ function MemberCard(props) {
                     <Typography varient="h5" align="center" className={classes.text}>{props.name}</Typography>
                     <Typography varient="h5" align="center" className={classes.text}>{props.bio}</Typography>
                 </Grid>
-                
             </Grid>
 
 
