@@ -4,13 +4,29 @@ import {
     Box, 
     Paper, 
     useTheme, 
-    Grid
+    Grid,
+    makeStyles
 } from '@material-ui/core';
 import { connect } from 'react-redux';
+import GGWB from '../../Assets/OrgPics/GGWB.jpg'
+import Tianyi from '../../Assets/OrgPics/Tianyi.jpg'
+import Wushu from '../../Assets/OrgPics/Wushu.jpg'
 
+const useStyles = makeStyles((theme) => ({
+    image: {
+        width: theme.spacing(20),
+        height: theme.spacing(20)
+    },
+    heading: {
+        flexGrow: 1,
+        fontFamily: "'Abril Fatface', cursive",
+        color: "#ffd56b"
+    }
+}));
 
 function LoginPopup(props) {
     const theme = useTheme();
+    const classes = useStyles();
 
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
@@ -20,16 +36,40 @@ function LoginPopup(props) {
                 </Typography> */}
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
-                        <Typography> ggwb </Typography>
+                        <Typography variant="h4" align="center" className={classes.heading}> GGWB </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography>tianyi</Typography>
+                        <Typography>
+                            GGWB is a dance group here at UMD. They got fancy moves :)
+                        </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography>wushu</Typography>
+                        <img src={GGWB} className = {classes.image} alt = ""/>
                     </Grid>
                     <Grid item>
-                        <Typography>diabolo</Typography>
+                        <Typography variant="h4" align="center" className={classes.heading}>Tianyi</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography>
+                            Tianyi is a traditional Chinese dance group at UMD. They also got fancy moves :)
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <img src={Tianyi} className = {classes.image} alt = ""/>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h4" align="center" className={classes.heading}>Terp Wushu</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography>
+                            Wushu is a Chinese martial arts group at UMD. They got fancy fighting moves :)
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <img src={Wushu} className = {classes.image} alt = ""/>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h4" align="center" className={classes.heading}>Diabolo</Typography>
                     </Grid>
                 </Grid>
             </Paper>
