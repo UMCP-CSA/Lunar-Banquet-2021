@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Container} from "@material-ui/core";
 
@@ -28,6 +28,15 @@ function CountdownTimer() {
     // get current time
     var now = new Date().getTime;
 
+    const [time, setTime] = useState(0);
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(time => time + 1);
+          }, 1000);
+          return () => clearInterval(interval);
+    }, []);
+
     // update timer every second (1000 ms)
     var update = setInterval(function() {
         // remaining time (in milliseconds)
@@ -39,14 +48,15 @@ function CountdownTimer() {
         var minutes = Math.floor((count % hour) / minute);
         var seconds = Math.floor((count % minute) / second);
 
-        // Display result in matching element
-        document.getElementById("Banquet Timer").innerHTML = +days + ":" 
-        + +hours + ":" + +minutes + ":" + +seconds;
-        
+        document.getElementById("days").innerHTML = Math.floor(count / (day)),
+        document.getElementById("hours").innerHTML = Math.floor((count % (day)) / (hour)),
+        document.getElementById("minutes").innerHTML = Math.floor((count % (hour)) / (minute)),
+        document.getElementById("seconds").innerHTML = Math.floor((count % (minute)) / second);
+            
         // countdown over, show stream
-        if (count < 0) {
+        if (count <= 0) {
             clearInterval(update);
-            document.getElementById("Banquet Timer").innerText = "Welcome to Lunar!";
+            document.getElementById("countdown").innerText = "Welcome to Lunar!";
             return (
                 <Container className={classes.video}>
                     <Grid container direction="column" alignItems="center">
@@ -111,3 +121,4 @@ function CountdownTimer() {
     */
 }
 export default CountdownTimer;
+

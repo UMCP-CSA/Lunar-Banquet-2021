@@ -20,7 +20,7 @@ function LoginPopup(props) {
                 </Typography> */}
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
-                        <Typography> ggwb </Typography>
+                        <Typography>ggwb</Typography>
                     </Grid>
                     <Grid item>
                         <Typography>tianyi</Typography>
