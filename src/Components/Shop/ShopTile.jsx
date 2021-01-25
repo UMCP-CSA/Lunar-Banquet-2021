@@ -23,7 +23,7 @@ function ShopTile(props) {
     const theme = useTheme();
     return (
         /* // container for tile */
-        <Box className={classes.outerBox} width={300}>
+        <Box className={classes.outerBox}>
             <Grid container direction="column" alignItems="center" spacing={0.5}>
                 { /* picture of item */ }
                 <Grid item>

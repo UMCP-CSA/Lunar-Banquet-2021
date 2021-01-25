@@ -5,7 +5,7 @@ import Lily from '../Assets/OrgPics/Lily.jpg';
 import Eugene from '../Assets/OrgPics/Eugene.jpg';
 import Jen from '../Assets/OrgPics/Jen.jpg';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -15,8 +15,8 @@ function ShopPage(props) {
     const classes = useStyles();
 
     return (
-        <Box>
-            <Grid container direction="row" spacing={2} >
+        <Container>
+            <Grid container direction="row" spacing={2}>
                 <Grid item>
                     <ShopTile
                         name="Lily"
@@ -78,7 +78,7 @@ function ShopPage(props) {
                     />
                 </Grid>
             </Grid>
-        </Box>
+        </Container>
     )
 }
 
