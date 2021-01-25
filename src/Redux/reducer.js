@@ -5,7 +5,7 @@ const initialState = {
     name: '',
 }
 
-const authReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: {
             const username = action.payload.username;
@@ -29,4 +29,4 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export default authReducer;
+export default reducer;

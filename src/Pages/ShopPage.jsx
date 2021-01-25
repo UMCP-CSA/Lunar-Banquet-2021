@@ -1,23 +1,22 @@
 import React from 'react'
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ShopTile from '../Components/Shop/ShopTile.jsx';
 import Lily from '../Assets/OrgPics/Lily.jpg';
 import Eugene from '../Assets/OrgPics/Eugene.jpg';
 import Jen from '../Assets/OrgPics/Jen.jpg';
-import { Grid } from "@material-ui/core";
+import AlexH from '../Assets/ShopPics/AlexH.jpg';
+import { Grid, Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    itemRow: {
-        marginTop: '2%'
-    }
+
 }));
 
 function ShopPage(props) {
     const classes = useStyles();
 
     return (
-        <div>
-            <Grid container className={classes.itemRow} direction="row" justify="space-evenly" alignItems="flex-start">
+        <Box>
+            <Grid container direction="row" spacing={2} >
                 <Grid item>
                     <ShopTile
                         name="Lily"
@@ -52,8 +51,8 @@ function ShopPage(props) {
                     <ShopTile
                         name="Lil Alex"
                         profit="0"
-                        desc="Must have"
-                        image={Jen}
+                        desc="The things I do for CSA"
+                        image={AlexH}
                         alt="OVO Cards"
                         stock="In Stock"
                     />
@@ -68,8 +67,18 @@ function ShopPage(props) {
                         stock="In Stock"
                     />
                 </Grid>
+                <Grid item>
+                    <ShopTile
+                        name="Sylvia"
+                        profit="0"
+                        desc="Must have"
+                        image={Jen}
+                        alt="OVO Cards"
+                        stock="In Stock"
+                    />
+                </Grid>
             </Grid>
-        </div>
+        </Box>
     )
 }
 

@@ -11,7 +11,8 @@ import {
     Drawer,
     Paper,
     Menu,
-    MenuItem
+    MenuItem,
+    useTheme
 } from '@material-ui/core';
 import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
@@ -69,6 +70,7 @@ const mapStateToProps = state => {
 
 function Navigation(props) {
     const classes = useStyles();
+    const theme = useTheme();
     const dispatch = useDispatch();
 
     useLayoutEffect(() => {
@@ -107,7 +109,7 @@ function Navigation(props) {
     }
 
     return (
-        <>
+        <div style={{marginBottom: theme.spacing(2)}}>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <Hidden xsDown>
@@ -166,7 +168,7 @@ function Navigation(props) {
                     style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <LoginPopup />
                 </Modal>
-        </>
+        </div>
     );
 }
 

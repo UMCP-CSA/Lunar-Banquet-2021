@@ -1,6 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography, Grid, Button, InputAdornment, OutlinedInput } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     outerBox: {
@@ -13,24 +13,18 @@ const useStyles = makeStyles((theme) => ({
         objectFit: 'cover',
     },
     button: {
-        borderRadius: '5em',
-        backgroundColor: '#d81212',
-        color: "#ffff"
-    },
-    text: {
-        color: '#8ec77d'
+        borderRadius: '20px'
     }
 }));
 
 function ShopTile(props) {
     const classes = useStyles();
     const profit = props.profit;
-
+    const theme = useTheme();
     return (
         /* // container for tile */
         <Box className={classes.outerBox} width={300}>
-            
-            <Grid container direction="column" alignItems="center">
+            <Grid container direction="column" alignItems="center" spacing={0.5}>
                 { /* picture of item */ }
                 <Grid item>
                     <img src={props.image} className={classes.image} alt={props.alt} />
@@ -41,32 +35,28 @@ function ShopTile(props) {
                     <Typography variant="h5">{props.name}</Typography>
                 </Grid>
 
-                { /* item price */ }
-                <Grid item>
-                    <Typography variant="h5">{props.price}</Typography>
-                </Grid>
-
                 { /* item description */}
                 <Grid item>
                     <Typography variant="body2">{props.desc}</Typography>
                 </Grid>
-
-                { /* add to cart button */}
-                
+                {/* profit bar */}
                 <Grid item>
-                    <OutlinedInput 
-                    id="standard-basic" 
+                    <LinearProgress color="primary" variant="determinate" value="100" />
+                </Grid>
+
+                { /* buttons */}
+                <Grid item>
+                    <TextField 
                     type="number"
-                    label="Name Your Own Price" 
                     defaultValue="5" 
-                    startAdornment={<InputAdornment position="start">$</InputAdornment>} 
+                    variant="outlined"
+                    InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
+                    style={{padding: theme.spacing(1)}}
                     />
-                    <Button className={classes.button} variant="contained" href={props.link}>
-                        Add To Cart
-                    </Button>
-                    <Button className={classes.button} variant="contained">
-                        View Dares
-                    </Button>
+                    <Grid container spacing={1}>
+                        <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
+                        <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Box>
