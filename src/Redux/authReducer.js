@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from './actionTypes';
+import { LOGIN, LOGOUT, ADD_TO_CART} from './actionTypes';
 
 const initialState = {
     auth: false,
