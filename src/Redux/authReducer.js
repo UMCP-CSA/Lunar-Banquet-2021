@@ -1,25 +1,27 @@
-import { LOGIN, LOGOUT, ADD_TO_CART} from './actionTypes';
+import { LOGIN, LOGOUT } from './actionTypes';
 
 const initialState = {
     auth: false,
-    name: ''
+    name: '',
 }
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: {
             const username = action.payload.username;
+            const email = action.payload.email;
+            console.log(action.payload);
             return {
                 ...state,
                 auth: true,
-                name: username
+                name: username,
             };
         }
         case LOGOUT: {
             return {
                 ...state,
                 auth: false,
-                name: ''
+                name: '',
             };
         }
         default:
