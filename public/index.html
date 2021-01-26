@@ -39,6 +39,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
-  <script src="https://www.paypal.com/sdk/js?client-id=AWZoq5pNM1zjLIPiw_ejMFg7GeWkH08Y3E1ckoxgEcAc8NJggTU3vvPLCtXFGV2Uz_bjfzzq6DYpwSsd"></script>
+    </body>
+    <div id="paypal">
+      <script>
+        document.getElementById("paypal").src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_CLIENT_ID}`
+      </script>
+    </div>
 </html>
