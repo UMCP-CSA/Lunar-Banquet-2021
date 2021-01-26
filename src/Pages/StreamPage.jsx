@@ -9,6 +9,7 @@ import { HideOn } from 'react-hide-on-scroll';
 
 const useStyles = makeStyles((theme) => ({
     video: {
+        flexGrow: 1,
         position: "absolute",
         // 0px-599px
         [theme.breakpoints.up('xs')]: {
@@ -28,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
         },
         // 960px-1279px
         [theme.breakpoints.up('md')]: {
-            width: "150%",
+            width: "100%",
             height: "450px",
             marginTop: theme.spacing(5),
             marginRight: theme.spacing(20),
+            marginLeft: theme.spacing(0),
         },
         // 1280px-1919px
         [theme.breakpoints.up('lg')]: {
@@ -66,10 +68,10 @@ const useStyles = makeStyles((theme) => ({
     },
     countdown: {
         flexGrow: 1,
-        fontSize: "48px",
+        fontSize: "64px",
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b",
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
         textAlign: "center",
     },
     program: {
@@ -82,6 +84,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     list: {
+        flexGrow: 1,
+        fontSize: "24px",
         [theme.breakpoints.up('xs')]: {
             display: "block", 
             padding: "10px",
@@ -93,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up("md")]: {
             display: "inline-block",
             padding: "10px",
-        }
+        },
     }
 }));
 
@@ -111,7 +115,6 @@ function StreamPage(props) {
     // current date before lunar
     if (Date.now() < lunarDate) {
         return (
-
                 <Container>
                     <Grid container direction="column" alignItems="center">
                         <Grid item>
@@ -121,13 +124,25 @@ function StreamPage(props) {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant="h4" align="center" className={classes.countdown}>
+                            <Typography variant="h4" align="center" color="secondary" className={classes.countdown}>
                                 {/* unordered list without bullets */}
                                 <ul style={{listStyle: "none outside none"}}>
-                                    <li className={classes.list}>{time.days}<br />days</li>
-                                    <li className={classes.list}>{time.hours}<br />hours</li>
-                                    <li className={classes.list}>{time.minutes}<br />minutes</li>
-                                    <li className={classes.list}>{time.seconds}<br />seconds</li>
+                                    <li className={classes.list}>
+                                        <div className={classes.countdown}>{time.days}</div>
+                                        days
+                                    </li>
+                                    <li className={classes.list}>
+                                        <div className={classes.countdown}>{time.hours}</div>
+                                        hours
+                                    </li>
+                                    <li className={classes.list}>
+                                        <div className={classes.countdown}>{time.minutes}</div>
+                                        minutes
+                                    </li>
+                                    <li className={classes.list}>
+                                        <div className={classes.countdown}>{time.seconds}</div>
+                                        seconds
+                                    </li>
                                 </ul>
                             </Typography>
                         </Grid>
@@ -145,7 +160,6 @@ function StreamPage(props) {
                         <ProgramPopup />
                     </Modal>
                 </Container>
-
         );
     // lunar has started, show stream
     } else {
