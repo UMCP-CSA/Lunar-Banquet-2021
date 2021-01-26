@@ -128,7 +128,7 @@ function Navigation(props) {
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
                             <Link to="/stream"><Button size="large" className={classes.links} color="secondary">STREAM</Button></Link>
-                            <Link to="/shop"><Button size="large" className={classes.links} color="secondary">SHOP</Button></Link>
+                            <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             {auth ?
                                 <>

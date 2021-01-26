@@ -4,7 +4,7 @@ import Navigation from './Components/App/Navigation';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import ShopPage from './Pages/ShopPage';
+import DaresTabs from './Pages/DaresTabs';
 import StreamPage from './Pages/StreamPage';
 import CommitteePage from './Pages/CommitteePage';
 
@@ -32,7 +32,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/stream" component={StreamPage} />
-            <Route exact path="/shop" component={ShopPage} />
+            <Route exact path="/dares" component={DaresTabs} />
             <Route exact path="/committee" component={CommitteePage} />
           </Switch>
         </Router>

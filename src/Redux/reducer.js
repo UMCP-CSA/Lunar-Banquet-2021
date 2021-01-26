@@ -9,8 +9,6 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: {
             const username = action.payload.username;
-            const email = action.payload.email;
-            console.log(action.payload);
             return {
                 ...state,
                 auth: true,

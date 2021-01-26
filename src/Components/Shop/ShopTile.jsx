@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
     outerBox: {
@@ -13,14 +14,34 @@ const useStyles = makeStyles((theme) => ({
         objectFit: 'cover',
     },
     button: {
-        borderRadius: '20px'
+        borderRadius: '20px',
+        boxShadow: "none",
+    },
+    meter: {
+        padding: theme.spacing(1),
+        borderRadius: '20px',
+        margin: theme.spacing(2),
     }
 }));
 
 function ShopTile(props) {
     const classes = useStyles();
-    const profit = props.profit;
     const theme = useTheme();
+    const person = props.person;
+    const db = firebase.firestore();
+    const [profit, setProfit] = useState(0);
+    const [max, setMax] = useState(0);
+    
+    const normalise = value => (value) * 100 / (max);
+
+    db.collection("products").doc(`${person}`).get()
+        .then(function (document) {
+            setProfit(document.data().profit);
+            setMax(document.data().max);
+        });
+    
+
+
     return (
         /* // container for tile */
         <Box className={classes.outerBox}>
@@ -39,24 +60,26 @@ function ShopTile(props) {
                 <Grid item>
                     <Typography variant="body2">{props.desc}</Typography>
                 </Grid>
-                {/* profit bar */}
-                <Grid item>
-                    <LinearProgress color="primary" variant="determinate" value="100" />
-                </Grid>
 
                 { /* buttons */}
                 <Grid item>
                     <TextField 
                     type="number"
+                    size="small"
                     defaultValue="5" 
+                    label="Name Your Own Price"
                     variant="outlined"
                     InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
-                    style={{padding: theme.spacing(1)}}
+                    style={{margin: theme.spacing(1)}}
                     />
+           
                     <Grid container spacing={1}>
                         <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
                         <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
                     </Grid>
+
+                    <LinearProgress className={classes.meter} color="primary" variant="determinate" value={normalise(profit)} />
+                    <Typography variant="body2">Dare Threshold: ${profit} / {max}</Typography>
                 </Grid>
             </Grid>
         </Box>

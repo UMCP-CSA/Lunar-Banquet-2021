@@ -5,7 +5,6 @@ import firebase from 'firebase';
 function PayPal(props) {
 
     const user = firebase.auth().currentUser;
-    console.log(user);
     const db = firebase.firestore();
 
     return (
