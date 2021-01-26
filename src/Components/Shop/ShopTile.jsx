@@ -1,71 +1,85 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography, Grid, Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
+import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
     outerBox: {
         borderRadius: '16px',
-        backgroundColor: '#ffff'
-    },
-    innerBox: {
-        borderRadius: '0px 8px 0px 8px',
-        backgroundColor: '#dbf0d4',
-        paddingBottom: '1%'
+        backgroundColor: '#ffff',
+        padding: theme.spacing(2)
     },
     image: {
-        // borderRadius: '50%',
+        width: theme.spacing(20),
         objectFit: 'cover',
-        marginTop:'10%',
-        marginBottom:'10%'
     },
     button: {
-        marginTop: '10%',
-        borderRadius: '5em',
-        backgroundColor: '#d81212',
-        color: "#ffff"
+        borderRadius: '20px',
+        boxShadow: "none",
     },
-    text: {
-        color: '#8ec77d'
+    meter: {
+        padding: theme.spacing(1),
+        borderRadius: '20px',
+        margin: theme.spacing(2),
     }
 }));
 
 function ShopTile(props) {
     const classes = useStyles();
+    const theme = useTheme();
+    const person = props.person;
+    const db = firebase.firestore();
+    const [profit, setProfit] = useState(0);
+    const [max, setMax] = useState(0);
+    
+    const normalise = value => (value) * 100 / (max);
+
+    db.collection("products").doc(`${person}`).get()
+        .then(function (document) {
+            setProfit(document.data().profit);
+            setMax(document.data().max);
+        });
+    
+
 
     return (
         /* // container for tile */
-        <Box className={classes.outerBox} width={300} height={425}>
-            <Grid container direction="row" justify="flex-end">
-                <Box className={classes.innerBox} width={100} height={20}>
-                    <Typography className={classes.text} variant="body1" align="center">{props.stock}</Typography>
-                </Box>
-            </Grid>
-            <Grid container direction="column" alignItems="center">
+        <Box className={classes.outerBox}>
+            <Grid container direction="column" alignItems="center" spacing={0.5}>
                 { /* picture of item */ }
                 <Grid item>
-                    <img src={props.image} className={classes.image} alt={props.alt} width="200" height="200"/>
+                    <img src={props.image} className={classes.image} alt={props.alt} />
                 </Grid>
 
                 { /* item name */ }
                 <Grid item>
-                    <Typography variant="h4">{props.name}</Typography>
+                    <Typography variant="h5">{props.name}</Typography>
                 </Grid>
 
-                { /* item price */ }
-                <Grid item>
-                    <Typography variant="h5">{props.price}</Typography>
-                </Grid>
-
-                { /* item description */ }
+                { /* item description */}
                 <Grid item>
                     <Typography variant="body2">{props.desc}</Typography>
                 </Grid>
 
-                { /* add to cart button */ }
+                { /* buttons */}
                 <Grid item>
-                    <Button className={classes.button} variant="contained" href={props.link}>
-                        Add To Cart
-                    </Button>
+                    <TextField 
+                    type="number"
+                    size="small"
+                    defaultValue="5" 
+                    label="Name Your Own Price"
+                    variant="outlined"
+                    InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
+                    style={{margin: theme.spacing(1)}}
+                    />
+           
+                    <Grid container spacing={1}>
+                        <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
+                        <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
+                    </Grid>
+
+                    <LinearProgress className={classes.meter} color="primary" variant="determinate" value={normalise(profit)} />
+                    <Typography variant="body2">Dare Threshold: ${profit} / {max}</Typography>
                 </Grid>
             </Grid>
         </Box>

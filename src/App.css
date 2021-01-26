@@ -17,3 +17,27 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+body::-webkit-scrollbar-track {
+  background-color: rgb(255, 194, 102);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(158, 37, 37);
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}

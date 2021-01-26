@@ -2,24 +2,24 @@ import { LOGIN, LOGOUT } from './actionTypes';
 
 const initialState = {
     auth: false,
-    name: ''
+    name: '',
 }
 
-const authReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: {
             const username = action.payload.username;
             return {
                 ...state,
                 auth: true,
-                name: username
+                name: username,
             };
         }
         case LOGOUT: {
             return {
                 ...state,
                 auth: false,
-                name: ''
+                name: '',
             };
         }
         default:
@@ -27,4 +27,4 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export default authReducer;
+export default reducer;
