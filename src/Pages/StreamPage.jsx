@@ -2,55 +2,49 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
 import '../Components/App/countdown';
-import countdown from '../Components/App/countdown';
 import ProgramPopup from '../Components/App/ProgramPopup';
-import 'react-hide-on-scroll';
-import { HideOn } from 'react-hide-on-scroll';
+import ReactDOM from 'react-dom';
+import Countdown from 'react-countdown';
+import ResponsiveEmbed from 'react-responsive-embed';
 
 const useStyles = makeStyles((theme) => ({
     video: {
+        position: 'absolute',
         flexGrow: 1,
-        position: "absolute",
+        left: '50%', 
+        top: '50%',
         // 0px-599px
         [theme.breakpoints.up('xs')]: {
-            width: "60%",
-            height: "200px",
-            marginTop: theme.spacing(20),
-            marginRight: theme.spacing(50),
-            marginLeft: theme.spacing(0),
+            transform: 'translate(-50%, 150%)',
+            width: theme.spacing(2) * 16,
+            height: theme.spacing(2) * 9,
         },
         // 600px-959px
         [theme.breakpoints.up('sm')]: {
-            width: "140%",
-            height: "400px",
-            marginTop: theme.spacing(5),
-            marginRight: theme.spacing(20),
-            marginLeft: theme.spacing(1),
+            transform: 'translate(-50%, 80%)',
+            width: theme.spacing(4) * 16,
+            height: theme.spacing(4) * 9,
         },
         // 960px-1279px
         [theme.breakpoints.up('md')]: {
-            width: "100%",
-            height: "450px",
-            marginTop: theme.spacing(5),
-            marginRight: theme.spacing(20),
-            marginLeft: theme.spacing(0),
+            transform: 'translate(-50%, 50%)',
+            width: theme.spacing(5) * 16,
+            height: theme.spacing(5) * 9,
         },
         // 1280px-1919px
         [theme.breakpoints.up('lg')]: {
-            width: "180%",
-            height: "650px",
-            marginTop: theme.spacing(5),
-            marginRight: theme.spacing(38),
-            marginLeft: theme.spacing(0),
+            transform: 'translate(-50%, 20%)',
+            width: theme.spacing(9) * 16,
+            height: theme.spacing(9) * 9,
         },
         // 1920px+
         [theme.breakpoints.up('xl')]: {
-            width: "225%",
-            height: "1080px",
-            marginTop: theme.spacing(5),
-            marginRight: theme.spacing(50),
-            marginLeft: theme.spacing(0),
+            width: theme.spacing(14) * 16,
+            height: theme.spacing(14) * 9,
         },
+    },
+    vidWrapper: {
+        position: 'relative',
     },
     heading: {
         flexGrow: 1,
@@ -68,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
     countdown: {
         flexGrow: 1,
-        fontSize: "64px",
+        fontSize: "56px",
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b",
         marginTop: theme.spacing(1),
@@ -76,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
     program: {
         flexGrow: 1,
-        fontSize: "28px",
+        fontSize: "36px",
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b",
         marginTop: theme.spacing(3),
@@ -85,7 +79,10 @@ const useStyles = makeStyles((theme) => ({
     },
     list: {
         flexGrow: 1,
-        fontSize: "24px",
+        fontSize: "28px",
+        fontFamily: "'Abril Fatface', cursive",
+        color: "#ffd56b",
+        textAlign: "center",
         [theme.breakpoints.up('xs')]: {
             display: "block", 
             padding: "10px",
@@ -105,87 +102,98 @@ function StreamPage(props) {
     const classes = useStyles();
 
     const lunarDate = new Date("Feb 20, 2021 19:00:00");
-    var time = countdown (null, lunarDate, ~(countdown.MONTHS | countdown.WEEKS | countdown.MILLISECONDS));
 
     const [open, setOpen] = React.useState(false);
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
     }
+    // Container holding stream video
+    const Completionist = () => <Container>
+                                    <div className={classes.vidWrapper}>
+                                        <iframe className={classes.video}
+                                            src="https://www.youtube.com/embed/zpD0k69QwRU"
+                                            title="lunar-stream"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; 
+                                            encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </Container>;
 
-    // current date before lunar
+    // Renderer callback with condition
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+        if (completed) {
+            // Render stream if completed
+            return <Completionist />;
+        } else {
+            // Render a countdown
+            return (
+                <div>
+                    {/* unordered list without bullets */}
+                    <ul style={{ listStyle: "none outside none" }}>
+                        <li className={classes.list}>
+                            <div className={classes.countdown}>{days}</div>
+                            days
+                        </li>
+                        <li className={classes.list}>
+                            <div className={classes.countdown}>{hours}</div>
+                            hours
+                        </li>
+                        <li className={classes.list}>
+                            <div className={classes.countdown}>{minutes}</div>
+                            minutes
+                        </li>
+                        <li className={classes.list}>
+                            <div className={classes.countdown}>{seconds}</div>
+                            seconds
+                        </li>
+                    </ul>
+                </div>
+            );
+        }
+    };
+
+    // if current date before lunar
     if (Date.now() < lunarDate) {
         return (
-                <Container>
-                    <Grid container direction="column" alignItems="center">
-                        <Grid item>
-                            <Typography variant="h3" align="center" className={classes.heading}>
-                                Lunar Banquet Will Be On February 20th, 2021<br /><br />
-                                Countdown to Lunar:
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant="h4" align="center" color="secondary" className={classes.countdown}>
-                                {/* unordered list without bullets */}
-                                <ul style={{listStyle: "none outside none"}}>
-                                    <li className={classes.list}>
-                                        <div className={classes.countdown}>{time.days}</div>
-                                        days
-                                    </li>
-                                    <li className={classes.list}>
-                                        <div className={classes.countdown}>{time.hours}</div>
-                                        hours
-                                    </li>
-                                    <li className={classes.list}>
-                                        <div className={classes.countdown}>{time.minutes}</div>
-                                        minutes
-                                    </li>
-                                    <li className={classes.list}>
-                                        <div className={classes.countdown}>{time.seconds}</div>
-                                        seconds
-                                    </li>
-                                </ul>
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant="h3" align="center" className={classes.program}>
-                                <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
-                            </Typography>
-                        </Grid>
+            <Container>
+                <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                        <Typography variant="h3" align="center" className={classes.heading}>
+                            Lunar Banquet Will Be On February 20th, 2021<br /><br />
+                            Countdown to Lunar:
+                        </Typography>
                     </Grid>
+                    <Grid item>
+                        <Countdown
+                            date={"February 20,2021"}
+                            intervalDelay={1000}
+                            precision={1}
+                            zeroPadDays={2}
+                            zeroPadTime={2}
+                            renderer={renderer}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h3" align="center" className={classes.program}>
+                            <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
+                        </Typography>
+                    </Grid>
+                </Grid>
 
-                    <Modal
-                        open={open}
-                        onClose={toggleOpen}
-                        style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <ProgramPopup />
-                    </Modal>
-                </Container>
+                <Modal
+                    open={open}
+                    onClose={toggleOpen}
+                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <ProgramPopup />
+                </Modal>
+            </Container> 
         );
     // lunar has started, show stream
     } else {
-        return (
-            <Container>
-                <Grid container direction="column" alignItems="center" justifyContent="center">
-                    <Grid item>
-                        <iframe
-                            className={classes.video}
-                            title="lunar stream"
-                            src="https://www.youtube.com/embed/zpD0k69QwRU"
-                            frameborder="0"
-                            allow="accelerometer; 
-                            autoplay; 
-                            clipboard-write; 
-                            encrypted-media; 
-                            gyroscope; 
-                            picture-in-picture"
-                            allowFullScreen>
-                        </iframe>
-                    </Grid>
-                </Grid>
-            </Container>
-        );
+        return (<Completionist />);
     }
-    
 }
 
 export default StreamPage;

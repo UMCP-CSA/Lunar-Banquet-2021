@@ -28,15 +28,6 @@ function CountdownTimer() {
     // get current time
     var now = new Date().getTime;
 
-    const [time, setTime] = useState(0);
-    
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(time => time + 1);
-          }, 1000);
-          return () => clearInterval(interval);
-    }, []);
-
     // update timer every second (1000 ms)
     var update = setInterval(function() {
         // remaining time (in milliseconds)
@@ -83,42 +74,6 @@ function CountdownTimer() {
             ) 
         }
     }, 1000);
-    
-    /*
-    // display timer if time is left
-    if (update > Banquet) {
-        return (
-            <div id="Banquet Timer" />
-        )
-
-    // otherwise show stream
-    } else {
-        return (
-            <Container className={classes.video}>
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <iframe
-                            style={{
-                                width: "1600px",
-                                height: "900px",
-                                // overflowY: "scroll", scroll currently disabled 
-                            }}
-                            title="lunar stream"
-                            src="https://www.youtube.com/embed/zpD0k69QwRU"
-                            frameborder="0"
-                            allow="accelerometer; 
-                            autoplay; 
-                            clipboard-write; 
-                            encrypted-media; 
-                            gyroscope; 
-                            picture-in-picture" allowfullscreen>
-                        </iframe>
-                    </Grid>
-                </Grid>
-            </Container>
-        ) 
-    }
-    */
 }
 export default CountdownTimer;
 
