@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 function ShopPage(props) {
     const classes = useStyles();
 
-    const lunarDate = new Date("Feb 20, 2021 19:00:00");
+    const lunarDate = new Date("Feb 20, 2021 20:00:00");
     var time = countdown (null, lunarDate, ~(countdown.MONTHS | countdown.WEEKS | countdown.MILLISECONDS));
 
     const [open, setOpen] = React.useState(false);
@@ -43,7 +43,7 @@ function ShopPage(props) {
                     </Grid>
                     <Grid item>
                         <Typography variant="h4" align="center" className={classes.heading}>
-                            {time.toString()} until Lunar!
+                            {time.days} : {time.hours} : {time.minutes} : {time.seconds} until Lunar!
                         </Typography>
                     </Grid>
                     <Grid item>
