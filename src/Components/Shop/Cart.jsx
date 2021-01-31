@@ -1,5 +1,5 @@
 import React from 'react';
-import PayPalButton from '../Shop/PayPalButton';
+import PayPal from './PayPal';
 import { Popover, List, makeStyles, Typography, Grid } from '@material-ui/core';
 import CartItem from '../Shop/CartItem';
 
@@ -33,7 +33,7 @@ function Cart(props) {
                 </List>
                
                 <Typography>Order Total: {props.total} $10.50</Typography>
-                {/* <PayPalButton /> */}
+                <PayPal amount="35" />
             </Grid>
         </Popover>
     );

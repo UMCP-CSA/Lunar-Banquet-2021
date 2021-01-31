@@ -1,12 +1,23 @@
-import { LOGIN, LOGOUT } from './actionTypes';
+import * as types from './actionTypes';
 
-export const login = (username) => ({
-    type: LOGIN,
+export const login = (username, email) => ({
+    type: types.LOGIN,
     payload: {
-        username
+        username: username,
     }
 });
 
 export const logout = () => ({
-    type: LOGOUT,
+    type: types.LOGOUT,
+});
+
+export const addToCart = (name, id, price, image) => ({
+    type: types.ADD_TO_CART,
+    payload: {
+        name,
+        id,
+        price,
+        image
+    }
+
 });

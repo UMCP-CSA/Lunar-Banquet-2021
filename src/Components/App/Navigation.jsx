@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect} from 'react';
 import {
     AppBar,
     Toolbar,
@@ -10,16 +10,19 @@ import {
     Hidden,
     Drawer,
     Paper,
+    Menu,
+    MenuItem,
+    useTheme,
     Divider,
     List,
     ListItem,
     ListItemText,
     ListItemIcon,
 } from '@material-ui/core';
-import { ShoppingCart, Menu } from '@material-ui/icons';
+import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
-import StorefrontIcon from '@material-ui/icons/Storefront';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -32,10 +35,11 @@ import LoginPopup from '../Auth/LoginPopup';
 import Cart from '../Shop/Cart';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
-import { logout } from '../../Redux/actions';
 import InstagramSocial from '../../Assets/SocialIcons/InstagramIcon.svg';
 import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
+import { login, logout } from '../../Redux/actions';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -96,7 +100,15 @@ const mapStateToProps = state => {
 
 function Navigation(props) {
     const classes = useStyles();
+    const theme = useTheme();
     const dispatch = useDispatch();
+
+    useLayoutEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) dispatch(login(user.displayName));
+            else dispatch(logout());
+        });
+    }, [dispatch]);
 
     const { auth } = store.getState();
     const { name } = store.getState();
@@ -127,7 +139,7 @@ function Navigation(props) {
     }
 
     return (
-        <>
+        <div style={{marginBottom: theme.spacing(2)}}>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <Hidden xsDown>
@@ -144,11 +156,10 @@ function Navigation(props) {
                             <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookSocial} className={classes.icons} alt='fb-icon' /></IconButton>
 
                             {/* Links */}
-                            <Button size="large" href="/" className={classes.links} color="secondary">HOME</Button>
-                            <Button size="large" href="/stream" className={classes.links} color="secondary">STREAM</Button>
-                            <Button size="large" className={classes.links} color="secondary">DARES</Button>
-                            <Button size="large" href="/shop" className={classes.links} color="secondary">SHOP</Button>
-                            <Button size="large" href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
+                            <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
+                            <Link to="/stream"><Button size="large" className={classes.links} color="secondary">STREAM</Button></Link>
+                            <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
+                            <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             {auth ?
                                 <>
                                     <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
@@ -163,7 +174,7 @@ function Navigation(props) {
 
                     {/* Mobile Nav */}
                     <Hidden smUp>
-                        <IconButton onClick={toggleMobileOpen}><Menu color="secondary" /></IconButton>
+                        <IconButton onClick={toggleMobileOpen}><MenuIcon color="secondary" /></IconButton>
                         <Drawer
                             open={mobileOpen}
                             onClose={toggleMobileOpen}
@@ -175,7 +186,7 @@ function Navigation(props) {
                                 keepMounted: true // Better open performance on mobile.
                             }}>
                             <Paper>
-                                <div className={classes.topDrawer}>
+                            <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
                                     {/* <Divider className={classes.divider}/> */}
                                     <List>
@@ -202,17 +213,11 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="STREAM" />
                                         </ListItem>
-                                        <ListItem button key="Dares">
+                                        <ListItem button key="Dares" component="a" href="/dares">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <WhatshotIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="DARES" />
-                                        </ListItem>
-                                        <ListItem button key="Shop" component="a" href="/shop">
-                                            <ListItemIcon className={classes.drawerIcons}>
-                                                <StorefrontIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary="SHOP" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
                                             <ListItemIcon className={classes.drawerIcons}>
@@ -270,13 +275,13 @@ function Navigation(props) {
             </AppBar>
             <Toolbar />
 
-            <Modal
-                open={loginOpen}
-                onClose={toggleLoginOpen}
-                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <LoginPopup />
-            </Modal>
-        </>
+                <Modal
+                    open={loginOpen}
+                    onClose={toggleLoginOpen}
+                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <LoginPopup />
+                </Modal>
+        </div>
     );
 }
 
