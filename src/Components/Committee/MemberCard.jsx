@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(25)
     },
     memName: {
-        fontFamily: "'Open Sans'",
+        fontFamily: "'Open Sans', sans-serif",
         fontWeight: '650',
         fontSize: '18px',
         color: theme.palette.secondary.main
     },
-    position: {
-        fontFamily: "'Open Sans'",
+    title: {
+        fontFamily: "'Open Sans', sans-serif",
         color: theme.palette.secondary.main
     },
 }));
@@ -34,7 +34,7 @@ function MemberCard(props) {
                 <Grid item>
                     <img src={props.image} className = {classes.image} alt = ""/>    
                     <Typography varient="h5" align="center" className={classes.memName}>{props.name}</Typography>
-                    <Typography varient="h5" align="center" className={classes.position}>{props.bio}</Typography>
+                    <Typography varient="h5" align="center" className={classes.title}>{props.bio}</Typography>
                 </Grid>
             </Grid>
 

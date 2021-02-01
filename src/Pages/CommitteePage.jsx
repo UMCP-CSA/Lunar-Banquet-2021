@@ -34,7 +34,7 @@ import Unavailable from '../Assets/OrgPics/unavailable.jpg';
 const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
         color: "#ffd56b",
         marginBottom: theme.spacing(5),
     }
