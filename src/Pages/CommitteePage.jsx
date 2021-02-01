@@ -22,7 +22,7 @@ import Daphne from '../Assets/OrgPics/daphne.jpg';
 import Joann from '../Assets/OrgPics/joann.jpg';
 import Julie from '../Assets/OrgPics/julie.JPG';
 import Kyle from '../Assets/OrgPics/kyle.jpg';
-import Mei from '../Assets/OrgPics/mei.png';
+import Mei from '../Assets/OrgPics/mei.jpg';
 import Stanley from '../Assets/OrgPics/stanley.jpeg';
 import Bonnie from '../Assets/OrgPics/bonnie.jpg';
 import Nick from '../Assets/OrgPics/nick.jpg';

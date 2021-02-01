@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import countdown from '../Utils/Stream/countdown';
 import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
-import ProgramPopup from '../Components/App/ProgramPopup';
+import ProgramPopup from '../Components/Activities/ProgramPopup';
 import VideoPopup from '../Components/App/VideoPopup';
 
 const useStyles = makeStyles((theme) => ({
