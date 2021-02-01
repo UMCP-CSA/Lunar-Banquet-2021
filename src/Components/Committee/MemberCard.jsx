@@ -8,13 +8,20 @@ import {
 
 const useStyles = makeStyles((theme) => ({ 
     image: {
-        width: theme.spacing(30),
-        height: theme.spacing(30)
+        borderRadius: '16px',
+        width: theme.spacing(25),
+        height: theme.spacing(25)
     },
-    text: {
-        fontFamily: "'Abril Fatface', cursive",
-        color: "#ffd56b"
-    }
+    memName: {
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: '650',
+        fontSize: '18px',
+        color: theme.palette.secondary.main
+    },
+    title: {
+        fontFamily: "'Open Sans', sans-serif",
+        color: theme.palette.secondary.main
+    },
 }));
 
 function MemberCard(props) {
@@ -26,8 +33,8 @@ function MemberCard(props) {
                 
                 <Grid item>
                     <img src={props.image} className = {classes.image} alt = ""/>    
-                    <Typography varient="h5" align="center" className={classes.text}>{props.name}</Typography>
-                    <Typography varient="h5" align="center" className={classes.text}>{props.bio}</Typography>
+                    <Typography varient="h5" align="center" className={classes.memName}>{props.name}</Typography>
+                    <Typography varient="h5" align="center" className={classes.title}>{props.bio}</Typography>
                 </Grid>
             </Grid>
 
