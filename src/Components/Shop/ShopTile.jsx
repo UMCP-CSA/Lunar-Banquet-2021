@@ -40,8 +40,6 @@ function ShopTile(props) {
             setMax(document.data().max);
         });
     
-
-
     return (
         /* // container for tile */
         <Box className={classes.outerBox}>
@@ -71,7 +69,7 @@ function ShopTile(props) {
                     variant="outlined"
                     InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
                     style={{margin: theme.spacing(1)}}
-                    />
+                />
            
                     <Grid container spacing={1}>
                         <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
