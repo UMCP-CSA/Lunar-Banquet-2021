@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b"
     }
 }));
