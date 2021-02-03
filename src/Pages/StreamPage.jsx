@@ -28,7 +28,7 @@ function ShopPage(props) {
         !open ? setOpen(true) : setOpen(false);
     }
 
-    if(Date.now() < lunarDate) {
+    if(!Date.now() < !lunarDate) {
         return (
             <Container>
                 <Grid container direction="column" alignItems="center">

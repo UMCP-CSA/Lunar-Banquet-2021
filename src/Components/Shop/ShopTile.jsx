@@ -36,7 +36,7 @@ function ShopTile(props) {
 
     db.collection("products").doc(`${person}`).get()
         .then(function (document) {
-            setProfit(document.data().profit);
+            setProfit(document.data().profit + document.data().venmo);
             setMax(document.data().max);
         });
     
