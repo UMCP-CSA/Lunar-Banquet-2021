@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
         fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginBottom: theme.spacing(5),
     }
