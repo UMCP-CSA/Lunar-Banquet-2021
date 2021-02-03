@@ -1,4 +1,4 @@
-import React, { useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -139,7 +139,7 @@ function Navigation(props) {
     }
 
     return (
-        <div style={{marginBottom: theme.spacing(2)}}>
+        <div style={{ marginBottom: theme.spacing(2) }}>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <Hidden xsDown>
@@ -186,13 +186,13 @@ function Navigation(props) {
                                 keepMounted: true // Better open performance on mobile.
                             }}>
                             <Paper>
-                            <div className={classes.topDrawer}>
+                                <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
                                     {/* <Divider className={classes.divider}/> */}
                                     <List>
                                         <ListItem>
                                             <a href='/'>
-                                                <img src={CSALogo} className={classes.logoDrawer} alt=''/>
+                                                <img src={CSALogo} className={classes.logoDrawer} alt='' />
                                             </a>
                                             <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
                                                 LUNAR BANQUET
@@ -270,17 +270,22 @@ function Navigation(props) {
                                 </div>
                             </Paper>
                         </Drawer>
+                        <a href='/'>
+                            <img src={CSALogo} className={classes.logo} alt='' />
+                        </a>
+                        <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                        <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                     </Hidden>
                 </Toolbar>
             </AppBar>
             <Toolbar />
 
-                <Modal
-                    open={loginOpen}
-                    onClose={toggleLoginOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LoginPopup />
-                </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={toggleLoginOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
         </div>
     );
 }
