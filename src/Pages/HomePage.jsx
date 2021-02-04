@@ -108,7 +108,7 @@ const useStyles = makeStyles(theme => ({
     },
     cloud2: {
         position: "absolute",
-        right: theme.spacing(0),
+        right: theme.spacing(1),
         [theme.breakpoints.up('xs')]: {
             width: theme.spacing(17),
             top: theme.spacing(18),

@@ -5,7 +5,7 @@ import {
     Container,
     Typography
 } from '@material-ui/core';
-import MemberCard from '../Components/App/MemberCard';
+import MemberCard from '../Components/Committee/MemberCard';
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
 import Allison from '../Assets/OrgPics/Allison.jpg';
 import Thea from '../Assets/OrgPics/Thea.jpg';
@@ -34,8 +34,10 @@ import Unavailable from '../Assets/OrgPics/unavailable.jpg';
 const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
-        color: "#ffd56b"
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
+        color: "#ffd56b",
+        marginBottom: theme.spacing(5),
     }
 }));
 
@@ -46,7 +48,7 @@ function CommitteePage(props) {
     return (
         <Container>
             <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
-            <Grid container>
+            <Grid container container direction="row" justify="center" spacing={5}>
                 <Grid item>
                     <MemberCard
                         name="Andrew Liu"
