@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     },
     memName: {
         fontFamily: "'Open Sans', sans-serif",
-        fontWeight: '650',
         fontSize: '18px',
+        fontWeight: 'bold',
         color: theme.palette.secondary.main
     },
     title: {
