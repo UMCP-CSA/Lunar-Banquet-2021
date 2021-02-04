@@ -5,7 +5,6 @@ import '../Components/App/countdown';
 import ProgramPopup from '../Components/App/ProgramPopup';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
-import ResponsiveEmbed from 'react-responsive-embed';
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -52,21 +51,35 @@ const useStyles = makeStyles((theme) => ({
         color: "#ffd56b",
         textAlign: "center",
         [theme.breakpoints.up('xs')]: {
-            marginTop: theme.spacing(10),
+            marginTop: theme.spacing(25),
             marginBottom: theme.spacing(1),
+            fontSize: "24px",
         },
         [theme.breakpoints.up('sm')]: {
             marginTop: theme.spacing(10),
             marginBottom: theme.spacing(1),
+            fontSize: "24px",
         },
     },
     countdown: {
         flexGrow: 1,
-        fontSize: "56px",
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b",
         marginTop: theme.spacing(1),
-        textAlign: "center",
+        [theme.breakpoints.up('xs')]: {
+            marginTop: theme.spacing(25),
+            marginBottom: theme.spacing(1),
+            fontSize: "24px",
+        },
+        [theme.breakpoints.up('sm')]: {
+            marginTop: theme.spacing(10),
+            marginBottom: theme.spacing(1),
+            fontSize: "24px",
+        },
+        [theme.breakpoints.up('md')]: {
+            marginBottom: theme.spacing(1),
+            fontSize: "56px",
+        }
     },
     program: {
         flexGrow: 1,
@@ -100,16 +113,16 @@ const useStyles = makeStyles((theme) => ({
 
 function StreamPage(props) {
     const classes = useStyles();
-
     const lunarDate = new Date("Feb 20, 2021 19:00:00");
 
     const [open, setOpen] = React.useState(false);
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
     }
-    // Container holding stream video
+    // Stream to be shown on completion of countdown
     const Completionist = () => <Container>
                                     <div className={classes.vidWrapper}>
+                                        {/* 16:9 ratio by default */}
                                         <iframe className={classes.video}
                                             src="https://www.youtube.com/embed/zpD0k69QwRU"
                                             title="lunar-stream"
