@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         fontFamily: "'Abril Fatface', cursive",
-        color: "#d71312"
+        color: "#ffd56b"
     }
 }));
 

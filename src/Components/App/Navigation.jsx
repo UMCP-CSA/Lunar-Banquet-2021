@@ -10,7 +10,6 @@ import {
 } from '@material-ui/core';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
-import { Link } from '@material-ui/core';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import { logout } from '../../Redux/actions';
@@ -20,9 +19,9 @@ import store from '../../Redux/store';
 
 const useStyles = makeStyles(theme => ({
     logo: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
         paddingRight: theme.spacing(3),
-        width: '4rem',
+        width: '3rem',
     },
     heading: {
         flexGrow: 1,
@@ -73,21 +72,20 @@ function Navigation(props) {
                     <a href='/'>
                         <img src={CSALogo} className={classes.logo} alt='' />
                     </a>
-                    <Typography align='left' variant='h6' color='primary' className={classes.heading} href='/'>
-                        LUNAR BANQUET 2020
+                    <Typography align='left' variant='h6' color='secondary' className={classes.heading} href='/'>
+                        LUNAR BANQUET 2021
                     </Typography>
                     
-                    {/* <Button color='inherit' onClick={logout()}>Log Out</Button> */}
                     <Typography color="secondary">
-                        <IconButton href="https://www.instagram.com/umcpcsa/" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
-                        <IconButton href="https://www.facebook.com/UMCPCSA/" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+                        <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank"className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
+                        <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
                         
-                        <Button href="/" className={classes.links}>HOME</Button>
-                        <Button href="/stream" className={classes.links}>STREAM</Button>
-                        <Button href="/shop" className={classes.links}>SHOP</Button>
-                        <Button href="/committee" className={classes.links}>COMMITTEE</Button>
-                        { auth ? <Button className={classes.links} onClick={updateLogoutState}>LOGOUT</Button> :
-                        <Button className={classes.links} onClick={toggleOpen}>LOGIN</Button> }
+                        <Button href="/" className={classes.links} color="secondary">HOME</Button>
+                        <Button href="/stream" className={classes.links} color="secondary">STREAM</Button>
+                        <Button href="/shop" className={classes.links} color="secondary">SHOP</Button>
+                        <Button href="/committee" className={classes.links} color="secondary">COMMITTEE</Button>
+                        { auth ? <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button> :
+                        <Button className={classes.links} color="secondary" onClick={toggleOpen}>LOGIN</Button> }
                     </Typography>
                 </Toolbar>
             </AppBar>
