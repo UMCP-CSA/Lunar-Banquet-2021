@@ -16,19 +16,20 @@ import Sylvia from '../Assets/OrgPics/Sylvia.jpg';
 import Jen from '../Assets/OrgPics/Jen.jpg';
 import Alex from '../Assets/OrgPics/Alex.jpg';
 import Jessica from '../Assets/OrgPics/Jessica.jpg';
-import Alan from '../Assets/OrgPics/alan.jpeg';
-import Catherine from '../Assets/OrgPics/catherine.jpg';
-import Daphne from '../Assets/OrgPics/daphne.jpg';
-import Joann from '../Assets/OrgPics/joann.jpg';
+import Alan from '../Assets/OrgPics/Alan.jpg';
+import Catherine from '../Assets/OrgPics/Catherine.jpg';
+import Daphne from '../Assets/OrgPics/Daphne.jpg';
+import Joann from '../Assets/OrgPics/Joann.jpg';
 import Julie from '../Assets/OrgPics/julie.JPG';
 import Kyle from '../Assets/OrgPics/kyle.jpg';
 import Mei from '../Assets/OrgPics/mei.jpg';
-import Stanley from '../Assets/OrgPics/stanley.jpeg';
+import Stanley from '../Assets/OrgPics/Stanley.jpg';
 import Bonnie from '../Assets/OrgPics/bonnie.jpg';
 import Nick from '../Assets/OrgPics/nick.jpg';
 import Thomas from '../Assets/OrgPics/thomas.jpg';
 import AlexC from '../Assets/OrgPics/alexc.png';
 import Unavailable from '../Assets/OrgPics/unavailable.jpg';
+import Brittany from '../Assets/OrgPics/Brittany.jpg';
 
 
 const useStyles = makeStyles(theme => ({
@@ -164,7 +165,7 @@ function CommitteePage(props) {
                 <Grid item>
                     <MemberCard
                         name="Brittany Zhang"
-                        image={Unavailable}
+                        image={Brittany}
                         bio="Marketing Committee"
                     />
                 </Grid>
