@@ -1,8 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Countdown from '../Utils/Stream/countdown';
+//import countdown from '../Utils/Stream/countdown';
 import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
-
+//import '../Components/App/countdown';
+//import ProgramPopup from '../Components/App/ProgramPopup';
+import ReactDOM from 'react-dom';
+import Countdown from 'react-countdown';
 import ProgramPopup from '../Components/Activities/ProgramPopup';
 
 const useStyles = makeStyles((theme) => ({
@@ -115,8 +118,6 @@ function StreamPage(props) {
     const lunarDate = new Date("Feb 20, 2021 19:00:00");
 
     const [open, setOpen] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-
     const toggleOpen = () => {
         !open ? setOpen(true) : setOpen(false);
     }
@@ -134,7 +135,6 @@ function StreamPage(props) {
                                         </iframe>
                                     </div>
                                 </Container>;
-
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
