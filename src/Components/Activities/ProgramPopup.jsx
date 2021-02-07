@@ -36,7 +36,7 @@ function LoginPopup(props) {
                 </Typography> */}
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
-                        <Typography variant="h4" align="center" className={classes.heading}> GGWB </Typography>
+                        <Typography>ggwb</Typography>
                     </Grid>
                     <Grid item>
                         <Typography>

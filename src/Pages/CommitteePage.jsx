@@ -19,7 +19,7 @@ import Jessica from '../Assets/OrgPics/Jessica.jpg';
 import Alan from '../Assets/OrgPics/Alan.jpg';
 import Catherine from '../Assets/OrgPics/Catherine.jpg';
 import Daphne from '../Assets/OrgPics/Daphne.jpg';
-import Joann from '../Assets/OrgPics/Joann.jpg';
+import Joann from '../Assets/OrgPics/joann.jpg';
 import Julie from '../Assets/OrgPics/julie.JPG';
 import Kyle from '../Assets/OrgPics/kyle.jpg';
 import Mei from '../Assets/OrgPics/mei.jpg';
