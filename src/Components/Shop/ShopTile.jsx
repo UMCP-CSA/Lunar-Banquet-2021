@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
+import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress, Modal } from "@material-ui/core";
+import DaresModal from './DaresModal';
 import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,11 @@ function ShopTile(props) {
             setMax(document.data().max);
         });
     
+    const [open, setOpen] = React.useState(false);
 
+    const toggleOpen = () => {
+        !open ? setOpen(true) : setOpen(false);
+    }
 
     return (
         /* // container for tile */
@@ -74,7 +79,19 @@ function ShopTile(props) {
                     />
            
                     <Grid container spacing={1}>
+                        {/*
                         <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
+                        */}
+                        <Grid item><Button className={classes.button} color="secondary" variant="contained" onClick={toggleOpen}>View Dares</Button></Grid>
+                        
+                        {/* make modal not exit on click?? */}
+                        <Modal
+                            open={open}
+                            onClose={toggleOpen}
+                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <DaresModal />
+                        </Modal>
+
                         <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
                     </Grid>
 
