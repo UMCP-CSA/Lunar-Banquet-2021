@@ -5,7 +5,13 @@ import {
     Paper, 
     useTheme, 
     Grid,
-    makeStyles
+    makeStyles,
+    Table,
+    TableContainer,
+    TableHead,
+    TableBody,
+    TableRow,
+    TableCell
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import GGWB from '../../Assets/OrgPics/GGWB.jpg'
@@ -21,8 +27,26 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b"
-    }
+    },
+    table: {
+        minWidth: 300,
+    },
 }));
+
+function createData(time, event) {
+    return { time, event };
+}
+
+const rows = [
+    createData('7:00', 'Event Starts'),
+    createData('7:15', 'Game 1'),
+    createData('7:30', 'Performance 1: GGWB'),
+    createData('7:45', 'Game 2'),
+    createData('8:00', 'Performance 2: Wushu'),
+    createData('8:15', 'Game 3'),
+    createData('8:30', 'Performance 3: Tianyi'),
+    createData('8:45', 'End'),
+];
 
 function LoginPopup(props) {
     const theme = useTheme();
@@ -31,44 +55,28 @@ function LoginPopup(props) {
     return (
         <Box display="flex" alignItems="center" flexDirection="column">
             <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
-                {/* <Typography variant="body2">
-                    The program of events will be posted here as we get closer to the event!
-                </Typography> */}
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <Typography>ggwb</Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-                            GGWB is a dance group here at UMD. They got fancy moves :)
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <img src={GGWB} className = {classes.image} alt = ""/>
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="h4" align="center" className={classes.heading}>Tianyi</Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-                            Tianyi is a traditional Chinese dance group at UMD. They also got fancy moves :)
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <img src={Tianyi} className = {classes.image} alt = ""/>
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="h4" align="center" className={classes.heading}>Terp Wushu</Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-                            Wushu is a Chinese martial arts group at UMD. They got fancy fighting moves :)
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <img src={Wushu} className={classes.image} alt="" />
-                    </Grid>
-                </Grid>
+                <Typography> Program of Events </Typography>
+                <TableContainer component={Paper}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Time</TableCell>
+                                <TableCell>Event</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.map((row) => (
+                                <TableRow key={row.name}>
+                                    <TableCell component="th" scope="row">
+                                        {row.time}
+                                    </TableCell>
+                                    <TableCell >{row.event}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+
             </Paper>
         </Box>
     );

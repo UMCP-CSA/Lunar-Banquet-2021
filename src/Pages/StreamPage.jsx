@@ -1,9 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-//import countdown from '../Utils/Stream/countdown';
 import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
-//import '../Components/App/countdown';
-//import ProgramPopup from '../Components/App/ProgramPopup';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 import ProgramPopup from '../Components/Activities/ProgramPopup';
@@ -181,7 +178,7 @@ function StreamPage(props) {
                     </Grid>
                     <Grid item>
                         <Countdown
-                            date={"February 20,2021"}
+                            date={/*"February 20,2021"*/ lunarDate}
                             intervalDelay={1000}
                             precision={1}
                             zeroPadDays={2}
