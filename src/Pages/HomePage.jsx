@@ -219,6 +219,16 @@ const FadeFromTop = ({ children }) => (
 </Tween>
 );
 
+const FadeSpinIn = ({ children }) => (
+<Tween
+    from={{ opacity: 0 }}
+    to={{ opacity: 1, rotation: 360 }}
+    duration={1.5}
+>
+    {children}
+</Tween>
+);
+
 function HomePage(props) {
     const classes = useStyles();
 
@@ -256,23 +266,23 @@ function HomePage(props) {
             </Reveal>
             
             <Reveal repeat trigger={<div />}>
-                <Tween to={{ rotation: 360 }} duration={1.5}>
+                <FadeSpinIn>
                     <img
                         className={classes.flower1}
                         alt="flower"
                         src={Flower} 
                     />
-                </Tween>
+                </FadeSpinIn>
             </Reveal>
             
             <Reveal repeat trigger={<div />}>
-                <Tween to={{rotation: 360 }} duration={1.5}>
+                <FadeSpinIn>
                     <img
                         className={classes.flower2}
                         alt="flower"
                         src={Flower} 
                     />
-                </Tween>
+                </FadeSpinIn>
             </Reveal>
             
             <Reveal repeat trigger={<div />}>
