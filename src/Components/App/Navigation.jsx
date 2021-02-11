@@ -18,6 +18,7 @@ import {
     ListItem,
     ListItemText,
     ListItemIcon,
+    Box,
 } from '@material-ui/core';
 import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -270,11 +271,18 @@ function Navigation(props) {
                                 </div>
                             </Paper>
                         </Drawer>
-                        <a href='/'>
-                            <img src={CSALogo} className={classes.logo} alt='' />
-                        </a>
-                        <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
-                        <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                        <Box display="flex" flexGrow={1}>
+                            <a href='/'>
+                                <img src={CSALogo} className={classes.logo} alt='' />
+                            </a>
+                        </Box>
+                        {auth ?
+                            <>
+                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                            </>
+                            :
+                            <></>}
                     </Hidden>
                 </Toolbar>
             </AppBar>
