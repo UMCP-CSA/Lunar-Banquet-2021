@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../Redux/actions';
 import firebase from 'firebase';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +33,9 @@ function ShopTile(props) {
     const db = firebase.firestore();
     const [profit, setProfit] = useState(0);
     const [max, setMax] = useState(0);
-    
+    const [cost, setCost] = useState(5);
+    const dispatch = useDispatch();
+
     const normalise = value => (value) * 100 / (max);
 
     db.collection("products").doc(`${person}`).get()
@@ -39,6 +43,14 @@ function ShopTile(props) {
             setProfit(document.data().profit + document.data().venmo);
             setMax(document.data().max);
         });
+
+    const handleAddToCart = (name, itemPrice) => {
+        dispatch(addToCart(name, itemPrice));
+    }
+
+    const handleCost = (e) => {
+        setCost(e.target.value);
+    }
     
     return (
         /* // container for tile */
@@ -67,13 +79,21 @@ function ShopTile(props) {
                     defaultValue="5" 
                     label="Name Your Own Price"
                     variant="outlined"
+                    onChange = {e => handleCost(e)}
                     InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
                     style={{margin: theme.spacing(1)}}
                 />
            
                     <Grid container spacing={1}>
                         <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
-                        <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
+                        <Grid item>
+                            <Button
+                                onClick={() => handleAddToCart(props.name, cost)}
+                                className={classes.button} color="primary"
+                                variant="contained" href={props.link}>
+                                Add To Cart
+                            </Button>
+                        </Grid>
                     </Grid>
 
                     <LinearProgress className={classes.meter} color="primary" variant="determinate" value={normalise(profit)} />

@@ -2,7 +2,6 @@ import React from 'react';
 import PayPal from './PayPal';
 import { 
     Popover,
-    List, 
     makeStyles, 
     Typography, 
     Grid, 
@@ -14,8 +13,8 @@ import {
     TableRow, 
     Paper,
     Button} from '@material-ui/core';
-import CartItem from '../Shop/CartItem';
 import { connect } from 'react-redux';
+import store from '../../Redux/store';
 
 const useStyles = makeStyles((theme) => ({ 
     container: {
@@ -30,21 +29,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-
 function Cart(props) {
     const classes = useStyles();
-
-    const itemCount = 0;
-
-    // Some sample data until the redux works
-    const rows = [
-        createData(itemCount, "name", "13.99"),
-    ];
-
-    function createData(itemCount, name, price) {
-        itemCount++;
-        return { itemCount, name, price };
-    }
+    const { cart, total } = store.getState()
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     return (
         <Popover
@@ -71,17 +59,17 @@ function Cart(props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {cart.map((item) => (
                                 <TableRow>
-                                    <TableCell align="right" size="small" colSpan={1}>{row.itemCount}</TableCell>
-                                    <TableCell align="right">{row.name}</TableCell>
-                                    <TableCell align="right">${row.price}</TableCell>
+                                    <TableCell align="right" size="small" colSpan={1}>{}</TableCell>
+                                    <TableCell align="right">{item.name}</TableCell>
+                                    <TableCell align="right">${item.cost}</TableCell>
                                 </TableRow>
                             ))}
 
                             <TableRow>
                                 <TableCell colSpan={2}>Total</TableCell>
-                                <TableCell align="right">$10.99</TableCell>
+                                <TableCell align="right">${total}</TableCell>
                             </TableRow>
                         </TableBody>
                         
