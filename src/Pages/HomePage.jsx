@@ -4,6 +4,7 @@ import Lantern from '../Assets/Homepage/Lantern.svg';
 import Flower from '../Assets/Homepage/Flower1.svg';
 import Cloud from '../Assets/Homepage/Cloud.svg';
 import { Container, makeStyles } from '@material-ui/core';
+import { Reveal, Tween } from 'react-gsap';
 
 const useStyles = makeStyles(theme => ({
     lantern1: {
@@ -188,39 +189,122 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const FadeFromLeft = ({ children }) => (
+    <Tween
+      from={{ opacity: 0, transform: 'translate3d(-100vw, 0, 0)' }}
+      duration={1.5}
+      ease="back.out(1.2)"
+    >
+      {children}
+    </Tween>
+  );
+
+const FadeFromRight = ({ children }) => (
+    <Tween
+      from={{ opacity: 0, transform: 'translate3d(100vw, 0, 0)' }}
+      duration={1.5}
+      ease="back.out(1.2)"
+    >
+      {children}
+    </Tween>
+  );
+
+const FadeFromTop = ({ children }) => (
+<Tween
+    from={{ opacity: 0, transform: 'translate3d(0, -100vh, 0)' }}
+    duration={1.5}
+    ease="back.out(1.0)"
+>
+    {children}
+</Tween>
+);
+
+const FadeSpinIn = ({ children }) => (
+<Tween
+    from={{ opacity: 0 }}
+    to={{ opacity: 1, rotation: 360 }}
+    duration={1.5}
+>
+    {children}
+</Tween>
+);
+
 function HomePage(props) {
     const classes = useStyles();
 
     return (
         <Container fixed>
-            <img
-                className={classes.lantern1}
-                alt="lantern"
-                src={Lantern} />
-            <img
-                className={classes.lantern2}
-                alt="lantern"
-                src={Lantern} />
-            <img 
-                className={classes.cow}
-                alt="cow"
-                src={Cow} />
-            <img
-                className={classes.flower1}
-                alt="flower"
-                src={Flower} />
-            <img
-                className={classes.flower2}
-                alt="flower"
-                src={Flower} />
-            <img
-                className={classes.cloud1}
-                alt="cloud"
-                src={Cloud} />
-            <img
-                className={classes.cloud2}
-                alt="cloud"
-                src={Cloud} />
+            <Reveal repeat trigger={<div />}>
+                <FadeFromTop>
+                    <img
+                        className={classes.lantern1}
+                        alt="lantern"
+                        src={Lantern} 
+                    />
+                </FadeFromTop>
+            </Reveal>
+            
+
+            <Reveal repeat trigger={<div />}>
+                <FadeFromTop>
+                    <img
+                        className={classes.lantern2}
+                        alt="lantern"
+                        src={Lantern} 
+                    />
+                </FadeFromTop>
+            </Reveal>
+
+            <Reveal repeat trigger={<div />}>
+                <Tween from={{ opacity: 0 }} duration={3}>
+                    <img 
+                        className={classes.cow}
+                        alt="cow"
+                        src={Cow} 
+                    />
+                </Tween>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeSpinIn>
+                    <img
+                        className={classes.flower1}
+                        alt="flower"
+                        src={Flower} 
+                    />
+                </FadeSpinIn>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeSpinIn>
+                    <img
+                        className={classes.flower2}
+                        alt="flower"
+                        src={Flower} 
+                    />
+                </FadeSpinIn>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeFromLeft>
+                    <img
+                        className={classes.cloud1}
+                        alt="cloud"
+                        src={Cloud}
+                    />
+                </FadeFromLeft>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeFromRight>
+                    <img
+                        className={classes.cloud2}
+                        alt="cloud"
+                        src={Cloud} 
+                    />
+                </FadeFromRight>
+            </Reveal>
+            
         </Container>
     );
 }
