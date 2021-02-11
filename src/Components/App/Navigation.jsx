@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -230,19 +230,12 @@ function Navigation(props) {
                                     <Divider className={classes.divider} />
                                     <List>
                                         {auth ?
-                                            [<ListItem id="cart-button" onClick={toggleCart} key="Name">
-                                                <ListItemIcon className={classes.drawerIcons}>
-                                                    <ShoppingCartIcon />
-                                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
-                                                </ListItemIcon>
-                                                <ListItemText disableRipple style={{ cursor: 'default', textTransform: 'uppercase' }} primary={name} />
-                                            </ListItem>,
                                             <ListItem button key="LOGOUT" onClick={updateLogoutState}>
                                                 <ListItemIcon className={classes.drawerIcons}>
                                                     <MeetingRoomIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="LOGOUT" />
-                                            </ListItem>]
+                                            </ListItem>
                                             :
                                             <ListItem button onClick={toggleLoginOpen} key="Login">
                                                 <ListItemIcon className={classes.drawerIcons}>
@@ -267,7 +260,6 @@ function Navigation(props) {
                                             <ListItemText primary="FACEBOOK" />
                                         </ListItem>
                                     </List>
-                                    <Divider className={classes.divider} />
                                 </div>
                             </Paper>
                         </Drawer>
