@@ -175,6 +175,28 @@ export default function FullWidthTabs() {
                         errorFunc={handleError}
                     />
                 </Grid>
+                {/* <Grid item>
+                    <ShopTile
+                        name="Alice"
+                        profit="0"
+                        desc="I am once again asking for a red pocket"
+                        image={Sylvia}
+                        alt="alice"
+                        person="alice"
+                        errorFunc={handleError}
+                    />
+                </Grid>
+                <Grid item>
+                    <ShopTile
+                        name="Andrew"
+                        profit="0"
+                        desc="I am once again asking for a red pocket"
+                        image={Sylvia}
+                        alt="andrew"
+                        person="andrew"
+                        errorFunc={handleError}
+                    />
+                </Grid> */}
             </Grid>
         </Container>
         </TabPanel>
