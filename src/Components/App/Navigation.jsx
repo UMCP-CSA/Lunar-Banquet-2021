@@ -45,7 +45,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     logo: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         paddingRight: theme.spacing(3),
         width: '3rem',
     },
@@ -193,7 +193,7 @@ function Navigation(props) {
                                             <a href='/'>
                                                 <img src={CSALogo} className={classes.logoDrawer} alt='' />
                                             </a>
-                                            <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
+                                            <Typography align='left' variant='subtitle2' color='secondary' className={classes.heading}>
                                                 LUNAR BANQUET
                                             </Typography>
                                         </ListItem>
@@ -262,9 +262,6 @@ function Navigation(props) {
                             </Paper>
                         </Drawer>
                         <Box display="flex" flexGrow={1}>
-                            <a href='/'>
-                                <img src={CSALogo} className={classes.logo} alt='' />
-                            </a>
                         </Box>
                         {auth ?
                             <>
