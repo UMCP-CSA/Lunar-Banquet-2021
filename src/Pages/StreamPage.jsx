@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     countdown: {
         flexGrow: 1,
         fontFamily: "'Open Sans', sans-serif",
-        fontWeight: 'bold',,
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginTop: theme.spacing(1),
         [theme.breakpoints.up('xs')]: {
