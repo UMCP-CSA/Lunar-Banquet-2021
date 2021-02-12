@@ -79,17 +79,13 @@ function ShopTile(props) {
                     />
            
                     <Grid container spacing={1}>
-                        {/*
-                        <Grid item><Button className={classes.button} color="secondary" variant="contained">View Dares</Button></Grid>
-                        */}
                         <Grid item><Button className={classes.button} color="secondary" variant="contained" onClick={toggleOpen}>View Dares</Button></Grid>
                         
-                        {/* make modal not exit on click?? */}
                         <Modal
                             open={open}
                             onClose={toggleOpen}
-                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <DaresModal />
+                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                            <DaresModal person={props.person}/>
                         </Modal>
 
                         <Grid item><Button className={classes.button} color="primary" variant="contained" href={props.link}> Add To Cart</Button></Grid>
