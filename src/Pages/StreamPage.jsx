@@ -5,7 +5,6 @@ import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 
-
 const useStyles = makeStyles((theme) => ({
     video: {
         position: 'absolute',
@@ -137,7 +136,6 @@ function StreamPage(props) {
                                         </iframe>
                                     </div>
                                 </Container>;
-
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
@@ -184,7 +182,7 @@ function StreamPage(props) {
                     </Grid>
                     <Grid item>
                         <Countdown
-                            date={"February 20,2021"}
+                            date={/*"February 20,2021"*/ lunarDate}
                             intervalDelay={1000}
                             precision={1}
                             zeroPadDays={2}
