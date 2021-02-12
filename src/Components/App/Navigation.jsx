@@ -1,4 +1,4 @@
-import React, { useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -18,6 +18,7 @@ import {
     ListItem,
     ListItemText,
     ListItemIcon,
+    Box,
 } from '@material-ui/core';
 import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -139,7 +140,7 @@ function Navigation(props) {
     }
 
     return (
-        <div style={{marginBottom: theme.spacing(2)}}>
+        <div style={{ marginBottom: theme.spacing(2) }}>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <Hidden xsDown>
@@ -186,13 +187,13 @@ function Navigation(props) {
                                 keepMounted: true // Better open performance on mobile.
                             }}>
                             <Paper>
-                            <div className={classes.topDrawer}>
+                                <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
                                     {/* <Divider className={classes.divider}/> */}
                                     <List>
                                         <ListItem>
                                             <a href='/'>
-                                                <img src={CSALogo} className={classes.logoDrawer} alt=''/>
+                                                <img src={CSALogo} className={classes.logoDrawer} alt='' />
                                             </a>
                                             <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
                                                 LUNAR BANQUET
@@ -229,19 +230,12 @@ function Navigation(props) {
                                     <Divider className={classes.divider} />
                                     <List>
                                         {auth ?
-                                            [<ListItem id="cart-button" onClick={toggleCart} key="Name">
-                                                <ListItemIcon className={classes.drawerIcons}>
-                                                    <ShoppingCartIcon />
-                                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
-                                                </ListItemIcon>
-                                                <ListItemText disableRipple style={{ cursor: 'default', textTransform: 'uppercase' }} primary={name} />
-                                            </ListItem>,
                                             <ListItem button key="LOGOUT" onClick={updateLogoutState}>
                                                 <ListItemIcon className={classes.drawerIcons}>
                                                     <MeetingRoomIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="LOGOUT" />
-                                            </ListItem>]
+                                            </ListItem>
                                             :
                                             <ListItem button onClick={toggleLoginOpen} key="Login">
                                                 <ListItemIcon className={classes.drawerIcons}>
@@ -266,21 +260,32 @@ function Navigation(props) {
                                             <ListItemText primary="FACEBOOK" />
                                         </ListItem>
                                     </List>
-                                    <Divider className={classes.divider} />
                                 </div>
                             </Paper>
                         </Drawer>
+                        <Box display="flex" flexGrow={1}>
+                            <a href='/'>
+                                <img src={CSALogo} className={classes.logo} alt='' />
+                            </a>
+                        </Box>
+                        {auth ?
+                            <>
+                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                            </>
+                            :
+                            <></>}
                     </Hidden>
                 </Toolbar>
             </AppBar>
             <Toolbar />
 
-                <Modal
-                    open={loginOpen}
-                    onClose={toggleLoginOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LoginPopup />
-                </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={toggleLoginOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
         </div>
     );
 }
