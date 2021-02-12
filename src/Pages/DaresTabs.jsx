@@ -9,8 +9,7 @@ import Lily from '../Assets/OrgPics/Lily.jpg';
 import Jen from '../Assets/OrgPics/Jen.jpg';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
-import { Grid, Container, Tabs, Tab, Paper, Button, ButtonGroup } from "@material-ui/core";
-import { borders, sizing } from '@material-ui/system';
+import { Grid, Container, Tabs, Tab} from "@material-ui/core";
 import DareImg from '../Components/Shop/DareImg';
 import Alert from '@material-ui/lab/Alert';
 
@@ -101,11 +100,11 @@ export default function FullWidthTabs() {
         <Container>
             <Grid container direction="row" justify="center" spacing={2}>
                 <Grid item xs={12}>
-                    <Box bgcolor="white" borderRadius={16} height="110%">
-                        All proceeds go to Feeding America, the nation’s largest domestic hunger-relief organization. Their
-                        mission is to feed America’s hungry through a nationwide network of member food banks and engage 
-                        our country in the fight to end hunger. The Feeding America network of food banks, pantries and 
-                        meal programs serve virtually every community in the United States, totalling around 40 million people.
+                    <Box borderRadius={16} height="110%">
+                        <Typography color="secondary">
+                        All proceeds go to <i>Feeding America</i>, the nation’s largest domestic hunger-relief organization 
+                        serving over 40 million people. 
+                        </Typography>
                     </Box>
                 </Grid>
                 <Grid item>
