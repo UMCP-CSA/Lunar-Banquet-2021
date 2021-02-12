@@ -9,7 +9,7 @@ import Lily from '../Assets/ShopPics/Lily.jpg';
 import Jen from '../Assets/ShopPics/Jen.png';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
-import AlexC from '../Assets/OrgPics/alexc.png';
+import AlexC from '../Assets/ShopPics/AlexC.jpg';
 import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
 import { Grid, Container, Tabs, Tab} from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
