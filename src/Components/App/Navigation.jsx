@@ -159,10 +159,10 @@ function Navigation(props) {
                             <a target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
+                            <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                            <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                             {auth ?
                                 <>
-                                    <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
-                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                                     <Button disableRipple color="secondary" style={{ cursor: 'default' }} className={classes.links}>{name}</Button>
                                     <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
                                 </>

@@ -3,9 +3,11 @@ import Cow from '../Assets/Homepage/Cow.svg';
 import Lantern from '../Assets/Homepage/Lantern.svg';
 import Flower from '../Assets/Homepage/Flower1.svg';
 import Cloud from '../Assets/Homepage/Cloud.svg';
-import { Container, makeStyles, Button } from '@material-ui/core';
+import { Button, Container, makeStyles, useTheme} from '@material-ui/core';
 import { Reveal, Tween } from 'react-gsap';
 import { Link } from 'react-router-dom'
+import '../App.css'
+
 
 const useStyles = makeStyles(theme => ({
     lantern1: {
@@ -187,26 +189,6 @@ const useStyles = makeStyles(theme => ({
             top: theme.spacing(70),
             left: theme.spacing(170),
         },
-        buttons: {
-            position: "absolute",
-            left: '50%',
-            transform: 'translateX(-50%)',
-            [theme.breakpoints.up('xs')]: {
-                top: theme.spacing(60),
-            },
-            [theme.breakpoints.up('sm')]: {
-                top: theme.spacing(50),
-            },
-            [theme.breakpoints.up('md')]: {
-                top: theme.spacing(60),
-            },
-            [theme.breakpoints.up('lg')]: {
-                top: theme.spacing(80),
-            },
-            [theme.breakpoints.up('xl')]: {
-                top: theme.spacing(80),
-            }
-        }
     },
 }));
 
@@ -252,6 +234,7 @@ const FadeSpinIn = ({ children }) => (
 
 function HomePage(props) {
     const classes = useStyles();
+    const theme = useTheme();
 
     return (
         <Container fixed>
@@ -325,12 +308,6 @@ function HomePage(props) {
                     />
                 </FadeFromRight>
             </Reveal>
-            
-            {/* <Reveal repeat trigger={<div />}>
-                <Tween from={{ opacity: 0 }} duration={2}>
-                    <Link to="/dares"><Button className={classes.buttons} style={{marginLeft: '10px'}} variant="contained" size="large" color = "secondary">Dares</Button></Link>
-                </Tween>
-            </Reveal> */}
 
         </Container>
     );
