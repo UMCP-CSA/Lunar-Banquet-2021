@@ -1,4 +1,4 @@
-import React, { useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -11,16 +11,33 @@ import {
     Drawer,
     Paper,
     Menu,
-    useTheme
+    MenuItem,
+    useTheme,
+    Divider,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemIcon,
+    Box,
 } from '@material-ui/core';
 import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
+import PeopleIcon from '@material-ui/icons/People';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 import CSALogo from '../../Assets/OrgPics/CSALogo.svg';
 import LoginPopup from '../Auth/LoginPopup';
 import Cart from '../Shop/Cart';
 import { connect, useDispatch } from 'react-redux';
 import firebase from 'firebase';
-import InstagramIcon from '../../Assets/SocialIcons/InstagramIcon.svg';
-import FacebookIcon from '../../Assets/SocialIcons/FacebookIcon.svg';
+import InstagramSocial from '../../Assets/SocialIcons/InstagramIcon.svg';
+import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
 import { login, logout } from '../../Redux/actions';
 import { Link } from 'react-router-dom';
@@ -50,7 +67,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     drawerPaper: {
-        width: drawerWidth
+        width: drawerWidth,
+        backgroundColor: theme.palette.primary.main,
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -58,6 +76,20 @@ const useStyles = makeStyles(theme => ({
     icons: {
         width: theme.spacing(3),
         height: theme.spacing(3),
+    },
+    topDrawer: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.main,
+    },
+    drawerIcons: {
+        color: theme.palette.secondary.main
+    },
+    divider: {
+        background: theme.palette.secondary.main
+    },
+    logoDrawer: {
+        paddingRight: theme.spacing(3),
+        width: '2rem',
     },
 }));
 
@@ -108,7 +140,7 @@ function Navigation(props) {
     }
 
     return (
-        <div style={{marginBottom: theme.spacing(2)}}>
+        <div style={{ marginBottom: theme.spacing(2) }}>
             <AppBar color="transparent" elevation="0">
                 <Toolbar>
                     <Hidden xsDown>
@@ -121,8 +153,8 @@ function Navigation(props) {
 
                         <Typography color="secondary">
                             {/* Social Medias */}
-                            <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramIcon} className={classes.icons} alt='ig-icon' /></IconButton>
-                            <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookIcon} className={classes.icons} alt='fb-icon' /></IconButton>
+                            <IconButton href="https://www.instagram.com/umcpcsa/" target="_blank" className={classes.socials}><img src={InstagramSocial} className={classes.icons} alt='ig-icon' /></IconButton>
+                            <IconButton href="https://www.facebook.com/UMCPCSA/" target="_blank" className={classes.socials}><img src={FacebookSocial} className={classes.icons} alt='fb-icon' /></IconButton>
 
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
@@ -143,7 +175,7 @@ function Navigation(props) {
 
                     {/* Mobile Nav */}
                     <Hidden smUp>
-                        <IconButton onClick={toggleMobileOpen}><Menu color="secondary" /></IconButton>
+                        <IconButton onClick={toggleMobileOpen}><MenuIcon color="secondary" /></IconButton>
                         <Drawer
                             open={mobileOpen}
                             onClose={toggleMobileOpen}
@@ -154,19 +186,106 @@ function Navigation(props) {
                             ModalProps={{
                                 keepMounted: true // Better open performance on mobile.
                             }}>
-                            <Paper>Hihi Nick, help me fill things in here!</Paper>
+                            <Paper>
+                                <div className={classes.topDrawer}>
+                                    <div className={classes.toolbar} />
+                                    {/* <Divider className={classes.divider}/> */}
+                                    <List>
+                                        <ListItem>
+                                            <a href='/'>
+                                                <img src={CSALogo} className={classes.logoDrawer} alt='' />
+                                            </a>
+                                            <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
+                                                LUNAR BANQUET
+                                            </Typography>
+                                        </ListItem>
+                                    </List>
+                                    <Divider className={classes.divider} />
+                                    <List>
+                                        <ListItem button key="Home" component="a" href="/">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <HomeIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="HOME" />
+                                        </ListItem>
+                                        <ListItem button key="Stream" component="a" href="/stream">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <LiveTvIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="STREAM" />
+                                        </ListItem>
+                                        <ListItem button key="Dares" component="a" href="/dares">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <WhatshotIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="DARES" />
+                                        </ListItem>
+                                        <ListItem button key="Committee" component="a" href="/committee">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <PeopleIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="COMMITTEE" />
+                                        </ListItem>
+                                    </List>
+                                    <Divider className={classes.divider} />
+                                    <List>
+                                        {auth ?
+                                            <ListItem button key="LOGOUT" onClick={updateLogoutState}>
+                                                <ListItemIcon className={classes.drawerIcons}>
+                                                    <MeetingRoomIcon />
+                                                </ListItemIcon>
+                                                <ListItemText primary="LOGOUT" />
+                                            </ListItem>
+                                            :
+                                            <ListItem button onClick={toggleLoginOpen} key="Login">
+                                                <ListItemIcon className={classes.drawerIcons}>
+                                                    <ExitToAppIcon />
+                                                </ListItemIcon>
+                                                <ListItemText primary="LOGIN" />
+                                            </ListItem>
+                                        }
+                                    </List>
+                                    <Divider className={classes.divider} />
+                                    <List>
+                                        <ListItem button key="Instagram" component="a" href="https://www.instagram.com/umcpcsa/" target="_blank">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <InstagramIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="INSTAGRAM" />
+                                        </ListItem>
+                                        <ListItem button key="Facebook" component="a" href="https://www.facebook.com/UMCPCSA/" target="_blank">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <FacebookIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="FACEBOOK" />
+                                        </ListItem>
+                                    </List>
+                                </div>
+                            </Paper>
                         </Drawer>
+                        <Box display="flex" flexGrow={1}>
+                            <a href='/'>
+                                <img src={CSALogo} className={classes.logo} alt='' />
+                            </a>
+                        </Box>
+                        {auth ?
+                            <>
+                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                            </>
+                            :
+                            <></>}
                     </Hidden>
                 </Toolbar>
             </AppBar>
             <Toolbar />
 
-                <Modal
-                    open={loginOpen}
-                    onClose={toggleLoginOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LoginPopup />
-                </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={toggleLoginOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
         </div>
     );
 }

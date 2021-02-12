@@ -10,6 +10,7 @@ import Jen from '../Assets/OrgPics/Jen.jpg';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
 import { Grid, Container, Tabs, Tab, Paper, Button, ButtonGroup } from "@material-ui/core";
+import { borders, sizing } from '@material-ui/system';
 import DareImg from '../Components/Shop/DareImg';
 import Alert from '@material-ui/lab/Alert';
 
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
    },
    dareimg: {
        width: theme.spacing(40)
-   }
+   },
 }));
 
 export default function FullWidthTabs() {
@@ -99,6 +100,14 @@ export default function FullWidthTabs() {
         <TabPanel value={value} index={0} dir={theme.direction}>
         <Container>
             <Grid container direction="row" justify="center" spacing={2}>
+                <Grid item xs={12}>
+                    <Box bgcolor="white" borderRadius={16} height="110%">
+                        All proceeds go to Feeding America, the nation’s largest domestic hunger-relief organization. Their
+                        mission is to feed America’s hungry through a nationwide network of member food banks and engage 
+                        our country in the fight to end hunger. The Feeding America network of food banks, pantries and 
+                        meal programs serve virtually every community in the United States, totalling around 40 million people.
+                    </Box>
+                </Grid>
                 <Grid item>
                     <ShopTile
                         name="Lily"
@@ -170,7 +179,7 @@ export default function FullWidthTabs() {
         </TabPanel>
 
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Grid container>
+          <Grid container direction="row" spacing={2}>
               <Grid item><DareImg img={AlexH} name="Lil Alex" /></Grid>
           </Grid>
         </TabPanel>
