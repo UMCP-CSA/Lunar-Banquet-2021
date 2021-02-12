@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DaresModal(props) {
-    const classes = useStyles();
     const theme = useTheme();
 
     const dares = [

@@ -3,9 +3,8 @@ import Cow from '../Assets/Homepage/Cow.svg';
 import Lantern from '../Assets/Homepage/Lantern.svg';
 import Flower from '../Assets/Homepage/Flower1.svg';
 import Cloud from '../Assets/Homepage/Cloud.svg';
-import { Button, Container, makeStyles, useTheme} from '@material-ui/core';
+import { Container, makeStyles, useTheme } from '@material-ui/core';
 import { Reveal, Tween } from 'react-gsap';
-import { Link } from 'react-router-dom'
 import '../App.css'
 
 

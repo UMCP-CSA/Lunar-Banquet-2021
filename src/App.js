@@ -5,7 +5,6 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import DaresTabs from './Pages/DaresTabs';
-import StreamPage from './Pages/StreamPage';
 import CommitteePage from './Pages/CommitteePage';
 
 

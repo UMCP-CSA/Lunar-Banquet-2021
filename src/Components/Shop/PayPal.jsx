@@ -3,8 +3,6 @@ import { PayPalButton } from "react-paypal-button-v2";
 import firebase from 'firebase';
 
 function PayPal(props) {
-
-    const user = firebase.auth().currentUser;
     const db = firebase.firestore();
     const cart = props.cart
     console.log(cart);

@@ -13,7 +13,6 @@ import {
     TableHead, 
     TableRow, 
     Paper,
-    Button,
     IconButton,
     Box,
     useTheme,
@@ -110,7 +109,7 @@ function Cart(props) {
                 <Typography align="center" variant="subtitle2">
                         You can also Venmo @CSA-UMCP and leave the person(s) you are contributing to in the notes!
                         </Typography>
-                    <Grid item><img className={classes.QR} src={venmoQR} /></Grid>
+                    <Grid item><img className={classes.QR} alt="venmo" src={venmoQR} /></Grid>
                 </Grid>
             </Grid>
         </Popover>
