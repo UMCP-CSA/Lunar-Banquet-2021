@@ -48,7 +48,7 @@ function CommitteePage(props) {
 
     return (
         <Container>
-            <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
+            <Typography variant="h3" align="center" className={classes.heading}>COMMITTEE MEMBERS</Typography>
             <Grid container container direction="row" justify="center" spacing={5}>
                 <Grid item>
                     <MemberCard

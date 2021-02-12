@@ -1,4 +1,4 @@
-import React, { useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -10,22 +10,21 @@ import {
     Hidden,
     Drawer,
     Paper,
-    Menu,
-    MenuItem,
     useTheme,
     Divider,
     List,
     ListItem,
     ListItemText,
     ListItemIcon,
+    Box,
 } from '@material-ui/core';
-import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
+
+import { ShoppingCart } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -40,12 +39,13 @@ import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
 import { login, logout } from '../../Redux/actions';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     logo: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         paddingRight: theme.spacing(3),
         width: '3rem',
     },
@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
     },
     socials: {
         marginLeft: theme.spacing(0),
@@ -116,7 +116,6 @@ function Navigation(props) {
     const [cart, setCart] = React.useState(false);
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
-
     const toggleLoginOpen = () => {
         !loginOpen ? setLoginOpen(true) : setLoginOpen(false);
     }
@@ -139,15 +138,15 @@ function Navigation(props) {
     }
 
     return (
-        <div style={{marginBottom: theme.spacing(2)}}>
-            <AppBar color="transparent" elevation="0">
+        <div style={{ marginBottom: theme.spacing(5) }} >
+            <AppBar color="primary" elevation="4">
                 <Toolbar>
                     <Hidden xsDown>
                         <a href='/'>
                             <img src={CSALogo} className={classes.logo} alt='' />
                         </a>
                         <Typography align='left' variant='h6' color='secondary' className={classes.heading} href='/'>
-                            LUNAR BANQUET 2021
+                            <Link to="/" style={{textDecoration: "none", color: "inherit"}}>LUNAR BANQUET 2021</Link>
                     </Typography>
 
                         <Typography color="secondary">
@@ -157,13 +156,13 @@ function Navigation(props) {
 
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
-                            <Link to="/stream"><Button size="large" className={classes.links} color="secondary">STREAM</Button></Link>
+                            <a target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
+                            <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                            <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                             {auth ?
                                 <>
-                                    <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
-                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
                                     <Button disableRipple color="secondary" style={{ cursor: 'default' }} className={classes.links}>{name}</Button>
                                     <Button className={classes.links} onClick={updateLogoutState} color="secondary">LOGOUT</Button>
                                 </>
@@ -186,15 +185,15 @@ function Navigation(props) {
                                 keepMounted: true // Better open performance on mobile.
                             }}>
                             <Paper>
-                            <div className={classes.topDrawer}>
+                                <div className={classes.topDrawer}>
                                     <div className={classes.toolbar} />
                                     {/* <Divider className={classes.divider}/> */}
                                     <List>
                                         <ListItem>
                                             <a href='/'>
-                                                <img src={CSALogo} className={classes.logoDrawer} alt=''/>
+                                                <img src={CSALogo} className={classes.logoDrawer} alt='' />
                                             </a>
-                                            <Typography align='left' variant='subtitle1' color='secondary' className={classes.heading}>
+                                            <Typography align='left' variant='subtitle2' color='secondary' className={classes.heading}>
                                                 LUNAR BANQUET
                                             </Typography>
                                         </ListItem>
@@ -207,7 +206,7 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="HOME" />
                                         </ListItem>
-                                        <ListItem button key="Stream" component="a" href="/stream">
+                                        <ListItem button key="Stream" component="a" href="http://twitch.tv/umcpcsa" target="_blank">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <LiveTvIcon />
                                             </ListItemIcon>
@@ -229,19 +228,12 @@ function Navigation(props) {
                                     <Divider className={classes.divider} />
                                     <List>
                                         {auth ?
-                                            [<ListItem id="cart-button" onClick={toggleCart} key="Name">
-                                                <ListItemIcon className={classes.drawerIcons}>
-                                                    <ShoppingCartIcon />
-                                                    <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
-                                                </ListItemIcon>
-                                                <ListItemText disableRipple style={{ cursor: 'default', textTransform: 'uppercase' }} primary={name} />
-                                            </ListItem>,
                                             <ListItem button key="LOGOUT" onClick={updateLogoutState}>
                                                 <ListItemIcon className={classes.drawerIcons}>
                                                     <MeetingRoomIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="LOGOUT" />
-                                            </ListItem>]
+                                            </ListItem>
                                             :
                                             <ListItem button onClick={toggleLoginOpen} key="Login">
                                                 <ListItemIcon className={classes.drawerIcons}>
@@ -266,21 +258,29 @@ function Navigation(props) {
                                             <ListItemText primary="FACEBOOK" />
                                         </ListItem>
                                     </List>
-                                    <Divider className={classes.divider} />
                                 </div>
                             </Paper>
                         </Drawer>
+                        <Box display="flex" flexGrow={1}>
+                        </Box>
+                        {auth ?
+                            <>
+                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+                            </>
+                            :
+                            <></>}
                     </Hidden>
                 </Toolbar>
             </AppBar>
             <Toolbar />
 
-                <Modal
-                    open={loginOpen}
-                    onClose={toggleLoginOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LoginPopup />
-                </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={toggleLoginOpen}
+                style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LoginPopup />
+            </Modal>
         </div>
     );
 }
