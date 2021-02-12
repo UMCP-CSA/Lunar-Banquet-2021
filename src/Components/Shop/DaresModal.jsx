@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     tableHead: {
-        fontWeight: "fontWeightBold",
+        fontWeight: "bold",
         fontFamily: "'Abril Fatface', cursive",
         color: "#ffd56b",
     },
@@ -105,9 +105,9 @@ function DaresModal(props) {
     }
 
     return (
-        <Box display="flex" alignItems="center" flexDirection="column">
-            <Paper elevation={1} style={{ padding: theme.spacing(5) }}>
-                <Typography variant='h6'>
+        <Box display="flex" alignItems="center" flexDirection="column" style={{textAlign: "center"}}>
+            <Paper elevation={1} style={{ padding: theme.spacing(5) }} ju>
+                <Typography variant='h6' style={{fontWeight: "bold"}}>
                     {name}'s Dares!
                 </Typography> 
 
