@@ -28,11 +28,29 @@ const reducer = (state = initialState, action) => {
             const cost = action.payload.cost;
             const name = action.payload.name;
             const newTotal = parseInt(state.total) + parseInt(cost);
-            return {
-                ...state,
-                total: newTotal,
-                cart: [...state.cart, {name: name, cost: cost}]
-            };
+            let duplicate = null
+            if (state.cart != []) duplicate = state.cart.find(item => item.name == name)
+            console.log(duplicate)
+            
+            if (!duplicate) {
+                localStorage.setItem('cart', [...state.cart, {name: name, cost: cost}].toString)
+                return {
+                    ...state,
+                    total: newTotal,
+                    cart: [...state.cart, {name: name, cost: cost}]
+                };
+            } else {
+                const index = state.cart.findIndex(item => item.name == name)
+                const newTotal = parseInt(state.total - duplicate.cost + cost)
+                const newArr = [...state.cart]
+                newArr[index].cost = cost
+                console.log(newArr.toString())
+                return {
+                    ...state,
+                    total: newTotal,
+                    cart: newArr,
+                };
+            }
         }
         default:
             return state;

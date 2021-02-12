@@ -32,7 +32,9 @@ const mapStateToProps = (state) => {
 function Cart(props) {
     const classes = useStyles();
     const { cart, total } = store.getState()
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (localStorage.getItem('cart')) {
+        console.log(localStorage.getItem('cart'));
+    }
 
     return (
         <Popover
@@ -76,7 +78,7 @@ function Cart(props) {
                     </Table>
                 </TableContainer>
 
-                <PayPal amount="35" />
+                <PayPal amount={total} />
                 <Button>Paying on Venmo</Button>
             </Grid>
         </Popover>
