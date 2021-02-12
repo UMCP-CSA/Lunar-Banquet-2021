@@ -19,7 +19,7 @@ function PayPal(props) {
                     // Need to write items to database after it's hooked up to the cart
                     db.collection('purchase').doc(user.displayName).set(payload);
                 }}
-                style={{color: "silver"}}
+                style={{color: "silver", size: "responsive"}}
                 options={{
                     clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID,
                 }}

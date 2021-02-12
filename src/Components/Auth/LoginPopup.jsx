@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import firebase from 'firebase';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import { Typography, Box, Paper, useTheme } from '@material-ui/core';
-import {login, logout} from '../../Redux/actions';
+import { login, logout } from '../../Redux/actions';
 import { useDispatch, connect } from 'react-redux';
 
 const uiConfig = {

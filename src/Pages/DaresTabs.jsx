@@ -12,6 +12,7 @@ import Eugene from '../Assets/ShopPics/Eugene.png';
 import { Grid, Container, Tabs, Tab, Paper, Button, ButtonGroup } from "@material-ui/core";
 import { borders, sizing } from '@material-ui/system';
 import DareImg from '../Components/Shop/DareImg';
+import Alert from '@material-ui/lab/Alert';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,6 +62,7 @@ export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [error, setError] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,9 +72,13 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const handleError = () => {
+    setError(!error);
+  }
+
   return (
     <div className={classes.root}>
-      
+          {error ? <Alert onClose={handleError} severity="error">Please name a price greater than 0!</Alert> : null }
           <Tabs
               value={value}
               onChange={handleChange}
@@ -110,6 +116,7 @@ export default function FullWidthTabs() {
                         image={Lily}
                         alt="lily"
                         person="lily"
+                        errorFunc={handleError}
                     />
                 </Grid>
                 <Grid item>
@@ -120,6 +127,7 @@ export default function FullWidthTabs() {
                         image={Eugene}
                         alt="Astro Baby Milo"
                         person="eugene"
+                        errorFunc={handleError}
                     />
                 </Grid>
                 <Grid item>
@@ -130,6 +138,7 @@ export default function FullWidthTabs() {
                         image={Jen}
                         alt="Supreme bag"
                         person="jen"
+                        errorFunc={handleError}
                     />
                 </Grid>
                 <Grid item>
@@ -140,6 +149,7 @@ export default function FullWidthTabs() {
                         image={AlexH}
                         alt="lil alex"
                         person="alexh"
+                        errorFunc={handleError}
                     />
                 </Grid>
                 <Grid item>
@@ -150,6 +160,7 @@ export default function FullWidthTabs() {
                         image={Jen}
                         alt="big alex"
                         person="alexc"
+                        errorFunc={handleError}
                     />
                 </Grid>
                 <Grid item>
@@ -160,6 +171,7 @@ export default function FullWidthTabs() {
                         image={Jen}
                         alt="sylvia"
                         person="sylvia"
+                        errorFunc={handleError}
                     />
                 </Grid>
             </Grid>
