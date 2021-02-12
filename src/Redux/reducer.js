@@ -69,14 +69,15 @@ const reducer = (state = initialState, action) => {
         case REMOVE_ITEM: {
             const name = action.payload.name;
             const newArr = [...state.cart]
-            const removed = null;
+            let newTotal = state.total
             newArr.map((item, index) => {
                 if (item.name == name) {
-                    removed = newArr.splice(index, 1)
+                    newArr.splice(index, 1)
+                    localStorage.setItem('cart', JSON.stringify(newArr))
+                    newTotal = parseInt(state.total) - parseInt(item.cost);
                 }
             })
-            let newTotal = parseInt(state.total - removed.cost);
-            localStorage.setItem('cart', JSON.stringify(newArr))
+            
             return {
                 ...state,
                 cart: newArr,
