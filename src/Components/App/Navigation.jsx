@@ -10,8 +10,6 @@ import {
     Hidden,
     Drawer,
     Paper,
-    Menu,
-    MenuItem,
     useTheme,
     Divider,
     List,
@@ -20,13 +18,13 @@ import {
     ListItemIcon,
     Box,
 } from '@material-ui/core';
-import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
+
+import { ShoppingCart } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -41,6 +39,7 @@ import FacebookSocial from '../../Assets/SocialIcons/FacebookIcon.svg';
 import store from '../../Redux/store';
 import { login, logout } from '../../Redux/actions';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 const drawerWidth = 240;
 
@@ -117,7 +116,6 @@ function Navigation(props) {
     const [cart, setCart] = React.useState(false);
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
-
     const toggleLoginOpen = () => {
         !loginOpen ? setLoginOpen(true) : setLoginOpen(false);
     }
@@ -140,8 +138,8 @@ function Navigation(props) {
     }
 
     return (
-        <div style={{ marginBottom: theme.spacing(2) }}>
-            <AppBar color="transparent" elevation="0">
+        <div style={{ marginBottom: theme.spacing(5) }} >
+            <AppBar color="primary" elevation="4">
                 <Toolbar>
                     <Hidden xsDown>
                         <a href='/'>
@@ -158,7 +156,7 @@ function Navigation(props) {
 
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
-                            <a target="_blank" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
+                            <a target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             {auth ?

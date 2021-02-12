@@ -5,13 +5,15 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import Lily from '../Assets/OrgPics/Lily.jpg';
-import Jen from '../Assets/OrgPics/Jen.jpg';
+import Lily from '../Assets/ShopPics/Lily.jpg';
+import Jen from '../Assets/ShopPics/Jen.png';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
+import AlexC from '../Assets/OrgPics/alexc.png';
+import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
 import { Grid, Container, Tabs, Tab} from "@material-ui/core";
-import DareImg from '../Components/Shop/DareImg';
 import Alert from '@material-ui/lab/Alert';
+import MemberCard from '../Components/Committee/MemberCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -111,7 +113,7 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Lily"
                         profit="0"
-                        desc="Yummy"
+                        desc="I will literally remake avatar"
                         image={Lily}
                         alt="lily"
                         person="lily"
@@ -122,9 +124,9 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Eugene"
                         profit="0"
-                        desc="dare me for thicc red pocket"
+                        desc="Dare me for thicc red envelope"
                         image={Eugene}
-                        alt="Astro Baby Milo"
+                        alt="eug"
                         person="eugene"
                         errorFunc={handleError}
                     />
@@ -133,7 +135,7 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Jen"
                         profit="0"
-                        desc="Easy cop"
+                        desc="Just want to shave my head"
                         image={Jen}
                         alt="Supreme bag"
                         person="jen"
@@ -144,7 +146,7 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Lil Alex"
                         profit="0"
-                        desc="The things I do for CSA"
+                        desc="Can I be your hongbao homie?"
                         image={AlexH}
                         alt="lil alex"
                         person="alexh"
@@ -155,8 +157,8 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Big Alex"
                         profit="0"
-                        desc="Must have"
-                        image={Jen}
+                        desc="You facai, I facai, we facai"
+                        image={AlexC}
                         alt="big alex"
                         person="alexc"
                         errorFunc={handleError}
@@ -166,8 +168,8 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Sylvia"
                         profit="0"
-                        desc="Must have"
-                        image={Jen}
+                        desc="I am once again asking for a red pocket"
+                        image={Sylvia}
                         alt="sylvia"
                         person="sylvia"
                         errorFunc={handleError}
@@ -179,7 +181,7 @@ export default function FullWidthTabs() {
 
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Grid container direction="row" spacing={2}>
-              <Grid item><DareImg img={AlexH} name="Lil Alex" /></Grid>
+              <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
           </Grid>
         </TabPanel>
 

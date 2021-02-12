@@ -42,3 +42,16 @@ img {
 a {
   text-decoration: none;
 }
+
+@keyframes toggleIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav {
+  animation: toggleIn 1s 1;
+}

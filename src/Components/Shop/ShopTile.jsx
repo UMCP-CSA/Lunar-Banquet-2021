@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     image: {
         width: theme.spacing(20),
         objectFit: 'cover',
+        borderRadius: "1rem",
     },
     button: {
         borderRadius: '20px',
