@@ -73,7 +73,7 @@ function Cart(props) {
                 vertical: 'top',
                 horizontal: 'center',
             }}>
-            <Grid className={classes.container} component={Grid} alignItems="center" justify="center" >
+            <Grid className={classes.container} component={Grid} alignItems="center" justify="center" xs={10}>
                 <Typography variant='h5' color="primary">Cart</Typography>
                 <Box style = {{marginTop: theme.spacing(1)}}>
                     <TableContainer component={Paper}>
