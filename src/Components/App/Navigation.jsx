@@ -146,7 +146,7 @@ function Navigation(props) {
                             <img src={CSALogo} className={classes.logo} alt='' />
                         </a>
                         <Typography align='left' variant='h6' color='secondary' className={classes.heading} href='/'>
-                            LUNAR BANQUET 2021
+                            <Link to="/" style={{textDecoration: "none", color: "inherit"}}>LUNAR BANQUET 2021</Link>
                     </Typography>
 
                         <Typography color="secondary">

@@ -13,11 +13,7 @@ function PayPal(props) {
         <>
             <PayPalButton 
                 amount={props.amount}
-                onSuccess={(details, data) => {
-                    const payload = {
-                        name: user.displayName,
-                        email: user.email
-                    }
+                onSuccess={() => {
                     cart.map((item) => {
                         db.collection("products").doc((item.name).toLowerCase()).get().then(function (document) {
                             const newProfit = parseFloat(document.data().profit) + parseFloat(item.cost)
