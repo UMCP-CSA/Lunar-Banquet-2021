@@ -105,7 +105,7 @@ function Cart(props) {
                     </TableContainer>
                 </Box>
 
-                <Box className={classes.payment}><PayPal amount={total}/></Box>
+                <Box className={classes.payment}><PayPal amount={total} cart={cart}/></Box>
                 <Grid className={classes.venmo}>
                 <Typography align="center" variant="subtitle2">
                         You can also Venmo @CSA-UMCP and leave the person(s) you are contributing to in the notes!
