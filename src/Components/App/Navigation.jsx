@@ -19,7 +19,7 @@ import {
     Box,
 } from '@material-ui/core';
 
-import { ShoppingCart } from '@material-ui/icons';
+import { ShoppingCart, QuestionAnswer } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
@@ -158,6 +158,7 @@ function Navigation(props) {
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
                             <a target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
+                            <Link to="/faq"><Button size="large" className={classes.links} color="secondary">FAQ</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
                             <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
@@ -217,6 +218,12 @@ function Navigation(props) {
                                                 <WhatshotIcon />
                                             </ListItemIcon>
                                             <ListItemText primary="DARES" />
+                                        </ListItem>
+                                        <ListItem button key="FAQ" component="a" href="/faq">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <QuestionAnswer />
+                                            </ListItemIcon>
+                                            <ListItemText primary="FAQ" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
                                             <ListItemIcon className={classes.drawerIcons}>
