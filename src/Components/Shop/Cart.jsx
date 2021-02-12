@@ -12,7 +12,10 @@ import {
     TableHead, 
     TableRow, 
     Paper,
-    Button} from '@material-ui/core';
+    Button,
+    IconButton,
+    } from '@material-ui/core';
+import { Delete } from '@material-ui/icons';
 import { connect, useDispatch } from 'react-redux';
 import store from '../../Redux/store';
 import { recoverCart, removeItem } from '../../Redux/actions';
@@ -40,6 +43,10 @@ function Cart(props) {
         if (recoveredCart) dispatch(recoverCart(JSON.parse(recoveredCart)));
     }, [dispatch])
 
+    const handleDelete = (name) => {
+        dispatch(removeItem(name));
+    }
+
     return (
         <Popover
             open={props.open}
@@ -59,17 +66,18 @@ function Cart(props) {
                     <Table aria-label="cart items table">
                         <TableHead>
                             <TableRow>
-                                <TableCell variant="footer">#</TableCell>
-                                <TableCell variant="footer" align="right">Name</TableCell>
-                                <TableCell variant="footer" align="right">Price</TableCell>
+                                <TableCell variant="footer" align="left">Name</TableCell>
+                                <TableCell variant="footer" align="right">Donation</TableCell>
+                                <TableCell variant="footer" align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {cart.map((item) => (
                                 <TableRow>
-                                    <TableCell align="right" size="small" colSpan={1}>{}</TableCell>
-                                    <TableCell align="right">{item.name}</TableCell>
+                                    <TableCell align="left">{item.name}</TableCell>
                                     <TableCell align="right">${item.cost}</TableCell>
+                                    <TableCell align="right" size="small"><IconButton onClick={() => handleDelete(item.name)}><Delete /></IconButton></TableCell>
+
                                 </TableRow>
                             ))}
 

@@ -40,7 +40,7 @@ const reducer = (state = initialState, action) => {
                 };
             } else {
                 const index = state.cart.findIndex(item => item.name == name)
-                const newTotal = parseInt(state.total - duplicate.cost + cost)
+                const newTotal = parseInt(state.total) - parseInt(duplicate.cost) + parseInt(cost)
                 const newArr = [...state.cart]
                 newArr[index].cost = cost
                 localStorage.setItem('cart', JSON.stringify(newArr))
@@ -57,7 +57,7 @@ const reducer = (state = initialState, action) => {
             if (localStorageCart) {
                 let newTotal = 0;
                 localStorageCart.forEach(item => {
-                    newTotal += item.cost
+                    newTotal += parseInt(item.cost)
                 });
                 return {
                     ...state,
@@ -69,14 +69,18 @@ const reducer = (state = initialState, action) => {
         case REMOVE_ITEM: {
             const name = action.payload.name;
             const newArr = [...state.cart]
+            const removed = null;
             newArr.map((item, index) => {
                 if (item.name == name) {
-                    newArr.splice(index, 1)
+                    removed = newArr.splice(index, 1)
                 }
             })
+            let newTotal = parseInt(state.total - removed.cost);
+            localStorage.setItem('cart', JSON.stringify(newArr))
             return {
                 ...state,
-                cart: newArr
+                cart: newArr,
+                total: newTotal
             }
         }
         default:
