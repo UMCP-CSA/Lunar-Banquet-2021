@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PayPal from './PayPal';
 import { 
     Popover,
@@ -13,8 +13,9 @@ import {
     TableRow, 
     Paper,
     Button} from '@material-ui/core';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import store from '../../Redux/store';
+import { recoverCart, removeItem } from '../../Redux/actions';
 
 const useStyles = makeStyles((theme) => ({ 
     container: {
@@ -25,16 +26,19 @@ const useStyles = makeStyles((theme) => ({
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        cart: state.cart
     }
 }
 
 function Cart(props) {
     const classes = useStyles();
-    const { cart, total } = store.getState()
-    if (localStorage.getItem('cart')) {
-        console.log(localStorage.getItem('cart'));
-    }
+    const { cart, total } = store.getState();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const recoveredCart = localStorage.getItem('cart');
+        if (recoveredCart) dispatch(recoverCart(JSON.parse(recoveredCart)));
+    }, [dispatch])
 
     return (
         <Popover

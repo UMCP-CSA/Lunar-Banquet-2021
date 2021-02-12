@@ -19,3 +19,19 @@ export const addToCart = (name, cost) => ({
     }
 
 });
+
+export const removeItem = (name) => ({
+    type: types.REMOVE_ITEM,
+    payload: {
+        name,
+    }
+
+});
+
+export const recoverCart = (cart) => ({
+    type: types.RECOVER_CART,
+    payload: {
+        cart,
+    }
+
+});
