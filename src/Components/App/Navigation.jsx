@@ -206,7 +206,7 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="HOME" />
                                         </ListItem>
-                                        <ListItem button key="Stream" component="a" href="/stream">
+                                        <ListItem button key="Stream" component="a" href="http://twitch.tv/umcpcsa" target="_blank">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <LiveTvIcon />
                                             </ListItemIcon>
