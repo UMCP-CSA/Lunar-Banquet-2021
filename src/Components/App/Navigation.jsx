@@ -11,7 +11,6 @@ import {
     Drawer,
     Paper,
     Menu,
-    MenuItem,
     useTheme
 } from '@material-ui/core';
 import { ShoppingCart, Home, VideoLabel, Shop, People, MenuRounded } from '@material-ui/icons';
@@ -127,7 +126,7 @@ function Navigation(props) {
 
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
-                            <Link to="/stream"><Button size="large" className={classes.links} color="secondary">STREAM</Button></Link>
+                            <a target="_blank" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             {auth ?

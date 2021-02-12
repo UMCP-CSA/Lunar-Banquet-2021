@@ -31,7 +31,6 @@ function App() {
           <Navigation />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/stream" component={StreamPage} />
             <Route exact path="/dares" component={DaresTabs} />
             <Route exact path="/committee" component={CommitteePage} />
           </Switch>

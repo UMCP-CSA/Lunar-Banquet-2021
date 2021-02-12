@@ -14,6 +14,9 @@ import {
     Paper,
     Button,
     IconButton,
+    Box,
+    useTheme,
+    Container
     } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import { connect, useDispatch } from 'react-redux';
@@ -24,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     container: {
         width: theme.spacing(45),
         padding: theme.spacing(3),
+    },
+    payment: {
+        margin: theme.spacing(3)
     }
 }));
 
@@ -36,6 +42,7 @@ const mapStateToProps = (state) => {
 function Cart(props) {
     const classes = useStyles();
     const { cart, total } = store.getState();
+    const theme = useTheme();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -62,36 +69,51 @@ function Cart(props) {
             }}>
             <Grid className={classes.container} component={Grid} alignItems="center" justify="center" >
                 <Typography variant='h5' color="primary">Cart</Typography>
-                <TableContainer component={Paper}>
-                    <Table aria-label="cart items table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell variant="footer" align="left">Name</TableCell>
-                                <TableCell variant="footer" align="right">Donation</TableCell>
-                                <TableCell variant="footer" align="right">Delete</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {cart.map((item) => (
+                <Box style = {{marginTop: theme.spacing(1)}}>
+                    <TableContainer component={Paper}>
+                        <Table aria-label="cart items table">
+                            <TableHead>
                                 <TableRow>
-                                    <TableCell align="left">{item.name}</TableCell>
-                                    <TableCell align="right">${item.cost}</TableCell>
-                                    <TableCell align="right" size="small"><IconButton onClick={() => handleDelete(item.name)}><Delete /></IconButton></TableCell>
-
+                                    <TableCell variant="footer" align="left">Name</TableCell>
+                                    <TableCell variant="footer" align="right">Donation</TableCell>
+                                    <TableCell variant="footer" align="right">Delete</TableCell>
                                 </TableRow>
-                            ))}
+                            </TableHead>
+                            <TableBody>
+                                {cart.map((item) => (
+                                    <TableRow>
+                                        <TableCell align="left">{item.name}</TableCell>
+                                        <TableCell align="right">${item.cost}</TableCell>
+                                        <TableCell align="right" size="small"><IconButton onClick={() => handleDelete(item.name)}><Delete /></IconButton></TableCell>
 
-                            <TableRow>
-                                <TableCell colSpan={2}>Total</TableCell>
-                                <TableCell align="right">${total}</TableCell>
-                            </TableRow>
-                        </TableBody>
+                                    </TableRow>
+                                ))}
+
+                                <TableRow>
+                                    <TableCell colSpan={2}>Total</TableCell>
+                                    <TableCell align="right">${total}</TableCell>
+                                </TableRow>
+                            </TableBody>
+                            
+                        </Table>
+                    </TableContainer>
+                </Box>
+
+                <Box className={classes.payment}><PayPal amount={total} /></Box>
+                <Grid justify="center" alignItems="center" alignContent="center">
+                    <Grid item>
+                        <Typography align="center" variant="subtitle2">
+                            You can also Venmo @CSA-UMCP and leave the person(s) you are contributing to in the notes!
+                        </Typography>
+                        <Typography align="center" variant="subtitle2">
+                            The button below will clear your cart.
+                        </Typography>
                         
-                    </Table>
-                </TableContainer>
-
-                <PayPal amount={total} />
-                <Button>Paying on Venmo</Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" color="primary">Pay Manually on Venmo</Button>
+                    </Grid>
+                </Grid>
             </Grid>
         </Popover>
     );
