@@ -1,8 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Countdown from '../Utils/Stream/countdown';
-import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
 import ProgramPopup from '../Components/Activities/ProgramPopup';
+import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
+import ReactDOM from 'react-dom';
+import Countdown from 'react-countdown';
+
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -45,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         textAlign: "center",
         [theme.breakpoints.up('xs')]: {
@@ -61,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
     },
     countdown: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginTop: theme.spacing(1),
         [theme.breakpoints.up('xs')]: {
@@ -82,7 +86,8 @@ const useStyles = makeStyles((theme) => ({
     program: {
         flexGrow: 1,
         fontSize: "36px",
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(5),
@@ -91,7 +96,8 @@ const useStyles = makeStyles((theme) => ({
     list: {
         flexGrow: 1,
         fontSize: "28px",
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         textAlign: "center",
         [theme.breakpoints.up('xs')]: {
