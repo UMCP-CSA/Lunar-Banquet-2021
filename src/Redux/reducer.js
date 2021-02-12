@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
             const name = action.payload.name;
             const newTotal = parseFloat(state.total) + parseFloat(cost);
             let duplicate = null
-            if (state.cart != []) duplicate = state.cart.find(item => item.name == name)
+            if (state.cart !== []) duplicate = state.cart.find(item => item.name === name)
             
             if (!duplicate) {
                 localStorage.setItem('cart', JSON.stringify([...state.cart, {name: name, cost: cost}]))
@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
                     cart: [...state.cart, {name: name, cost: cost}]
                 };
             } else {
-                const index = state.cart.findIndex(item => item.name == name)
+                const index = state.cart.findIndex(item => item.name === name)
                 const newTotal = parseFloat(state.total) - parseFloat(duplicate.cost) + parseFloat(cost)
                 const newArr = [...state.cart]
                 newArr[index].cost = cost
@@ -66,12 +66,13 @@ const reducer = (state = initialState, action) => {
                 };
             }
         }
+        break
         case REMOVE_ITEM: {
             const name = action.payload.name;
             const newArr = [...state.cart]
             let newTotal = state.total
             newArr.map((item, index) => {
-                if (item.name == name) {
+                if (item.name === name) {
                     newArr.splice(index, 1)
                     localStorage.setItem('cart', JSON.stringify(newArr))
                     newTotal = parseFloat(state.total) - parseFloat(item.cost);
