@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Box, Typography, Grid, Button, InputAdornment, TextField, LinearProgress } from "@material-ui/core";
-import Alert from '@material-ui/lab/Alert';
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../Redux/actions';
 import firebase from 'firebase';
@@ -46,11 +45,13 @@ function ShopTile(props) {
         });
 
     const handleAddToCart = (name, itemPrice) => {
-        dispatch(addToCart(name, itemPrice));
+        if (cost <= 0) {
+            props.errorFunc(true);
+        }
+        else dispatch(addToCart(name, itemPrice));
     }
 
     const handleCost = (e) => {
-        if (e.target.value <= 0) return <Alert severity="error">Please name a price greater than 0!</Alert>
         setCost(e.target.value);
     }
     
