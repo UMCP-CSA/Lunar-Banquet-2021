@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PayPal from './PayPal';
+import venmoQR from '../../Assets/ShopPics/csavenmo.png'
 import { 
     Popover,
     makeStyles, 
@@ -16,7 +17,6 @@ import {
     IconButton,
     Box,
     useTheme,
-    Container
     } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import { connect, useDispatch } from 'react-redux';
@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
     },
     payment: {
         margin: theme.spacing(3)
+    },
+    QR: {
+        width: "50%"
+    },
+    venmo: {
+        textAlign: "center"
     }
 }));
 
@@ -99,20 +105,12 @@ function Cart(props) {
                     </TableContainer>
                 </Box>
 
-                <Box className={classes.payment}><PayPal amount={total} /></Box>
-                <Grid justify="center" alignItems="center" alignContent="center">
-                    <Grid item>
-                        <Typography align="center" variant="subtitle2">
-                            You can also Venmo @CSA-UMCP and leave the person(s) you are contributing to in the notes!
+                <Box className={classes.payment}><PayPal amount={total}/></Box>
+                <Grid className={classes.venmo}>
+                <Typography align="center" variant="subtitle2">
+                        You can also Venmo @CSA-UMCP and leave the person(s) you are contributing to in the notes!
                         </Typography>
-                        <Typography align="center" variant="subtitle2">
-                            The button below will clear your cart.
-                        </Typography>
-                        
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" color="primary">Pay Manually on Venmo</Button>
-                    </Grid>
+                    <Grid item><img className={classes.QR} src={venmoQR} /></Grid>
                 </Grid>
             </Grid>
         </Popover>
