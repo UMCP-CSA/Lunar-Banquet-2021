@@ -14,6 +14,8 @@ import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
 import { Grid, Container, Tabs, Tab} from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
 import MemberCard from '../Components/Committee/MemberCard';
+import Alice from '../Assets/ShopPics/Alice.jfif'
+import Andrew from '../Assets/ShopPics/Andrew.jpg'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -113,7 +115,7 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Lily"
                         profit="0"
-                        desc="I will literally remake avatar"
+                        desc="I will literally remake avatar opening"
                         image={Lily}
                         alt="lily"
                         person="lily"
@@ -175,12 +177,12 @@ export default function FullWidthTabs() {
                         errorFunc={handleError}
                     />
                 </Grid>
-                {/* <Grid item>
+                <Grid item>
                     <ShopTile
                         name="Alice"
                         profit="0"
-                        desc="I am once again asking for a red pocket"
-                        image={Sylvia}
+                        desc="A big stack for me is a big stack for us all"
+                        image={Alice}
                         alt="alice"
                         person="alice"
                         errorFunc={handleError}
@@ -190,13 +192,13 @@ export default function FullWidthTabs() {
                     <ShopTile
                         name="Andrew"
                         profit="0"
-                        desc="I am once again asking for a red pocket"
-                        image={Sylvia}
+                        desc="No donate no pog"
+                        image={Andrew}
                         alt="andrew"
                         person="andrew"
                         errorFunc={handleError}
                     />
-                </Grid> */}
+                </Grid>
             </Grid>
         </Container>
         </TabPanel>
