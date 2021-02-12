@@ -326,11 +326,11 @@ function HomePage(props) {
                 </FadeFromRight>
             </Reveal>
             
-            <Reveal repeat trigger={<div />}>
+            {/* <Reveal repeat trigger={<div />}>
                 <Tween from={{ opacity: 0 }} duration={2}>
                     <Link to="/dares"><Button className={classes.buttons} style={{marginLeft: '10px'}} variant="contained" size="large" color = "secondary">Dares</Button></Link>
                 </Tween>
-            </Reveal>
+            </Reveal> */}
 
         </Container>
     );
