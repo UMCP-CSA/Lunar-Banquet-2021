@@ -270,13 +270,10 @@ function Navigation(props) {
                         </Drawer>
                         <Box display="flex" flexGrow={1}>
                         </Box>
-                        {auth ?
-                            <>
-                                <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
-                                <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
-                            </>
-                            :
-                            <></>}
+
+                        <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
+                        <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
+
                     </Hidden>
                 </Toolbar>
             </AppBar>
