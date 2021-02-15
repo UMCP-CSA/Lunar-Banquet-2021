@@ -108,10 +108,10 @@ export default function FullWidthTabs() {
             <Grid container direction="row" justify="center" spacing={2}>
                 <Grid item xs={12}>
                     <Box bgcolor="white" borderRadius={16} height="110%">
-                        All proceeds go to Feeding America, the nation’s largest domestic hunger-relief organization. Their
-                        mission is to feed America’s hungry through a nationwide network of member food banks and engage 
-                        our country in the fight to end hunger. The Feeding America network of food banks, pantries and 
-                        meal programs serve virtually every community in the United States, totalling around 40 million people.
+                        <Typography color="secondary">
+                        All proceeds go to <i>Feeding America</i>, the nation’s largest domestic hunger-relief organization 
+                        serving over 40 million people. 
+                        </Typography>
                     </Box>
                 </Grid>
                 <Grid item>
