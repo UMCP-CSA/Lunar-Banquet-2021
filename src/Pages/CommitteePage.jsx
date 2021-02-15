@@ -31,7 +31,6 @@ import AlexC from '../Assets/OrgPics/alexc.png';
 import Unavailable from '../Assets/OrgPics/unavailable.jpg';
 import { Reveal, Tween } from 'react-gsap';
 
-
 const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,
@@ -43,13 +42,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function CommitteePage(props) {
-
     const classes = useStyles();
 
     return (
-        <Reveal repeat trigger={<div />}>
-            <Tween from={{ opacity: 0 }} duration={1}>
-                <Container>
+        <>
+        <Container>
+            <Reveal trigger={<div />}>
+                <Tween from={{opacity: 0}} duration={1}>
                     <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
                     <Grid container direction="row" justify="center" spacing={5}>
                         <Grid item>
@@ -72,7 +71,7 @@ function CommitteePage(props) {
                                 image={Thea}
                                 bio="Programming Lead"
                             />
-                        </Grid>
+                        </Grid> 
                         <Grid item>
                             <MemberCard
                                 name="Lily Jin"
@@ -164,8 +163,17 @@ function CommitteePage(props) {
                                 bio="Marketing Committee"
                             />
                         </Grid>
-                        <Grid item>
-                            <MemberCard
+                    </Grid>
+                </Tween>
+            </Reveal> 
+        </Container>
+
+        <Container>
+            <Reveal trigger={<div />}>
+                <Tween from={{opacity: 0}} duration={1}>
+                    <Grid container direction="row" justify="center" spacing={5}> 
+                         <Grid item>
+                             <MemberCard
                                 name="Brittany Zhang"
                                 image={Unavailable}
                                 bio="Marketing Committee"
@@ -221,9 +229,10 @@ function CommitteePage(props) {
                             />
                         </Grid>
                     </Grid>
-                </Container>
-            </Tween>
-        </Reveal>
+                </Tween>
+            </Reveal> 
+        </Container>
+    </>
     );
 
 }
