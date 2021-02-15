@@ -5,14 +5,19 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import Lily from '../Assets/OrgPics/Lily.jpg';
-import Jen from '../Assets/OrgPics/Jen.jpg';
+import Lily from '../Assets/ShopPics/Lily.jpg';
+import Jen from '../Assets/ShopPics/Jen.png';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
-import { Grid, Container, Tabs, Tab, Paper, Button, ButtonGroup } from "@material-ui/core";
-import { borders, sizing } from '@material-ui/system';
 import DareImg from '../Components/Shop/DareImg';
 import { Reveal, Tween } from 'react-gsap';
+import AlexC from '../Assets/ShopPics/AlexC.jpg';
+import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
+import { Grid, Container, Tabs, Tab} from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
+import MemberCard from '../Components/Committee/MemberCard';
+import Alice from '../Assets/ShopPics/Alice.jfif'
+import Andrew from '../Assets/ShopPics/Andrew.jpg'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,6 +67,7 @@ export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [error, setError] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,10 +77,22 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const handleError = () => {
+    setError(!error);
+  }
+
   return (
     <Reveal repeat trigger={<div />}>
         <Tween from={{ opacity: 0}} duration={1}>
             <div className={classes.root}>
+    <div className={classes.root}>
+          {error ? <Alert onClose={handleError} severity="error">Please name a price greater than 0!</Alert> : null }
+          <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              variant="fullWidth"
               
                   <Tabs
                       value={value}
@@ -88,7 +106,6 @@ export default function FullWidthTabs() {
                       <Tab label="Completed Dares" {...a11yProps(1)} classes={{root: classes.tab}} />
                   </ Tabs>
                   
-
               <SwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                 index={value}
@@ -174,7 +191,6 @@ export default function FullWidthTabs() {
                       <Grid item><DareImg img={AlexH} name="Lil Alex" /></Grid>
                   </Grid>
                 </TabPanel>
-
               </SwipeableViews>
             </div>
         </Tween>

@@ -11,13 +11,27 @@ export const logout = () => ({
     type: types.LOGOUT,
 });
 
-export const addToCart = (name, id, price, image) => ({
+export const addToCart = (name, cost) => ({
     type: types.ADD_TO_CART,
     payload: {
         name,
-        id,
-        price,
-        image
+        cost,
+    }
+
+});
+
+export const removeItem = (name) => ({
+    type: types.REMOVE_ITEM,
+    payload: {
+        name,
+    }
+
+});
+
+export const recoverCart = (cart) => ({
+    type: types.RECOVER_CART,
+    payload: {
+        cart,
     }
 
 });

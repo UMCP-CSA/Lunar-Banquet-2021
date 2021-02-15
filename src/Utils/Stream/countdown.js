@@ -573,22 +573,22 @@ var countdown = (
     
             value = ts.days;
             if (value) {
-                list.push(formatter(value, LABEL_DAYS));
+                list.push(value);
             }
     
             value = ts.hours;
             if (value) {
-                list.push(formatter(value, LABEL_HOURS));
+                list.push(value);
             }
     
             value = ts.minutes;
             if (value) {
-                list.push(formatter(value, LABEL_MINUTES));
+                list.push(value);
             }
     
             value = ts.seconds;
             if (value) {
-                list.push(formatter(value, LABEL_SECONDS));
+                list.push(value);
             }
     
             value = ts.milliseconds;

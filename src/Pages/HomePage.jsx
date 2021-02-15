@@ -3,8 +3,10 @@ import Cow from '../Assets/Homepage/Cow.svg';
 import Lantern from '../Assets/Homepage/Lantern.svg';
 import Flower from '../Assets/Homepage/Flower1.svg';
 import Cloud from '../Assets/Homepage/Cloud.svg';
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles, useTheme } from '@material-ui/core';
 import { Reveal, Tween } from 'react-gsap';
+import '../App.css'
+
 
 const useStyles = makeStyles(theme => ({
     lantern1: {
@@ -231,6 +233,7 @@ const FadeSpinIn = ({ children }) => (
 
 function HomePage(props) {
     const classes = useStyles();
+    const theme = useTheme();
 
     return (
         <Container fixed>
@@ -304,7 +307,7 @@ function HomePage(props) {
                     />
                 </FadeFromRight>
             </Reveal>
-            
+
         </Container>
     );
 }
