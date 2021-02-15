@@ -176,7 +176,7 @@ function CommitteePage(props) {
                          <Grid item>
                              <MemberCard
                                 name="Brittany Zhang"
-                                image={Unavailable}
+                                image={Brittany}
                                 bio="Marketing Committee"
                             />
                         </Grid>
@@ -235,7 +235,6 @@ function CommitteePage(props) {
         </Container>
     </>
     );
-
 }
 
 export default CommitteePage;

@@ -136,6 +136,7 @@ function StreamPage(props) {
                                         </iframe>
                                     </div>
                                 </Container>;
+
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
@@ -172,38 +173,42 @@ function StreamPage(props) {
     // if current date before lunar
     if (Date.now() < lunarDate) {
         return (
-            <Container>
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.heading}>
-                            Lunar Banquet Will Be On February 20th, 2021<br /><br />
-                            Countdown to Lunar:
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Countdown
-                            date={"February 20,2021"}
-                            intervalDelay={1000}
-                            precision={1}
-                            zeroPadDays={2}
-                            zeroPadTime={2}
-                            renderer={renderer}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.program}>
-                            <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
-                        </Typography>
-                    </Grid>
-                </Grid>
+            <Reveal trigger={<div />}>
+                <Tween from={{ opacity: 0 }} duration={1}>
+                    <Container>
+                        <Grid container direction="column" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.heading}>
+                                    Lunar Banquet Will Be On February 20th, 2021<br /><br />
+                                    Countdown to Lunar:
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Countdown
+                                    date={"February 20,2021"}
+                                    intervalDelay={1000}
+                                    precision={1}
+                                    zeroPadDays={2}
+                                    zeroPadTime={2}
+                                    renderer={renderer}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.program}>
+                                    <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
+                                </Typography>
+                            </Grid>
+                        </Grid>
 
-                <Modal
-                    open={open}
-                    onClose={toggleOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <ProgramPopup />
-                </Modal>
-            </Container> 
+                        <Modal
+                            open={open}
+                            onClose={toggleOpen}
+                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <ProgramPopup />
+                        </Modal>
+                    </Container>
+                </Tween>
+            </Reveal>
         );
     // lunar has started, show stream
     } else {
