@@ -4,6 +4,7 @@ import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
 import ProgramPopup from '../Components/App/ProgramPopup';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
+import { Reveal, Tween } from 'react-gsap';
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -137,7 +138,8 @@ function StreamPage(props) {
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             // Render stream if completed
-            return <Completionist />;
+            return (<Completionist />);
+
         } else {
             // Render a countdown
             return (
@@ -163,48 +165,58 @@ function StreamPage(props) {
                     </ul>
                 </div>
             );
+            
         }
     };
 
     // if current date before lunar
     if (Date.now() < lunarDate) {
         return (
-            <Container>
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.heading}>
-                            Lunar Banquet Will Be On February 20th, 2021<br /><br />
-                            Countdown to Lunar:
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Countdown
-                            date={"February 20,2021"}
-                            intervalDelay={1000}
-                            precision={1}
-                            zeroPadDays={2}
-                            zeroPadTime={2}
-                            renderer={renderer}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.program}>
-                            <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
-                        </Typography>
-                    </Grid>
-                </Grid>
+            <Reveal repeat trigger={<div />}>
+                <Tween from={{ opacity: 0}} duration={1}>
+                    <Container>
+                        <Grid container direction="column" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.heading}>
+                                    Lunar Banquet Will Be On February 20th, 2021<br /><br />
+                                    Countdown to Lunar:
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Countdown
+                                    date={"February 20,2021"}
+                                    intervalDelay={1000}
+                                    precision={1}
+                                    zeroPadDays={2}
+                                    zeroPadTime={2}
+                                    renderer={renderer}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.program}>
+                                    <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
+                                </Typography>
+                            </Grid>
+                        </Grid>
 
-                <Modal
-                    open={open}
-                    onClose={toggleOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <ProgramPopup />
-                </Modal>
-            </Container> 
+                        <Modal
+                            open={open}
+                            onClose={toggleOpen}
+                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <ProgramPopup />
+                        </Modal>
+                    </Container> 
+                </Tween>
+            </Reveal>
         );
     // lunar has started, show stream
     } else {
-        return (<Completionist />);
+        return (
+            <Reveal repeat trigger={<div />}>
+                <Tween from={{ opacity: 0}} duration={1}>
+                    <Completionist />
+                </Tween>
+            </Reveal>);
     }
 }
 
