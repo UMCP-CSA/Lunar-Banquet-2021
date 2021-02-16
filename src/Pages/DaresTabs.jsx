@@ -102,7 +102,7 @@ export default function FullWidthTabs() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Reveal trigger={<div />}>
+            <Reveal repeat trigger={<div />}>
                 <Tween from={{ opacity: 0 }} duration={1}>
                     <Container>
                         <Grid container direction="row" justify="center" spacing={2}>

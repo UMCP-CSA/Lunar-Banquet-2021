@@ -47,9 +47,9 @@ function CommitteePage(props) {
 
     return (
         <>
-        <Container>
-            <Reveal trigger={<div />}>
-                <Tween from={{opacity: 0}} duration={1}>
+        <Reveal repeat trigger={<div />}>
+            <Tween from={{opacity: 0}} duration={1}>
+                <Container>
                     <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
                     <Grid container direction="row" justify="center" spacing={5}>
                         <Grid item>
@@ -165,13 +165,13 @@ function CommitteePage(props) {
                             />
                         </Grid>
                     </Grid>
-                </Tween>
-            </Reveal> 
-        </Container>
+                </Container>
+            </Tween>
+        </Reveal> 
 
-        <Container>
-            <Reveal trigger={<div />}>
-                <Tween from={{opacity: 0}} duration={1}>
+        <Reveal trigger={<div />}>
+            <Tween from={{opacity: 0}} duration={1}>
+                <Container>
                     <Grid container direction="row" justify="center" spacing={5}> 
                          <Grid item>
                              <MemberCard
@@ -230,9 +230,9 @@ function CommitteePage(props) {
                             />
                         </Grid>
                     </Grid>
-                </Tween>
-            </Reveal>
-        </Container>
+                </Container>
+            </Tween>
+        </Reveal> 
     </>
     );
 }
