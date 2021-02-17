@@ -45,6 +45,20 @@ function FAQPage(props) {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
+                    <Typography className={classes.heading}>When does the Twitch stream start?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        Our Twitch stream will start after we conclude pre-activities on Zoom! We're aiming to start the stream at 7:30pm.
+          </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
                     <Typography className={classes.heading}>How do dares work?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -72,22 +86,6 @@ function FAQPage(props) {
                         to donate to as a note and we will count it towards their dare threshold!
                         <br /><br />
                         You do not need to use the cart on this website if paying by Venmo. :)
-          </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <Typography className={classes.heading}>When does the stream start?</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        The Lunar Banquet will take place on Saturday, Feb. 20th at 7PM!
-                        Our pre-lunar activities will take place on Zoom, and the rest of the show will be streamed on Twitch when we finish pre-activities.
-                        Optionally, you can stay on Zoom to discuss the show with each other!
           </Typography>
                 </AccordionDetails>
             </Accordion>
