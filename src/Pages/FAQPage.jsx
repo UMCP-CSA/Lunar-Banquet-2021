@@ -1,6 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, makeStyles, Container } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Reveal, Tween } from 'react-gsap';
 
 const useStyles = makeStyles((theme) => ({
     root: {

@@ -6,33 +6,43 @@ import {
     Typography
 } from '@material-ui/core';
 import MemberCard from '../Components/Committee/MemberCard';
+
 import Andrew from '../Assets/OrgPics/Andrew.jpg';
 import Allison from '../Assets/OrgPics/Allison.jpg';
+
 import Thea from '../Assets/OrgPics/Thea.jpg';
+import Kyle from '../Assets/OrgPics/Kyle.jpg';
+import Chris from '../Assets/OrgPics/Chris.JPG';
+
 import Lily from '../Assets/OrgPics/Lily.jpg';
 import Eugene from '../Assets/OrgPics/Eugene.jpg';
+import Joann from '../Assets/OrgPics/Joann.jpg';
+import Brittany from '../Assets/OrgPics/Brittany.jpg';
+
 import Angena from '../Assets/OrgPics/Angena.jpg';
 import Sylvia from '../Assets/OrgPics/Sylvia.jpg';
-import Jen from '../Assets/OrgPics/Jen.jpg';
-import Alex from '../Assets/OrgPics/Alex.jpg';
-import Jessica from '../Assets/OrgPics/Jessica.jpg';
-import Alan from '../Assets/OrgPics/Alan.jpg';
-import Catherine from '../Assets/OrgPics/catherine.jpg';
-import Daphne from '../Assets/OrgPics/daphne.jpg';
-import Joann from '../Assets/OrgPics/joann.jpg';
-import Julie from '../Assets/OrgPics/julie.JPG';
-import Kyle from '../Assets/OrgPics/kyle.jpg';
-import Mei from '../Assets/OrgPics/mei.jpg';
-import Stanley from '../Assets/OrgPics/Stanley.jpg';
-import Bonnie from '../Assets/OrgPics/bonnie.jpg';
-import Nick from '../Assets/OrgPics/nick.jpg';
-import Thomas from '../Assets/OrgPics/thomas.jpg';
-import AlexC from '../Assets/OrgPics/alexc.png';
-import Unavailable from '../Assets/OrgPics/unavailable.jpg';
-import Brittany from '../Assets/OrgPics/Brittany.jpg';
-import Helen from '../Assets/OrgPics/unavailable.jpg';
-import Alice from '../Assets/OrgPics/unavailable.jpg';
+import Bonnie from '../Assets/OrgPics/Bonnie.jpg';
+import Catherine from '../Assets/OrgPics/Catherine.jpg';
+import Julie from '../Assets/OrgPics/Julie.JPG';
 
+import AlexC from '../Assets/OrgPics/AlexC.JPG';
+import Jen from '../Assets/OrgPics/Jen.jpg';
+import Alan from '../Assets/OrgPics/Alan.jpg';
+import Daphne from '../Assets/OrgPics/Daphne.jpg';
+
+import Jessica from '../Assets/OrgPics/Jessica.jpg';
+
+import Mei from '../Assets/OrgPics/Mei.jpg';
+import Alex from '../Assets/OrgPics/Alex.jpg';
+import Nick from '../Assets/OrgPics/Nick.jpg';
+import Thomas from '../Assets/OrgPics/Thomas.jpg';
+import Stanley from '../Assets/OrgPics/Stanley.jpg';
+
+import Helen from '../Assets/OrgPics/Helen.jpg';
+import Alice from '../Assets/OrgPics/Alice.jpg';
+
+import Unavailable from '../Assets/OrgPics/unavailable.jpg';
+import { Reveal, Tween } from 'react-gsap';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +56,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function CommitteePage(props) {
-
     const classes = useStyles();
 
     return (
@@ -154,7 +163,7 @@ function CommitteePage(props) {
                 <Grid item>
                     <MemberCard
                         name="Chris Tan"
-                        image={Unavailable}
+                        image={Chris}
                         bio="Programming Committee"
                     />
                 </Grid>
@@ -239,6 +248,72 @@ function CommitteePage(props) {
         </Container>
     );
 
+    //     <Reveal trigger={<div />}>
+    //         <Tween from={{opacity: 0}} duration={1}>
+    //             <Container>
+    //                 <Grid container direction="row" justify="center" spacing={5}> 
+    //                      <Grid item>
+    //                          <MemberCard
+    //                             name="Brittany Zhang"
+    //                             image={Brittany}
+    //                             bio="Marketing Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Catherine Chua"
+    //                             image={Catherine}
+    //                             bio="Activities Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Julie Yang"
+    //                             image={Julie}
+    //                             bio="Activities Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Daphne Ranti"
+    //                             image={Daphne}
+    //                             bio="Fundraising Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Alan Zhang"
+    //                             image={Alan}
+    //                             bio="Fundraising Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Nick Zhou"
+    //                             image={Nick}
+    //                             bio="Tech Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Thomas Szymkiewicz"
+    //                             image={Thomas}
+    //                             bio="Tech Committee"
+    //                         />
+    //                     </Grid>
+    //                     <Grid item>
+    //                         <MemberCard
+    //                             name="Stanley Zhu"
+    //                             image={Stanley}
+    //                             bio="Tech Committee"
+    //                         />
+    //                     </Grid>
+    //                 </Grid>
+    //             </Container>
+    //         </Tween>
+    //     </Reveal> 
+    // </>
+    // );
 }
 
 export default CommitteePage;

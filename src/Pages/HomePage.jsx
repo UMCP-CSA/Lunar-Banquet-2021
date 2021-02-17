@@ -237,7 +237,7 @@ function HomePage(props) {
 
     return (
         <Container fixed>
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeFromTop>
                     <img
                         className={classes.lantern1}
@@ -248,7 +248,7 @@ function HomePage(props) {
             </Reveal>
             
 
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeFromTop>
                     <img
                         className={classes.lantern2}
@@ -258,7 +258,7 @@ function HomePage(props) {
                 </FadeFromTop>
             </Reveal>
 
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <Tween from={{ opacity: 0 }} duration={3}>
                     <img 
                         className={classes.cow}
@@ -268,7 +268,7 @@ function HomePage(props) {
                 </Tween>
             </Reveal>
             
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeSpinIn>
                     <img
                         className={classes.flower1}
@@ -278,7 +278,7 @@ function HomePage(props) {
                 </FadeSpinIn>
             </Reveal>
             
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeSpinIn>
                     <img
                         className={classes.flower2}
@@ -288,7 +288,7 @@ function HomePage(props) {
                 </FadeSpinIn>
             </Reveal>
             
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeFromLeft>
                     <img
                         className={classes.cloud1}
@@ -298,7 +298,7 @@ function HomePage(props) {
                 </FadeFromLeft>
             </Reveal>
             
-            <Reveal repeat trigger={<div />}>
+            <Reveal trigger={<div />}>
                 <FadeFromRight>
                     <img
                         className={classes.cloud2}
