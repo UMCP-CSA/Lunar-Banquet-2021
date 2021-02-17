@@ -33,8 +33,6 @@ import Brittany from '../Assets/OrgPics/Brittany.jpg';
 import Helen from '../Assets/OrgPics/unavailable.jpg';
 import Alice from '../Assets/OrgPics/unavailable.jpg';
 
-
-
 const useStyles = makeStyles(theme => ({
     heading: {
         flexGrow: 1,

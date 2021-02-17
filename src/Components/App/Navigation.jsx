@@ -17,6 +17,8 @@ import {
     ListItemText,
     ListItemIcon,
     Box,
+    Menu,
+    MenuItem,
 } from '@material-ui/core';
 
 import { ShoppingCart, QuestionAnswer } from '@material-ui/icons';
@@ -26,6 +28,7 @@ import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
@@ -115,6 +118,7 @@ function Navigation(props) {
     const [loginOpen, setLoginOpen] = React.useState(false);
     const [cart, setCart] = React.useState(false);
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [menu, setMenu] = React.useState(null);
 
     const toggleLoginOpen = () => {
         !loginOpen ? setLoginOpen(true) : setLoginOpen(false);
@@ -126,6 +130,10 @@ function Navigation(props) {
 
     const toggleMobileOpen = () => {
         setMobileOpen(!mobileOpen);
+    }
+
+    const toggleMenu = (e) => {
+        menu ? setMenu(null) : setMenu(e.currentTarget)
     }
 
     // Dispatches logout state to the store and logs out the user in firebase
@@ -156,9 +164,13 @@ function Navigation(props) {
 
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
-                            <a target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><Button size="large" className={classes.links} color="secondary">STREAM</Button></a>
+                            <Button size="large" onClick={(e) => toggleMenu(e)} className={classes.links} color="secondary">ACTIVITIES</Button>
+                            <Menu open={Boolean(menu)} anchorEl={menu} onClose={(e) => toggleMenu(e)}>
+                                <a style={{color: "#000"}} target="_blank" rel="noreferrer" href="http://ter.ps/csazoom"><MenuItem>Pre-Activities / Hangout on Zoom</MenuItem></a>
+                                <a style={{color: "#000"}} target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><MenuItem>Lunar Stream on Twitch</MenuItem></a>
+                            </Menu>
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
-                            <Link to="/faq"><Button size="large" className={classes.links} color="secondary">FAQ</Button></Link>
+                            <Link to="/faq"><Button size="large" className={classes.links} color="secondary">INFO</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
                             <IconButton id="cart-button" className={classes.links} onClick={toggleCart}><ShoppingCart color="secondary" /></IconButton>
                             <Cart open={cart} onClose={toggleCart} anchorEl={document.getElementById("cart-button")} />
@@ -207,11 +219,17 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="HOME" />
                                         </ListItem>
+                                        <ListItem button key="Zoom" component="a" href="http://ter.ps/csazoom" target="_blank">
+                                            <ListItemIcon className={classes.drawerIcons}>
+                                                <SupervisorAccountIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="ZOOM HANGOUT" />
+                                        </ListItem>
                                         <ListItem button key="Stream" component="a" href="http://twitch.tv/umcpcsa" target="_blank">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <LiveTvIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary="STREAM" />
+                                            <ListItemText primary="LUNAR STREAM" />
                                         </ListItem>
                                         <ListItem button key="Dares" component="a" href="/dares">
                                             <ListItemIcon className={classes.drawerIcons}>
@@ -219,11 +237,11 @@ function Navigation(props) {
                                             </ListItemIcon>
                                             <ListItemText primary="DARES" />
                                         </ListItem>
-                                        <ListItem button key="FAQ" component="a" href="/faq">
+                                        <ListItem button key="INFO" component="a" href="/faq">
                                             <ListItemIcon className={classes.drawerIcons}>
                                                 <QuestionAnswer />
                                             </ListItemIcon>
-                                            <ListItemText primary="FAQ" />
+                                            <ListItemText primary="INFO" />
                                         </ListItem>
                                         <ListItem button key="Committee" component="a" href="/committee">
                                             <ListItemIcon className={classes.drawerIcons}>
