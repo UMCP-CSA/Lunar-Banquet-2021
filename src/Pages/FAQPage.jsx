@@ -32,7 +32,7 @@ function FAQPage(props) {
                         Our pre-show activities/games will start on <a target="_blank" rel="noreferrer" href="http://ter.ps/csazoom">Zoom</a> at 7pm.
                         Then, we will begin the show stream on <a target="_blank" rel="noreferrer" href="https://www.twitch.tv/umcpcsa">Twitch</a>. 
                         Everyone can stay on Zoom to discuss the show and hang out while watching the stream individually on Twitch! (For the best quality 😏)
-                        Before and during Lunar Banquet, feel free to <Link to="/dares">dare</Link> one of our members and help them fill their dare meter!
+                        Before and during Lunar Banquet, feel free to <Link to="/dares">donate</Link> towards a dare for one of our members!
                         All of the proceeds will be donated to Feeding America to help fight hunger.
                         <br /><br />
                         We hope to see you there!
