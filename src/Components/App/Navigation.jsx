@@ -93,6 +93,9 @@ const useStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(3),
         width: '2rem',
     },
+    menu: {
+        background: theme.palette.secondary.main,
+    }
 }));
 
 const mapStateToProps = state => {
@@ -165,10 +168,12 @@ function Navigation(props) {
                             {/* Links */}
                             <Link to="/"><Button size="large" className={classes.links} color="secondary">HOME</Button></Link>
                             <Button size="large" onClick={(e) => toggleMenu(e)} className={classes.links} color="secondary">ACTIVITIES</Button>
-                            <Menu open={Boolean(menu)} anchorEl={menu} onClose={(e) => toggleMenu(e)}>
+        
+                            <Menu open={Boolean(menu)} anchorEl={menu} onClose={(e) => toggleMenu(e)} classes={{ paper: classes.menu }}>
                                 <a style={{color: "#000"}} target="_blank" rel="noreferrer" href="http://ter.ps/csazoom"><MenuItem>Pre-Activities / Hangout on Zoom</MenuItem></a>
                                 <a style={{color: "#000"}} target="_blank" rel="noreferrer" href="http://twitch.tv/umcpcsa"><MenuItem>Lunar Stream on Twitch</MenuItem></a>
                             </Menu>
+
                             <Link to="/dares"><Button size="large" className={classes.links} color="secondary">DARES</Button></Link>
                             <Link to="/faq"><Button size="large" className={classes.links} color="secondary">INFO</Button></Link>
                             <Link to="/committee"><Button size="large" className={classes.links} color="secondary">COMMITTEE</Button></Link>
