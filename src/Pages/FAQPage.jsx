@@ -64,8 +64,9 @@ function FAQPage(props) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        The live activities for Lunar Banquet will take place on Saturday, Feb. 20th at 7PM!
+                        The live activities for Lunar Banquet will take place on Saturday, Feb. 20th at 6:30PM!
                         Our pre-lunar activities will take place on Zoom, and the rest of the show will be streamed on Twitch.
+                        Optionally, you can stay on Zoom to discuss the show with each other!
           </Typography>
                 </AccordionDetails>
             </Accordion>

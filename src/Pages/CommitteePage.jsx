@@ -30,6 +30,9 @@ import Thomas from '../Assets/OrgPics/thomas.jpg';
 import AlexC from '../Assets/OrgPics/alexc.png';
 import Unavailable from '../Assets/OrgPics/unavailable.jpg';
 import Brittany from '../Assets/OrgPics/Brittany.jpg';
+import Helen from '../Assets/OrgPics/unavailable.jpg';
+import Alice from '../Assets/OrgPics/unavailable.jpg';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -216,6 +219,20 @@ function CommitteePage(props) {
                         name="Stanley Zhu"
                         image={Stanley}
                         bio="Tech Committee"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Helen Zhang"
+                        image={Helen}
+                        bio="Senior Advisor"
+                    />
+                </Grid>
+                <Grid item>
+                    <MemberCard
+                        name="Alice Wei"
+                        image={Alice}
+                        bio="Senior Advisor"
                     />
                 </Grid>
             </Grid>
