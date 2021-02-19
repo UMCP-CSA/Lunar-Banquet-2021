@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
-import ProgramPopup from '../Components/App/ProgramPopup';
+import ProgramPopup from '../Components/Activities/ProgramPopup';
+import { Container, Grid, Typography, Button, Modal, Fade } from '@material-ui/core';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 
@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         textAlign: "center",
         [theme.breakpoints.up('xs')]: {
@@ -62,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
     },
     countdown: {
         flexGrow: 1,
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginTop: theme.spacing(1),
         [theme.breakpoints.up('xs')]: {
@@ -83,7 +85,8 @@ const useStyles = makeStyles((theme) => ({
     program: {
         flexGrow: 1,
         fontSize: "36px",
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(5),
@@ -92,7 +95,8 @@ const useStyles = makeStyles((theme) => ({
     list: {
         flexGrow: 1,
         fontSize: "28px",
-        fontFamily: "'Abril Fatface', cursive",
+        fontFamily: "'Open Sans', sans-serif",
+        fontWeight: 'bold',
         color: "#ffd56b",
         textAlign: "center",
         [theme.breakpoints.up('xs')]: {
@@ -169,38 +173,42 @@ function StreamPage(props) {
     // if current date before lunar
     if (Date.now() < lunarDate) {
         return (
-            <Container>
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.heading}>
-                            Lunar Banquet Will Be On February 20th, 2021<br /><br />
-                            Countdown to Lunar:
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Countdown
-                            date={"February 20,2021"}
-                            intervalDelay={1000}
-                            precision={1}
-                            zeroPadDays={2}
-                            zeroPadTime={2}
-                            renderer={renderer}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="h3" align="center" className={classes.program}>
-                            <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
-                        </Typography>
-                    </Grid>
-                </Grid>
+            <Reveal trigger={<div />}>
+                <Tween from={{ opacity: 0 }} duration={1}>
+                    <Container>
+                        <Grid container direction="column" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.heading}>
+                                    Lunar Banquet Will Be On February 20th, 2021<br /><br />
+                                    Countdown to Lunar:
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Countdown
+                                    date={"February 20,2021"}
+                                    intervalDelay={1000}
+                                    precision={1}
+                                    zeroPadDays={2}
+                                    zeroPadTime={2}
+                                    renderer={renderer}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="h3" align="center" className={classes.program}>
+                                    <Button size="large" className={classes.program} onClick={toggleOpen}>Program of Events</Button>
+                                </Typography>
+                            </Grid>
+                        </Grid>
 
-                <Modal
-                    open={open}
-                    onClose={toggleOpen}
-                    style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <ProgramPopup />
-                </Modal>
-            </Container> 
+                        <Modal
+                            open={open}
+                            onClose={toggleOpen}
+                            style={{ outline: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <ProgramPopup />
+                        </Modal>
+                    </Container>
+                </Tween>
+            </Reveal>
         );
     // lunar has started, show stream
     } else {

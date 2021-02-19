@@ -5,13 +5,17 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ShopTile from '../Components/Shop/ShopTile.jsx';
-import Lily from '../Assets/OrgPics/Lily.jpg';
-import Jen from '../Assets/OrgPics/Jen.jpg';
+import Lily from '../Assets/ShopPics/Lily.jpg';
+import Jen from '../Assets/ShopPics/Jen.png';
 import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
-import { Grid, Container, Tabs, Tab, Paper, Button, ButtonGroup } from "@material-ui/core";
-import { borders, sizing } from '@material-ui/system';
-import DareImg from '../Components/Shop/DareImg';
+import AlexC from '../Assets/ShopPics/AlexC.jpg';
+import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
+import { Grid, Container, Tabs, Tab, Fade } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
+import MemberCard from '../Components/Committee/MemberCard';
+import Alice from '../Assets/ShopPics/Alice.jfif'
+import Andrew from '../Assets/ShopPics/Andrew.jpg'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,6 +65,7 @@ export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [error, setError] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,109 +75,145 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const handleError = () => {
+    setError(!error);
+  }
+
   return (
-    <div className={classes.root}>
+        <div className={classes.root}>
+            {error ? <Alert onClose={handleError} severity="error">Please name a price greater than 0!</Alert> : null }
+            <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="secondary"
+                textColor="secondary"
+                variant="fullWidth"
+                
+            >
+                <Tab label="Buy Dares" {...a11yProps(0)} classes={{root: classes.tab}} />
+                <Tab label="Completed Dares" {...a11yProps(1)} classes={{root: classes.tab}} />
+            </ Tabs>
+            
+
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <Fade in timeout={ 1000 }>
+                    <Container>
+                        <Grid container direction="row" justify="center" spacing={2}>
+                            <Grid item xs={12}>
+                                <Box borderRadius={16} height="110%">
+                                    <Typography color="secondary">
+                                    All proceeds go to <i>Feeding America</i>, the nation’s largest domestic hunger-relief organization 
+                                    serving over 40 million people. 
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Lily"
+                                    profit="0"
+                                    desc="I will literally remake avatar opening"
+                                    image={Lily}
+                                    alt="lily"
+                                    person="lily"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Eugene"
+                                    profit="0"
+                                    desc="Dare me for thicc red envelope"
+                                    image={Eugene}
+                                    alt="eug"
+                                    person="eugene"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Jen"
+                                    profit="0"
+                                    desc="Just want to shave my head"
+                                    image={Jen}
+                                    alt="Supreme bag"
+                                    person="jen"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Lil Alex"
+                                    profit="0"
+                                    desc="Can I be your hongbao homie?"
+                                    image={AlexH}
+                                    alt="lil alex"
+                                    person="alexh"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Big Alex"
+                                    profit="0"
+                                    desc="You facai, I facai, we facai"
+                                    image={AlexC}
+                                    alt="big alex"
+                                    person="alexc"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Sylvia"
+                                    profit="0"
+                                    desc="I am once again asking for a red pocket"
+                                    image={Sylvia}
+                                    alt="sylvia"
+                                    person="sylvia"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Alice"
+                                    profit="0"
+                                    desc="A big stack for me is a big stack for us all"
+                                    image={Alice}
+                                    alt="alice"
+                                    person="alice"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ShopTile
+                                    name="Andrew"
+                                    profit="0"
+                                    desc="No donate no pog"
+                                    image={Andrew}
+                                    alt="andrew"
+                                    person="andrew"
+                                    errorFunc={handleError}
+                                />
+                            </Grid>
+                        </Grid>
+                      </Container>
+                  </Fade>
+          </TabPanel>
+
+          <TabPanel value={value} index={1} dir={theme.direction}>
+              <Fade in timeout = { 1000 }>
+                  <Grid container direction="row" spacing={2}>
+                      <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
+                  </Grid>
+              </Fade>
+          </TabPanel>
+        </SwipeableViews>
+        </div>
       
-          <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="secondary"
-              textColor="secondary"
-              variant="fullWidth"
-              
-          >
-              <Tab label="Buy Dares" {...a11yProps(0)} classes={{root: classes.tab}} />
-              <Tab label="Completed Dares" {...a11yProps(1)} classes={{root: classes.tab}} />
-          </ Tabs>
-          
-
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-        <Container>
-            <Grid container direction="row" justify="center" spacing={2}>
-                <Grid item xs={12}>
-                    <Box bgcolor="white" borderRadius={16} height="110%">
-                        All proceeds go to Feeding America, the nation’s largest domestic hunger-relief organization. Their
-                        mission is to feed America’s hungry through a nationwide network of member food banks and engage 
-                        our country in the fight to end hunger. The Feeding America network of food banks, pantries and 
-                        meal programs serve virtually every community in the United States, totalling around 40 million people.
-                    </Box>
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Lily"
-                        profit="0"
-                        desc="Yummy"
-                        image={Lily}
-                        alt="lily"
-                        person="lily"
-                    />
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Eugene"
-                        profit="0"
-                        desc="dare me for thicc red pocket"
-                        image={Eugene}
-                        alt="Astro Baby Milo"
-                        person="eugene"
-                    />
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Jen"
-                        profit="0"
-                        desc="Easy cop"
-                        image={Jen}
-                        alt="Supreme bag"
-                        person="jen"
-                    />
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Lil Alex"
-                        profit="0"
-                        desc="The things I do for CSA"
-                        image={AlexH}
-                        alt="lil alex"
-                        person="alexh"
-                    />
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Big Alex"
-                        profit="0"
-                        desc="Must have"
-                        image={Jen}
-                        alt="big alex"
-                        person="alexc"
-                    />
-                </Grid>
-                <Grid item>
-                    <ShopTile
-                        name="Sylvia"
-                        profit="0"
-                        desc="Must have"
-                        image={Jen}
-                        alt="sylvia"
-                        person="sylvia"
-                    />
-                </Grid>
-            </Grid>
-        </Container>
-        </TabPanel>
-
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <Grid container direction="row" spacing={2}>
-              <Grid item><DareImg img={AlexH} name="Lil Alex" /></Grid>
-          </Grid>
-        </TabPanel>
-
-      </SwipeableViews>
-    </div>
   );
 }
