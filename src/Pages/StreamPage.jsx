@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ProgramPopup from '../Components/Activities/ProgramPopup';
-import { Container, Grid, Typography, Button, Modal } from '@material-ui/core';
+import { Container, Grid, Typography, Button, Modal, Fade } from '@material-ui/core';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 

@@ -11,12 +11,11 @@ import AlexH from '../Assets/ShopPics/AlexH.jpg';
 import Eugene from '../Assets/ShopPics/Eugene.png';
 import AlexC from '../Assets/ShopPics/AlexC.jpg';
 import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
-import { Grid, Container, Tabs, Tab} from "@material-ui/core";
+import { Grid, Container, Tabs, Tab, Fade } from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
 import MemberCard from '../Components/Committee/MemberCard';
 import Alice from '../Assets/ShopPics/Alice.jfif'
 import Andrew from '../Assets/ShopPics/Andrew.jpg'
-import { Reveal, Tween } from 'react-gsap';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -102,8 +101,7 @@ export default function FullWidthTabs() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Reveal repeat trigger={<div />}>
-                <Tween from={{ opacity: 0 }} duration={1}>
+            <Fade in timeout={ 1000 }>
                     <Container>
                         <Grid container direction="row" justify="center" spacing={2}>
                             <Grid item xs={12}>
@@ -204,18 +202,15 @@ export default function FullWidthTabs() {
                             </Grid>
                         </Grid>
                       </Container>
-                  </Tween>
-              </Reveal>
+                  </Fade>
           </TabPanel>
 
           <TabPanel value={value} index={1} dir={theme.direction}>
-              <Reveal trigger={<div />}>
-                  <Tween from={{opacity: 0}} duration={1}>
-                      <Grid container direction="row" spacing={2}>
-                          <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
-                      </Grid>
-                  </Tween>
-              </Reveal>
+              <Fade in timeout = { 1000 }>
+                  <Grid container direction="row" spacing={2}>
+                      <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
+                  </Grid>
+              </Fade>
           </TabPanel>
         </SwipeableViews>
         </div>
