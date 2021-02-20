@@ -206,7 +206,7 @@ export default function FullWidthTabs() {
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Grid container direction="row" spacing={2}>
             <Grid item><DareCard
-              image={<iframe title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
+              image={<iframe allowfullscreen title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
               width="300" 
               height="169"></iframe>} 
               name="Lily" 
