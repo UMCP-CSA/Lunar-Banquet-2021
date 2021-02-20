@@ -13,7 +13,7 @@ import AlexC from '../Assets/ShopPics/AlexC.jpg';
 import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
 import { Grid, Container, Tabs, Tab} from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
-import MemberCard from '../Components/Committee/MemberCard';
+import DareCard from '../Components/Activities/DareCard';
 import Alice from '../Assets/ShopPics/Alice.jfif'
 import Andrew from '../Assets/ShopPics/Andrew.jpg'
 
@@ -205,7 +205,12 @@ export default function FullWidthTabs() {
 
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Grid container direction="row" spacing={2}>
-              <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
+            <Grid item><DareCard
+              image={<iframe title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
+              width="300" 
+              height="169"></iframe>} 
+              name="Lily" 
+              bio="Eat Spicy Food $15" /></Grid>
           </Grid>
         </TabPanel>
 
