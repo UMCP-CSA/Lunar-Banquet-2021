@@ -206,7 +206,7 @@ export default function FullWidthTabs() {
           </TabPanel>
 
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Grid container direction="row" spacing={2}>
+          <Grid container direction="row" spacing={2} justify="center">
             {/* <Grid item><DareCard
               image={<iframe allowfullscreen title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
               width="300" 
@@ -217,7 +217,7 @@ export default function FullWidthTabs() {
               image={<img src={AlexH} />} 
               name="Check back when Lunar ends!" 
               bio="Coming Soon" /></Grid> */}
-              <Typography variant="h4">Check back after Lunar Banquet is over!</Typography>
+              <Typography color="secondary" variant="h5">Check back after Lunar Banquet is over!</Typography>
           </Grid>
         </TabPanel>
 
