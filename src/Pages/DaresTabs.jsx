@@ -211,10 +211,11 @@ export default function FullWidthTabs() {
               height="169"></iframe>} 
               name="Lily" 
               bio="Eat Spicy Food $15" /></Grid> */}
-              <Grid item><DareCard
+              {/* <Grid item><DareCard
               image={<img src={AlexH} />} 
               name="Check back when Lunar ends!" 
-              bio="Coming Soon" /></Grid>
+              bio="Coming Soon" /></Grid> */}
+              <Typography variant="h4">Check back after Lunar Banquet is over!</Typography>
           </Grid>
         </TabPanel>
 
