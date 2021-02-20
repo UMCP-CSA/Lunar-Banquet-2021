@@ -3,14 +3,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Typography, Box, Paper, Table, TableCell, TableRow, TableHead } from '@material-ui/core';
 import { connect } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
-    tableHead: {
-        fontWeight: "bold",
-        fontFamily: "'Abril Fatface', cursive",
-        color: "#ffd56b",
-    },
-}));
-
 function DaresModal(props) {
     const theme = useTheme();
 
@@ -21,7 +13,7 @@ function DaresModal(props) {
         "Eat Durian", "Pied + Egged", "Eat A Lemon", "Embarrasing Pic", "Spicy Nood(le)s", "Go Out in a Wig", "Bleach Hair",
         "Egg Self", "Sing a Song", "Eyebrow Slit", "Call Crush",
         "Sing a Song", "Lots of Lipstick", "Draw on Face", "Pied + Egged",
-        "Eat Durian", "Do the Worm", "Lipsync", "Blindfold Food Challenge", "Pied", "Juggle Eggs", "Sauce Cocktail", "Slap on Face", "Livestream Scary Game", "Ice Bucket Challenge", "Attempt a Handstand", "Hold A Spider",
+        "Eat Durian", "Do the Worm", "Lipsync", "Blindfold Food Challenge", "Pied", "Juggle Eggs", "Sauce Cocktail", "Slap on Face", "Livestream Scary Game", "Ice Bucket Challenge", "Attempt a Handstand", "Bittermelon Covered in Hot Sauce",
         "Pied", "Post Grade School Photo", "Eat Spicy Noodles", "Dance to TWICE"     
     ]
     

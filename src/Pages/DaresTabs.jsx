@@ -13,7 +13,7 @@ import AlexC from '../Assets/ShopPics/AlexC.jpg';
 import Sylvia from '../Assets/ShopPics/Sylvia.jpg';
 import { Grid, Container, Tabs, Tab, Fade } from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
-import MemberCard from '../Components/Committee/MemberCard';
+import DareCard from '../Components/Activities/DareCard';
 import Alice from '../Assets/ShopPics/Alice.jfif'
 import Andrew from '../Assets/ShopPics/Andrew.jpg'
 
@@ -205,15 +205,24 @@ export default function FullWidthTabs() {
                   </Fade>
           </TabPanel>
 
-          <TabPanel value={value} index={1} dir={theme.direction}>
-              <Fade in timeout = { 1000 }>
-                  <Grid container direction="row" spacing={2}>
-                      <Grid item><MemberCard image={AlexH} name="Lil Alex" bio="Coming soon!" /></Grid>
-                  </Grid>
-              </Fade>
-          </TabPanel>
-        </SwipeableViews>
-        </div>
-      
+        <TabPanel value={value} index={1} dir={theme.direction}>
+            <Fade in timeout={1000}>
+                <Grid container direction="row" spacing={2}>
+                  {/* <Grid item><DareCard
+                    image={<iframe allowfullscreen title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
+                    width="300" 
+                    height="169"></iframe>} 
+                    name="Lily" 
+                    bio="Eat Spicy Food $15" /></Grid> */}
+                    <Grid item><DareCard
+                    image={<img src={AlexH} />} 
+                    name="Check back when Lunar ends!" 
+                    bio="Coming Soon" /></Grid>
+                </Grid>
+            </Fade>
+        </TabPanel>
+
+      </SwipeableViews>
+    </div>
   );
 }

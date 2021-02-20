@@ -31,6 +31,8 @@ import Thomas from '../Assets/OrgPics/thomas.jpg';
 import AlexC from '../Assets/OrgPics/alexc.png';
 import Unavailable from '../Assets/OrgPics/unavailable.jpg';
 import Brittany from '../Assets/OrgPics/Brittany.jpg';
+import Helen from '../Assets/OrgPics/unavailable.jpg';
+import Alice from '../Assets/OrgPics/unavailable.jpg';
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -46,10 +48,10 @@ function CommitteePage(props) {
     const classes = useStyles();
 
     return (
-        <Fade in timeout={ 1000 }>
+        <Fade in timeout={1000}>
             <Container>
-                <Typography variant="h3" align="center" className={classes.heading}>Committee Members</Typography>
-                <Grid container direction="row" justify="center" spacing={5}>
+                <Typography variant="h3" align="center" className={classes.heading}>COMMITTEE MEMBERS</Typography>
+                <Grid container container direction="row" justify="center" spacing={5}>
                     <Grid item>
                         <MemberCard
                             name="Andrew Liu"
@@ -70,7 +72,7 @@ function CommitteePage(props) {
                             image={Thea}
                             bio="Programming Lead"
                         />
-                    </Grid> 
+                    </Grid>
                     <Grid item>
                         <MemberCard
                             name="Lily Jin"
@@ -162,10 +164,8 @@ function CommitteePage(props) {
                             bio="Marketing Committee"
                         />
                     </Grid>
-                </Grid>
-                <Grid container direction="row" justify="center" spacing={5}> 
-                        <Grid item>
-                            <MemberCard
+                    <Grid item>
+                        <MemberCard
                             name="Brittany Zhang"
                             image={Brittany}
                             bio="Marketing Committee"
@@ -218,6 +218,20 @@ function CommitteePage(props) {
                             name="Stanley Zhu"
                             image={Stanley}
                             bio="Tech Committee"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <MemberCard
+                            name="Helen Zhang"
+                            image={Helen}
+                            bio="Senior Advisor"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <MemberCard
+                            name="Alice Wei"
+                            image={Alice}
+                            bio="Senior Advisor"
                         />
                     </Grid>
                 </Grid>
