@@ -308,7 +308,6 @@ function HomePage(props) {
                     />
                 </SlideFromRight>
             </Reveal>
-
         </Container>
     );
 }
