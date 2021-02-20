@@ -2,6 +2,7 @@ import React from 'react';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, makeStyles, Container } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Fade } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,6 +19,7 @@ function FAQPage(props) {
     const classes = useStyles();
 
     return (
+        <Fade in timeout={ 1000 }>
         <Container style={{textAlign: "center"}}>
             <Accordion defaultExpanded={true}>
                 <AccordionSummary
@@ -90,6 +92,7 @@ function FAQPage(props) {
                 </AccordionDetails>
             </Accordion>
         </Container>
+        </Fade>
     );
 }
 

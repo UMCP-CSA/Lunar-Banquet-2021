@@ -7,7 +7,6 @@ import { Container, makeStyles, useTheme } from '@material-ui/core';
 import { Reveal, Tween } from 'react-gsap';
 import '../App.css'
 
-
 const useStyles = makeStyles(theme => ({
     lantern1: {
         position: "absolute",
@@ -191,7 +190,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const FadeFromLeft = ({ children }) => (
+const SlideFromLeft = ({ children }) => (
     <Tween
       from={{ opacity: 0, transform: 'translate3d(-100vw, 0, 0)' }}
       duration={1.5}
@@ -201,7 +200,7 @@ const FadeFromLeft = ({ children }) => (
     </Tween>
   );
 
-const FadeFromRight = ({ children }) => (
+const SlideFromRight = ({ children }) => (
     <Tween
       from={{ opacity: 0, transform: 'translate3d(100vw, 0, 0)' }}
       duration={1.5}
@@ -211,7 +210,7 @@ const FadeFromRight = ({ children }) => (
     </Tween>
   );
 
-const FadeFromTop = ({ children }) => (
+const SlideFromTop = ({ children }) => (
 <Tween
     from={{ opacity: 0, transform: 'translate3d(0, -100vh, 0)' }}
     duration={1.5}
@@ -238,24 +237,24 @@ function HomePage(props) {
     return (
         <Container fixed>
             <Reveal repeat trigger={<div />}>
-                <FadeFromTop>
+                <SlideFromTop>
                     <img
                         className={classes.lantern1}
                         alt="lantern"
                         src={Lantern} 
                     />
-                </FadeFromTop>
+                </SlideFromTop>
             </Reveal>
             
 
             <Reveal repeat trigger={<div />}>
-                <FadeFromTop>
+                <SlideFromTop>
                     <img
                         className={classes.lantern2}
                         alt="lantern"
                         src={Lantern} 
                     />
-                </FadeFromTop>
+                </SlideFromTop>
             </Reveal>
 
             <Reveal repeat trigger={<div />}>
@@ -289,25 +288,24 @@ function HomePage(props) {
             </Reveal>
             
             <Reveal repeat trigger={<div />}>
-                <FadeFromLeft>
+                <SlideFromLeft>
                     <img
                         className={classes.cloud1}
                         alt="cloud"
                         src={Cloud}
                     />
-                </FadeFromLeft>
+                </SlideFromLeft>
             </Reveal>
             
             <Reveal repeat trigger={<div />}>
-                <FadeFromRight>
+                <SlideFromRight>
                     <img
                         className={classes.cloud2}
                         alt="cloud"
                         src={Cloud} 
                     />
-                </FadeFromRight>
+                </SlideFromRight>
             </Reveal>
-
         </Container>
     );
 }
