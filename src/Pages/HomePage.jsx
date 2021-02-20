@@ -3,7 +3,8 @@ import Cow from '../Assets/Homepage/Cow.svg';
 import Lantern from '../Assets/Homepage/Lantern.svg';
 import Flower from '../Assets/Homepage/Flower1.svg';
 import Cloud from '../Assets/Homepage/Cloud.svg';
-import { Container, makeStyles, useTheme, Fade, Slide, createMuiTheme } from '@material-ui/core';
+import { Container, makeStyles, useTheme } from '@material-ui/core';
+import { Reveal, Tween } from 'react-gsap';
 import '../App.css'
 
 const useStyles = makeStyles(theme => ({
@@ -189,104 +190,122 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const theme = createMuiTheme ({
-    transitions: {
-        easing: {
-            // This is the most common easing curve.
-            easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            // Objects enter the screen at full velocity from off-screen and
-            // slowly decelerate to a resting point.
-            easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-            // Objects leave the screen at full velocity. They do not decelerate when off-screen.
-            easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-            // The sharp curve is used by objects that may return to the screen at any time.
-            sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
-            //copy of gsap ease.back.out
-            bounce: 'cubic-bezier(.21,.82,.95,.49)',
-        },
-      },
-});
-
 const SlideFromLeft = ({ children }) => (
-    <Slide theme={theme.transitions.easing.bounce} in direction="right" timeout={1000}>
-        {children}
-    </Slide>
+    <Tween
+      from={{ opacity: 0, transform: 'translate3d(-100vw, 0, 0)' }}
+      duration={1.5}
+      ease="back.out(1.2)"
+    >
+      {children}
+    </Tween>
   );
 
 const SlideFromRight = ({ children }) => (
-    <Slide theme={theme} in direction="left" timeout={1000}>
-        {children}
-    </Slide>
+    <Tween
+      from={{ opacity: 0, transform: 'translate3d(100vw, 0, 0)' }}
+      duration={1.5}
+      ease="back.out(1.2)"
+    >
+      {children}
+    </Tween>
   );
 
 const SlideFromTop = ({ children }) => (
-    <Slide theme={theme} in direction="top" timeout={1000}>
-        {children}
-    </Slide>
-    );
+<Tween
+    from={{ opacity: 0, transform: 'translate3d(0, -100vh, 0)' }}
+    duration={1.5}
+    ease="back.out(1.0)"
+>
+    {children}
+</Tween>
+);
+
+const FadeSpinIn = ({ children }) => (
+<Tween
+    from={{ opacity: 0 }}
+    to={{ opacity: 1, rotation: 360 }}
+    duration={1.5}
+>
+    {children}
+</Tween>
+);
 
 function HomePage(props) {
     const classes = useStyles();
+    const theme = useTheme();
 
     return (
         <Container fixed>
-            <SlideFromTop>
-                <img
-                    className={classes.lantern1}
-                    alt="lantern"
-                    src={Lantern} 
-                />
-            </SlideFromTop>
-        
-
-            <SlideFromTop>
-                <img
-                    className={classes.lantern2}
-                    alt="lantern"
-                    src={Lantern} 
-                />
-            </SlideFromTop>
-        
-            <Fade in timeout={2000}>
-                <img 
-                    className={classes.cow}
-                    alt="cow"
-                    src={Cow} 
-                />
-            </Fade>
-        
-            <Fade in timeout={1000}>
-                <img
-                    className={classes.flower1}
-                    alt="flower"
-                    src={Flower} 
-                />
-            </Fade>
+            <Reveal repeat trigger={<div />}>
+                <SlideFromTop>
+                    <img
+                        className={classes.lantern1}
+                        alt="lantern"
+                        src={Lantern} 
+                    />
+                </SlideFromTop>
+            </Reveal>
             
-            <Fade in timeout={1000}>
-                <img
-                    className={classes.flower2}
-                    alt="flower"
-                    src={Flower} 
-                />
-            </Fade>
-            
-            <SlideFromLeft>
-                <img
-                    className={classes.cloud1}
-                    alt="cloud"
-                    src={Cloud}
-                />
-            </SlideFromLeft>
-        
-            <SlideFromRight>
-                <img
-                    className={classes.cloud2}
-                    alt="cloud"
-                    src={Cloud} 
-                />
-            </SlideFromRight>
 
+            <Reveal repeat trigger={<div />}>
+                <SlideFromTop>
+                    <img
+                        className={classes.lantern2}
+                        alt="lantern"
+                        src={Lantern} 
+                    />
+                </SlideFromTop>
+            </Reveal>
+
+            <Reveal repeat trigger={<div />}>
+                <Tween from={{ opacity: 0 }} duration={3}>
+                    <img 
+                        className={classes.cow}
+                        alt="cow"
+                        src={Cow} 
+                    />
+                </Tween>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeSpinIn>
+                    <img
+                        className={classes.flower1}
+                        alt="flower"
+                        src={Flower} 
+                    />
+                </FadeSpinIn>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <FadeSpinIn>
+                    <img
+                        className={classes.flower2}
+                        alt="flower"
+                        src={Flower} 
+                    />
+                </FadeSpinIn>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <SlideFromLeft>
+                    <img
+                        className={classes.cloud1}
+                        alt="cloud"
+                        src={Cloud}
+                    />
+                </SlideFromLeft>
+            </Reveal>
+            
+            <Reveal repeat trigger={<div />}>
+                <SlideFromRight>
+                    <img
+                        className={classes.cloud2}
+                        alt="cloud"
+                        src={Cloud} 
+                    />
+                </SlideFromRight>
+            </Reveal>
         </Container>
     );
 }
