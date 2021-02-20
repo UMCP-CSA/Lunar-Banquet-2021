@@ -3,14 +3,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Typography, Box, Paper, Table, TableCell, TableRow, TableHead } from '@material-ui/core';
 import { connect } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
-    tableHead: {
-        fontWeight: "bold",
-        fontFamily: "'Abril Fatface', cursive",
-        color: "#ffd56b",
-    },
-}));
-
 function DaresModal(props) {
     const theme = useTheme();
 
