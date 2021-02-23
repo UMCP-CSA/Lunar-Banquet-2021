@@ -206,18 +206,32 @@ export default function FullWidthTabs() {
           </TabPanel>
 
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Grid container direction="row" spacing={2} justify="center">
-            {/* <Grid item><DareCard
-              image={<iframe allowfullscreen title="lily spicy food" src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
-              width="300" 
-              height="169"></iframe>} 
-              name="Lily" 
-              bio="Eat Spicy Food $15" /></Grid> */}
-              {/* <Grid item><DareCard
-              image={<img src={AlexH} />} 
-              name="Check back when Lunar ends!" 
-              bio="Coming Soon" /></Grid> */}
-              <Typography color="secondary" variant="h5">Check back after Lunar Banquet is over!</Typography>
+            <Grid container direction="row" spacing={2} justify="center">
+                <Grid item>
+                    <DareCard
+                    image={<iframe allow="fullscreen" title="lily spicy food" 
+                    src="https://drive.google.com/file/d/18Gt5BW_wDoncg_PL0OawkKXgy1gEiWQc/preview" 
+                    width="300" 
+                    height="169"></iframe>}
+                    name="Lily"
+                    bio="Eat Spicy Food $15" />
+                </Grid>
+                <Grid item>
+                    <DareCard
+                    image={<iframe allow="fullscreen" title="Alice and the Durian"
+                      src="https://drive.google.com/file/d/1YSKOiMd8WUqzjp5wdK1XO098rosJH72q/preview"
+                      width="300" 
+                      height="169"></iframe>}
+                    name="Alice"
+                    alt="alice durian"
+                    bio="Eat a durian $10" />
+                </Grid>
+                {/* template?
+                <Grid item><DareCard
+                image={<img src={AlexH} />} 
+                name="Check back when Lunar ends!" 
+                bio="Coming Soon" /></Grid> */}
+              {/* <Typography color="secondary" variant="h5">Check back after Lunar Banquet is over!</Typography> */}
           </Grid>
         </TabPanel>
 
