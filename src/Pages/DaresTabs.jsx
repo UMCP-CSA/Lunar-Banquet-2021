@@ -224,7 +224,7 @@ export default function FullWidthTabs() {
                       height="169"></iframe>}
                     name="Alice"
                     alt="alice durian"
-                    bio="Eat a durian $10" />
+                    bio="Eat Durian $10" />
                 </Grid>
                 {/* template?
                 <Grid item><DareCard
