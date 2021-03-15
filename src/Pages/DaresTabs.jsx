@@ -224,7 +224,51 @@ export default function FullWidthTabs() {
                       height="169"></iframe>}
                     name="Alice"
                     alt="alice durian"
-                    bio="Eat a durian $10" />
+                    bio="Eat durian $10" />
+                </Grid>
+                <Grid item>
+                    <DareCard
+                        image={<iframe allow="fullscreen" title="Andrew pie in the face"
+                            src="https://drive.google.com/file/d/1NBOdHtRVMmDhbR88J_jjf5O6x0g74UHF/preview"
+                            width="300" 
+                            height="169"></iframe>}
+                        name="Andrew"
+                        alt="Andrew pie"
+                        bio="Pied $10"
+                    ></DareCard>
+                </Grid>
+                <Grid item>
+                    <DareCard
+                        image={<iframe allow="fullscreen" title="Grade School Andrew"
+                            src="https://drive.google.com/file/d/1d1F2C94ShCG3EKOE9HWuOuU2rqurnowi/preview"
+                            width="300" 
+                            height="169"></iframe>}
+                        name="Andrew"
+                        alt="Andrew grade school photo"
+                        bio="Grade School Photo $20"
+                    ></DareCard>
+                </Grid>
+                <Grid item>
+                    <DareCard
+                        image={<iframe allow="fullscreen" title="AlexC gets pie"
+                            src="https://drive.google.com/file/d/1RDa-sPVkwST7a0cGD11Tt2BNydNHjh7h/preview"
+                            width="300" 
+                            height="169"></iframe>}
+                        name="Big Alex"
+                        alt="Big Alex pied"
+                        bio="Pied $10"
+                    ></DareCard>
+                </Grid>
+                <Grid item>
+                    <DareCard
+                        image={<iframe allow="fullscreen" title="Lily the Avatar"
+                            src="https://drive.google.com/file/d/1yzMyOj4vToFV8pjG1yM5l6sc8-B6mG53/preview"
+                            width="300"
+                            height="169"></iframe>}
+                        name="Lily"
+                        alt="Lily Avatar Opening"
+                        bio="Recreate Entire Avatar Opening	$50"
+                    ></DareCard>
                 </Grid>
                 {/* template?
                 <Grid item><DareCard
